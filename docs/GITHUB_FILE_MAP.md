@@ -19,6 +19,7 @@ the server workspace on 2026-07-01.
 | `docs/CODEX_CC_COLLABORATION.md` | `cfy2yue/scRepresentation` | `https://github.com/cfy2yue/scRepresentation/blob/main/docs/CODEX_CC_COLLABORATION.md` | Codex/CC role split | yes | Keep concise. |
 | `docs/GIT_AND_COLLABORATION.md` | `cfy2yue/scRepresentation` | `https://github.com/cfy2yue/scRepresentation/blob/main/docs/GIT_AND_COLLABORATION.md` | Git and ownership rules | yes | Created for CC/Codex handoff. |
 | `docs/GITHUB_FILE_MAP.md` | `cfy2yue/scRepresentation` | `https://github.com/cfy2yue/scRepresentation/blob/main/docs/GITHUB_FILE_MAP.md` | File URL map | yes | This file. |
+| `docs/LOCAL_CODEX_DRY_RUN.md` | `cfy2yue/scRepresentation` | `https://github.com/cfy2yue/scRepresentation/blob/main/docs/LOCAL_CODEX_DRY_RUN.md` | Local Codex dry-run notes | yes | Supports workflow testing before normal CC flow. |
 | `docs/PROJECT_OVERVIEW.md` | `cfy2yue/scRepresentation` | `https://github.com/cfy2yue/scRepresentation/blob/main/docs/PROJECT_OVERVIEW.md` | Current project overview | yes | Current paths should point under `scLatent/`. |
 | `docs/PROJECT_REVIEW.md` | `cfy2yue/scRepresentation` | `https://github.com/cfy2yue/scRepresentation/blob/main/docs/PROJECT_REVIEW.md` | Current review state | yes | Full pre-slim log is server-local only. |
 | `docs/EXPERIMENT_INDEX.md` | `cfy2yue/scRepresentation` | `https://github.com/cfy2yue/scRepresentation/blob/main/docs/EXPERIMENT_INDEX.md` | Compact experiment index | yes | Long run details stay in `runs/`/reports/local archive. |

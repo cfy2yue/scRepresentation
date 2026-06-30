@@ -21,11 +21,12 @@ scripts/docs.
 2. `AGENTS.md`
 3. `docs/GIT_AND_COLLABORATION.md`
 4. `docs/GITHUB_FILE_MAP.md`
-5. `docs/WORKSPACE_ORGANIZATION.md`
-6. `docs/CODEX_CC_COLLABORATION.md`
-7. `docs/PROJECT_OVERVIEW.md`
-8. `docs/PROJECT_REVIEW.md`
-9. `docs/EXPERIMENT_INDEX.md`
+5. `docs/LOCAL_CODEX_DRY_RUN.md`
+6. `docs/WORKSPACE_ORGANIZATION.md`
+7. `docs/CODEX_CC_COLLABORATION.md`
+8. `docs/PROJECT_OVERVIEW.md`
+9. `docs/PROJECT_REVIEW.md`
+10. `docs/EXPERIMENT_INDEX.md`
 
 ## CC And Codex Boundary
 
