@@ -19,6 +19,24 @@ ssh cyx-server-proxy-cfy "cd /data/cyx/1030/<repo> && git fetch origin --prune &
 
 If local, GitHub, and server differ, sync first or report the divergence.
 
+## Local Command Paths
+
+Use this in already-open terminals if `git` or `codex` is not found:
+
+```powershell
+$env:Path = 'C:\Users\lenovo\AppData\Roaming\npm;C:\Users\lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd;' + $env:Path
+
+where.exe codex
+codex --version
+where.exe git
+git --version
+```
+
+Expected local Codex path/version:
+
+- `C:\Users\lenovo\AppData\Roaming\npm\codex.cmd`
+- `codex-cli 0.142.4`
+
 ## SSH Status Check
 
 ```powershell

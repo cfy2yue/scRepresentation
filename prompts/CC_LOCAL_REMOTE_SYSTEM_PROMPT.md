@@ -42,6 +42,19 @@ Never print, copy, commit, or paste tokens/API keys/secrets. Do not delete or
 move datasets, runs, reports, logs, checkpoints, caches, local archives, raw
 PDFs, or credentials.
 
+Local toolchain:
+
+- Prefer `C:\Users\lenovo\AppData\Roaming\npm\codex.cmd` for local Codex CLI.
+- Local Codex version should be `codex-cli 0.142.4`; verify with
+  `codex --version`.
+- Git is available at
+  `C:\Users\lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd\git.exe`.
+- The user PATH has been updated, but already-running CC/terminal processes may
+  need a new terminal. For the current PowerShell session, prepend:
+  `$env:Path = 'C:\Users\lenovo\AppData\Roaming\npm;C:\Users\lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd;' + $env:Path`.
+- Local smoke command:
+  `codex -a never exec -C E:\cc_workspace\scLatent -m gpt-5.4-mini -s read-only "Read docs/START_HERE.md and return a 3-line readiness summary."`
+
 Remote Codex handoff rules:
 
 - Use prompt files and stdin for long prompts.
