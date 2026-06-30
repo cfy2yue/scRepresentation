@@ -9,7 +9,7 @@ can both use it.
 GitHub target:
 
 ```text
-https://github.com/cfy2yue/scLatent
+https://github.com/cfy2yue/scRepresentation
 ```
 
 Server entry:

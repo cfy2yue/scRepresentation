@@ -18,7 +18,7 @@ therefore needs two strong pillars:
 
 | Path | Role |
 |---|---|
-| `/data/cyx/1030/scLatent` | Current scLatent project root and intended GitHub target `cfy2yue/scLatent`. |
+| `/data/cyx/1030/scLatent` | Current scLatent project root and intended GitHub target `cfy2yue/scRepresentation`. |
 | `/data/cyx/1030/scLatent/scFMBench` | Benchmark repo checkout, GitHub `cfy2yue/scFMBench`, currently nested under scLatent. |
 | `/data/cyx/1030/scLatent/CoupledFM` | Modeling repo checkout, GitHub `cfy2yue/CoupledFM`, currently nested under scLatent. |
 | `/data/cyx/1030/dataset` | Canonical local dataset root. |

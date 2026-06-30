@@ -5,17 +5,20 @@ Updated: 2026-07-01
 ## Project Identity
 
 - Server directory: `/data/cyx/1030/scLatent`
-- GitHub target: `https://github.com/cfy2yue/scLatent`
+- GitHub target: `https://github.com/cfy2yue/scRepresentation`
 - SSH entry: `ssh cyx-server-proxy-cfy`, then `cd /data/cyx/1030/scLatent`
 - Shared data root: `/data/cyx/1030/dataset`
 - Shared runtime root: `/data/cyx/1030/software`
 
 Current audit note: `/data/cyx/1030/scLatent` is now a local Git worktree on
-branch `main` with origin `https://github.com/cfy2yue/scLatent.git`. Remote
+branch `main` with origin `https://github.com/cfy2yue/scRepresentation.git`. Remote
 `main` was initialized from this server workspace on 2026-07-01. `CoupledFM/` and
 `scFMBench/` are treated as ordinary scLatent project directories, not
 submodules; their previous nested `.git` metadata was moved to
 `backup/git_metadata_20260630_225838/`, which is ignored by Git.
+
+Naming note: the server/project folder remains `scLatent`; the GitHub repo name
+for collaboration is `scRepresentation`.
 
 ## Codex Alone
 
@@ -30,7 +33,7 @@ docs.
 
 ## CC Alone
 
-CC should clone `https://github.com/cfy2yue/scLatent` on Windows for reading,
+CC should clone `https://github.com/cfy2yue/scRepresentation` on Windows for reading,
 direction audit, goal refinement, documentation cleanup, and code review.
 
 If CC needs server-only information, use:

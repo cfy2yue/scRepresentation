@@ -4,7 +4,7 @@ Last slimmed: 2026-07-01.
 
 This is the actionable project steering note for the server workspace
 `/data/cyx/1030/scLatent` and GitHub repository
-`https://github.com/cfy2yue/scLatent`.
+`https://github.com/cfy2yue/scRepresentation`.
 
 The full pre-slim chronological goal log was preserved on the server at:
 
@@ -29,7 +29,7 @@ clear no-harm gates and preserved negative evidence.
 - Shared data root: `/data/cyx/1030/dataset`.
 - Shared runtime root: `/data/cyx/1030/software`.
 - Current scdfm runtime entry: `source /data/cyx/1030/scLatent/init-scdfm.sh`.
-- Remote: `https://github.com/cfy2yue/scLatent`.
+- Remote: `https://github.com/cfy2yue/scRepresentation`.
 - Server login: `ssh cyx-server-proxy-cfy`.
 
 Project assets should use `/data/cyx/1030/scLatent/...`. Shared datasets should

@@ -10,10 +10,23 @@ docs/local_archive/20260630_pre_slim/DECISIONS.md
 
 This file records only decisions that should guide new agents.
 
+## 2026-07-01: Use scRepresentation As The GitHub Repository
+
+Decision: the active GitHub repository for `/data/cyx/1030/scLatent` is
+`https://github.com/cfy2yue/scRepresentation`.
+
+Reason: the server directory remains named `scLatent`, but the user clarified
+that the publication/coordination repository should be `cfy2yue/scRepresentation`.
+
+Consequence: `origin` should point to
+`https://github.com/cfy2yue/scRepresentation.git`; CC should clone that repo
+into a local folder named `scLatent`. Any earlier GitHub target using the old
+server-directory name as the repository name is superseded for this workspace.
+
 ## 2026-06-30: Publish scLatent As A Monorepo
 
 Decision: initialize `/data/cyx/1030/scLatent` as the project-level repository
-for `https://github.com/cfy2yue/scLatent`.
+for `https://github.com/cfy2yue/scRepresentation`.
 
 Reason: scLatent is the top-level working project. `CoupledFM/` and
 `scFMBench/` are currently treated as ordinary nested source directories, not
