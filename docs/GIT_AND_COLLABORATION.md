@@ -11,8 +11,8 @@ Updated: 2026-07-01
 - Shared runtime root: `/data/cyx/1030/software`
 
 Current audit note: `/data/cyx/1030/scLatent` is now a local Git worktree on
-branch `main` with origin `https://github.com/cfy2yue/scLatent.git`. A local
-initialization commit exists, but push is pending user confirmation. `CoupledFM/` and
+branch `main` with origin `https://github.com/cfy2yue/scLatent.git`. Remote
+`main` was initialized from this server workspace on 2026-07-01. `CoupledFM/` and
 `scFMBench/` are treated as ordinary scLatent project directories, not
 submodules; their previous nested `.git` metadata was moved to
 `backup/git_metadata_20260630_225838/`, which is ignored by Git.
