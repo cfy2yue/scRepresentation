@@ -1,0 +1,725 @@
+{
+  "artifacts": [
+    {
+      "artifact": "replogle_bulk_K562_essential_TE_ratio",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_UMI_count_unfiltered",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_anderson_darling_counts",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_cnv_score_z",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_control_expr",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_energy_test_p_value",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_fold_expr",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_mann_whitney_counts",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_mean_leverage_score",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_mitopercent",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_num_cells_filtered",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_num_cells_unfiltered",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_pct_expr",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_std_leverage_score",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_essential_z_gemgroup_UMI",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_TE_ratio",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_UMI_count_unfiltered",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_anderson_darling_counts",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_cnv_score_z",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_control_expr",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_energy_test_p_value",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_fold_expr",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_mann_whitney_counts",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_mean_leverage_score",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_mitopercent",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_num_cells_filtered",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_num_cells_unfiltered",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_pct_expr",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_std_leverage_score",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_K562_gwps_z_gemgroup_UMI",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_TE_ratio",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_UMI_count_unfiltered",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_anderson_darling_counts",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_cnv_score_z",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_control_expr",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_energy_test_p_value",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_fold_expr",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_mann_whitney_counts",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_mean_leverage_score",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_mitopercent",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_num_cells_filtered",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_num_cells_unfiltered",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_pct_expr",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_std_leverage_score",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "replogle_bulk_RPE1_z_gemgroup_UMI",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 2,
+      "promotion_note": "CPU gate only. response_candidate artifacts must beat qc_control artifacts and pass no-harm gates before GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value",
+        "artifact_role"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/replogle_bulk_artifacts_20260627/replogle_bulk_condition_artifacts.csv"
+      ]
+    }
+  ],
+  "status": "replogle_bulk_artifacts_materialized_no_gpu"
+}

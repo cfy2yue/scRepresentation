@@ -1,0 +1,48 @@
+{
+  "version": "20260626",
+  "boundary": {
+    "uses_train_only_internal_rows": true,
+    "uses_canonical_multi": false,
+    "uses_trackc_query": false,
+    "uses_training": false,
+    "uses_gpu": false
+  },
+  "artifacts": [
+    {
+      "artifact": "external_reagent_on_target_engagement_score",
+      "description": "External sgRNA/reagent on-target or off-target quality. Must not be a static target-gene attribute or Jiang-only mixscale score.",
+      "priority": 1,
+      "source_files": [],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["target_gene", "guide_id", "guide_sequence", "source", "evidence_url"],
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "If acquired and CPU gate passes, possible future reagent-quality sampling/filtering smoke after external audit."
+    },
+    {
+      "artifact": "external_perturbation_elapsed_time_maturity",
+      "description": "External biological assay duration, recovery time, induction time, or perturbation maturity. Must vary within datasets and not be a dataset/source proxy.",
+      "priority": 2,
+      "source_files": [],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["time_unit", "source", "evidence_url"],
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "If acquired and CPU gate passes, possible timing-aware curriculum/filter smoke after external audit."
+    },
+    {
+      "artifact": "external_condition_viability_or_growth_burden",
+      "description": "External condition-level viability, depletion, fitness, growth, survival, or toxicity side assay. Must be independent of cell count/QC and not just target essentiality.",
+      "priority": 3,
+      "source_files": [],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["target_gene", "assay", "source", "evidence_url"],
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "If acquired and CPU gate passes, possible tail-protection route after external audit."
+    }
+  ]
+}

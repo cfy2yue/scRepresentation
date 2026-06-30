@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT=/data/cyx/1030/scLatent
+COUPLED=${ROOT}/CoupledFM
+
+export LATENTFM_TRACKC_QUERY_RUN_NAME=xverse_trackc_endpoint_route_w05_replay1_2k_seed42
+export LATENTFM_TRACKC_QUERY_LABEL=latentfm_trackc_endpoint_routed_query_once_20260622
+export LATENTFM_TRACKC_QUERY_CANDIDATE_CKPT=${COUPLED}/output/latentfm_runs/xverse_trackc_endpoint_routed_20260622/xverse_trackc_endpoint_route_w05_replay1_2k_seed42/best.pt
+export LATENTFM_TRACKC_QUERY_SMOKE_DECISION=${ROOT}/reports/latentfm_trackc_routed_distill_smoke_decision_xverse_trackc_endpoint_route_w05_replay1_2k_seed42.json
+export LATENTFM_TRACKC_QUERY_UNCAPPED_DECISION=${ROOT}/reports/latentfm_trackc_endpoint_routed_uncapped_noharm_decision_20260622.json
+export LATENTFM_TRACKC_QUERY_DECISION_JSON=${ROOT}/reports/latentfm_trackc_endpoint_routed_query_once_decision_20260622.json
+export LATENTFM_TRACKC_QUERY_DECISION_MD=${ROOT}/reports/LATENTFM_TRACKC_ENDPOINT_ROUTED_QUERY_ONCE_DECISION_20260622.md
+export LATENTFM_TRACKC_QUERY_BOOT_DIR=${ROOT}/reports/latentfm_trackc_endpoint_routed_query_once_bootstrap_20260622
+export LATENTFM_TRACKC_QUERY_REPORT_TITLE="LatentFM Track C Endpoint-Routed One-Shot Query Decision"
+
+bash ${ROOT}/ops/launch_latentfm_trackc_routefocus_query_if_pass_20260622.sh

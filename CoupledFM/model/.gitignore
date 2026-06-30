@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+runs/
+output/
+env/scdfm.tar.gz
+*.h5ad
+*.npy
+*.pth
+*.pt
+*.pkl
+.DS_Store

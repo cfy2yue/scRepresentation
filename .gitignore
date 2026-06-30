@@ -1,0 +1,53 @@
+# Local runtime and environment state
+.venvs/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+.env
+.env.*
+secrets/
+*secret*
+*api_key*
+tokens/
+token.txt
+*.token
+*_token.txt
+*.key
+*.pem
+
+# Shared workspace links
+dataset
+scFM_data
+software
+
+# Large or provenance-bearing outputs kept on the server, not in Git
+runs/
+reports/
+logs/
+backup/
+external_review/
+docs/local_archive/
+
+# Large model/data assets
+pretrainckpt/
+scFM_cache/
+scFM_output/
+scFM_pretrained/
+scFM_third_party/
+scFMBench/ref/*.pdf
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.h5
+*.h5ad
+*.npz
+*.npy
+*.parquet
+*.zarr/
+
+# Scratch
+tmp/
+temp/
+*.log

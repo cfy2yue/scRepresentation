@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact": "external_reliability_assignment_fraction",
+      "description": "External reliability-v2 condition-level artifact distinct from raw read/UMI depth.",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "minimum_varying_datasets": 2,
+      "optional_columns": [
+        "source",
+        "source_file",
+        "source_column",
+        "n_cells"
+      ],
+      "priority": 1,
+      "promotion_note": "Must pass MMD-safe residual and source-block shuffle/LODO gates before any GPU proposal.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/norman_geo_reagent_artifacts_20260626/norman_geo_good_coverage_rate.csv",
+        "reports/frangieh_figshare_reagent_artifacts_20260626/frangieh_figshare_assigned_sgrna_rate.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_strict_assigned_row_fraction.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_lenient_assigned_row_fraction.csv",
+        "reports/dixit_figshare_reagent_artifacts_20260626/dixit_figshare_assigned_cell_fraction.csv"
+      ]
+    },
+    {
+      "artifact": "external_reliability_source_cell_support",
+      "description": "External reliability-v2 condition-level artifact distinct from raw read/UMI depth.",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "minimum_varying_datasets": 2,
+      "optional_columns": [
+        "source",
+        "source_file",
+        "source_column",
+        "n_cells"
+      ],
+      "priority": 2,
+      "promotion_note": "Must pass MMD-safe residual and source-block shuffle/LODO gates before any GPU proposal.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/frangieh_figshare_reagent_artifacts_20260626/frangieh_figshare_condition_cell_count.csv",
+        "reports/dixit_figshare_reagent_artifacts_20260626/dixit_figshare_assigned_cell_count.csv"
+      ]
+    },
+    {
+      "artifact": "external_reliability_guide_multiplicity_consistency",
+      "description": "External reliability-v2 condition-level artifact distinct from raw read/UMI depth.",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "minimum_varying_datasets": 2,
+      "optional_columns": [
+        "source",
+        "source_file",
+        "source_column",
+        "n_cells"
+      ],
+      "priority": 3,
+      "promotion_note": "Must pass MMD-safe residual and source-block shuffle/LODO gates before any GPU proposal.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/norman_geo_reagent_artifacts_20260626/norman_geo_mean_guide_coverage.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_strict_unique_guide_count.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_lenient_unique_guide_count.csv",
+        "reports/dixit_figshare_reagent_artifacts_20260626/dixit_figshare_unique_guide_count.csv"
+      ]
+    }
+  ],
+  "boundary": {
+    "source": "condition-level external metadata reliability artifacts excluding raw read/UMI depth",
+    "uses_canonical_multi": false,
+    "uses_gpu": false,
+    "uses_trackc_query": false,
+    "uses_train_only_internal_rows": true,
+    "uses_training": false
+  },
+  "version": "20260626_external_reliability_v2"
+}

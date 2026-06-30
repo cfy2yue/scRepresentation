@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT=/data/cyx/1030/scLatent
+
+export LATENTFM_TRACKA_GUARDED_RUN_BLOCK=latentfm_tracka_scldm_guarded_fallback_20260623
+export LATENTFM_TRACKA_GUARDED_RUN_NAME=scldm_tracka_gene_shrink_k4_dataset_negative_adapter_2k_seed42
+export LATENTFM_TRACKA_GUARDED_LATENT_BACKBONE=scldm
+export LATENTFM_TRACKA_GUARDED_DATA_DIR=${ROOT}/dataset/latentfm_full/scldm
+export LATENTFM_TRACKA_GUARDED_ANCHOR_CKPT=${ROOT}/CoupledFM/output/latentfm_runs/full_scldm/20260617_scldm_comp006_delta_w5_12k/best.pt
+export LATENTFM_TRACKA_GUARDED_PERT_MEANS=${ROOT}/runs/latentfm_crosslatent_tracka_trainonly_baselines_20260622/artifacts/scldm_trainonly_pert_means_split_seed42_crossbgval_v2.npz
+export LATENTFM_TRACKA_GUARDED_CPU_GATE_JSON=${ROOT}/reports/latentfm_tracka_scldm_guarded_fallback_cpu_gate_20260623.json
+export LATENTFM_TRACKA_GUARDED_EXPECTED_CPU_GATE_STATUS=tracka_scldm_guarded_fallback_cpu_gate_pass_no_gpu_yet
+export LATENTFM_TRACKA_GUARDED_CODE_GATE_MD=${ROOT}/reports/LATENTFM_TRACKA_SCLDM_GUARDED_FALLBACK_CODE_GATE_20260623.md
+export LATENTFM_TRACKA_GUARDED_PROTOCOL_MD=${ROOT}/reports/LATENTFM_TRACKA_SCLDM_GUARDED_FALLBACK_CODE_GATE_20260623.md
+export LATENTFM_TRACKA_GUARDED_AGGREGATION=gene_shrink_k4_dataset_negative_mask
+export LATENTFM_TRACKA_GUARDED_EXPECTED_POLICY=fallback_to_dataset_mean_when_dataset_shrink_minus_dataset_mean_lt_0.0
+export LATENTFM_TRACKA_GUARDED_LABEL_SLUG=scldm_guarded_fallback_adapter
+export LATENTFM_TRACKA_GUARDED_TITLE="LatentFM Track A SCLDM Guarded Fallback Adapter Decision"
+export LATENTFM_TRACKA_GUARDED_BRANCH_LABEL="SCLDM guarded fallback"
+export LATENTFM_TRACKA_GUARDED_HYPOTHESIS="SCLDM dataset-negative guarded fallback improves Track A cross-background/family no-harm over shrink_k4 by abstaining to dataset_mean on train-only negative datasets."
+export LATENTFM_TRACKA_GUARDED_FAIL_CLOSE="If cross_background_seen_gene pp delta remains below +0.02, if all_test_single/family_gene pp or MMD harm persists, or if any dataset-level pp delta is below -0.02, close SCLDM guarded fallback and do not seed-expand."
+export LATENTFM_TRACKA_GUARDED_CPU_THREADS=${LATENTFM_TRACKA_GUARDED_CPU_THREADS:-4}
+export LATENTFM_TRACKA_GUARDED_LAUNCH_COMMAND="bash ${ROOT}/ops/launch_latentfm_tracka_scldm_guarded_fallback_20260623.sh"
+
+exec bash ${ROOT}/ops/launch_latentfm_tracka_scf_jiang_lowcount_adapter_20260623.sh

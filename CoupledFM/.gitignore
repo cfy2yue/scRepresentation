@@ -1,0 +1,25 @@
+# ── large data dirs (transferred separately, never committed) ──
+dataset/
+pretrainckpt/
+
+# ── build / install artifacts ──
+coupledfm_model.egg-info/
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── runtime outputs ──
+output/
+runs/
+*.log
+
+# ── Python cache ──
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# ── OS ──
+.DS_Store
+.env

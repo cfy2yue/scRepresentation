@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT=/data/cyx/1030/scLatent
+
+export LATENTFM_SCALING_V2_INFO_PACKET_JSON=${ROOT}/reports/hvg_advantage_resid_v3_pair_pool_20260630/hvg_advantage_resid_v3_packet_audit_20260630.json
+export LATENTFM_SCALING_V2_INFO_HIGH_SPLIT=${ROOT}/reports/hvg_advantage_resid_v3_pair_pool_20260630/split_seed42_xverse_hvg_advantage_resid_v3_high_from_cap120_all_v2.json
+export LATENTFM_SCALING_V2_INFO_LOW_SPLIT=${ROOT}/reports/hvg_advantage_resid_v3_pair_pool_20260630/split_seed42_xverse_hvg_advantage_resid_v3_low_from_cap120_all_v2.json
+
+export LATENTFM_SCALING_V2_INFO_RUN_ROOT=${ROOT}/runs/latentfm_hvg_advantage_resid_v3_highlow_smoke_20260630
+export LATENTFM_SCALING_V2_INFO_OUT_ROOT=${ROOT}/CoupledFM/output/latentfm_runs/hvg_advantage_resid_v3_highlow_smoke_20260630
+export LATENTFM_SCALING_V2_INFO_LOG_ROOT=${ROOT}/logs/latentfm_hvg_advantage_resid_v3_highlow_smoke_20260630
+export LATENTFM_SCALING_V2_INFO_REPORT_DIR=${ROOT}/reports/hvg_advantage_resid_v3_highlow_smoke_20260630
+
+export LATENTFM_SCALING_V2_INFO_RUN_PREFIX=xverse_hvgadv_resid_v3
+export LATENTFM_SCALING_V2_INFO_SESSION_PREFIX=lfm_hvgadvv3
+export LATENTFM_SCALING_V2_INFO_RUN_STATUS_TITLE=latentfm_hvg_advantage_resid_v3_highlow_smoke_20260630
+export LATENTFM_SCALING_V2_INFO_ALLOWED_PACKET_STATUS=hvg_advantage_resid_v3_pair_pool_pass_prepare_gpu_smoke
+export LATENTFM_SCALING_V2_INFO_LAUNCH_COMMAND="bash ${ROOT}/ops/launch_latentfm_hvg_advantage_resid_v3_highlow_smoke_20260630.sh"
+
+# Keep this as a bounded mechanism smoke. The base launcher enforces the
+# current 2-GPU cap, repeated GPU audit, and child RUN_STATUS files.
+export LATENTFM_SCALING_V2_INFO_STEPS=${LATENTFM_SCALING_V2_INFO_STEPS:-2000}
+export LATENTFM_SCALING_V2_INFO_SEED=${LATENTFM_SCALING_V2_INFO_SEED:-42}
+
+bash "${ROOT}/ops/launch_latentfm_scaling_v2_condition_information_highlow_smoke_20260628.sh"

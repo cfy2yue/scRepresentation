@@ -1,0 +1,132 @@
+{
+  "artifacts": [
+    {
+      "artifact": "external_gwt_signif_knockdown_fraction",
+      "description": "Fraction of GWT guides for this target with significant knockdown. External gene-reliability prior; not dataset-matched condition evidence.",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "optional_columns": [
+        "target_gene",
+        "perturbation_type",
+        "source",
+        "evidence_url",
+        "guide_count",
+        "no_effect_guide_fraction",
+        "mean_rank",
+        "mean_neglog10_adj_p"
+      ],
+      "priority": 1,
+      "promotion_note": "External GWT gene-reliability prior; requires strict preflight plus shuffle/LODO/source/static-prior controls before any GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/gwt_condition_reliability_artifacts_20260626/external_gwt_signif_knockdown_fraction.csv"
+      ]
+    },
+    {
+      "artifact": "external_gwt_crossguide_correlation_mean",
+      "description": "Mean cross-guide correlation from GWT DE_stats across culture conditions. External gene-reliability prior.",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "optional_columns": [
+        "target_gene",
+        "perturbation_type",
+        "source",
+        "evidence_url",
+        "de_row_count",
+        "culture_condition_count",
+        "culture_conditions",
+        "crossdonor_correlation_mean",
+        "n_cells_target_mean",
+        "n_total_de_genes_mean",
+        "ontarget_significant_fraction"
+      ],
+      "priority": 2,
+      "promotion_note": "External GWT gene-reliability prior; requires strict preflight plus shuffle/LODO/source/static-prior controls before any GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/gwt_condition_reliability_artifacts_20260626/external_gwt_crossguide_correlation_mean.csv"
+      ]
+    },
+    {
+      "artifact": "external_gwt_crossdonor_correlation_mean",
+      "description": "Mean cross-donor correlation from GWT DE_stats across culture conditions. External gene-reliability prior.",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "optional_columns": [
+        "target_gene",
+        "perturbation_type",
+        "source",
+        "evidence_url",
+        "de_row_count",
+        "culture_condition_count",
+        "culture_conditions",
+        "crossguide_correlation_mean",
+        "n_cells_target_mean",
+        "n_total_de_genes_mean",
+        "ontarget_significant_fraction"
+      ],
+      "priority": 3,
+      "promotion_note": "External GWT gene-reliability prior; requires strict preflight plus shuffle/LODO/source/static-prior controls before any GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/gwt_condition_reliability_artifacts_20260626/external_gwt_crossdonor_correlation_mean.csv"
+      ]
+    },
+    {
+      "artifact": "external_gwt_k562_logfc_pearson_mean",
+      "description": "GWT comparison of CD4+ T-cell target response to K562 logFC response. External context/transfer prior, not dataset-matched evidence.",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "optional_columns": [
+        "target_gene",
+        "perturbation_type",
+        "source",
+        "evidence_url",
+        "k562_row_count",
+        "k562_donor_correlation_mean"
+      ],
+      "priority": 4,
+      "promotion_note": "External GWT gene-reliability prior; requires strict preflight plus shuffle/LODO/source/static-prior controls before any GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/gwt_condition_reliability_artifacts_20260626/external_gwt_k562_logfc_pearson_mean.csv"
+      ]
+    }
+  ],
+  "boundary": {
+    "downloads_large_data": false,
+    "source": "GWT CD4 T-cell Perturb-seq supplementary small tables mapped to local single-gene conditions",
+    "uses_canonical_multi": false,
+    "uses_gpu": false,
+    "uses_trackc_query": false,
+    "uses_train_only_internal_rows": true,
+    "uses_training": false
+  },
+  "source_urls": {
+    "de_stats": "https://raw.githubusercontent.com/emdann/GWT_perturbseq_analysis_2025/master/metadata/suppl_tables/DE_stats.suppl_table.csv",
+    "guide_kd_efficiency": "https://raw.githubusercontent.com/emdann/GWT_perturbseq_analysis_2025/master/metadata/suppl_tables/guide_kd_efficiency.suppl_table.csv",
+    "k562_comparison": "https://raw.githubusercontent.com/emdann/GWT_perturbseq_analysis_2025/master/metadata/suppl_tables/K562_comparison.suppl_table.csv",
+    "sample_metadata": "https://raw.githubusercontent.com/emdann/GWT_perturbseq_analysis_2025/master/metadata/suppl_tables/sample_metadata.suppl_table.csv"
+  },
+  "version": "20260626_gwt_condition_reliability"
+}

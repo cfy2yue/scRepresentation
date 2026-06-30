@@ -1,0 +1,164 @@
+{
+  "version": "20260626_scperturb_source_maturity",
+  "boundary": {
+    "source": "scPerturb catalog source-level metadata",
+    "uses_training": false,
+    "uses_gpu": false,
+    "uses_expression_matrices": false,
+    "uses_canonical_multi": false,
+    "uses_trackc_query": false,
+    "uses_train_only_internal_rows": true
+  },
+  "artifacts": [
+    {
+      "artifact": "scperturb_reported_cells_log10",
+      "description": "log10 reported total cells in the scPerturb catalog row.",
+      "priority": 1,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "source",
+        "source_dataset_row",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Dataset-level source-maturity artifacts must pass within-dataset variation/source controls before any GPU; expected to be audit-only if constant per dataset.",
+      "source_files": [
+        "reports/scperturb_source_maturity_artifacts_20260626/scperturb_reported_cells_log10.csv"
+      ]
+    },
+    {
+      "artifact": "scperturb_perturbation_count_log10",
+      "description": "log10 maximum perturbation count parsed from the scPerturb catalog row.",
+      "priority": 2,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "source",
+        "source_dataset_row",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Dataset-level source-maturity artifacts must pass within-dataset variation/source controls before any GPU; expected to be audit-only if constant per dataset.",
+      "source_files": [
+        "reports/scperturb_source_maturity_artifacts_20260626/scperturb_perturbation_count_log10.csv"
+      ]
+    },
+    {
+      "artifact": "scperturb_cells_per_perturbation_log10",
+      "description": "log10 reported cells per parsed perturbation count.",
+      "priority": 3,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "source",
+        "source_dataset_row",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Dataset-level source-maturity artifacts must pass within-dataset variation/source controls before any GPU; expected to be audit-only if constant per dataset.",
+      "source_files": [
+        "reports/scperturb_source_maturity_artifacts_20260626/scperturb_cells_per_perturbation_log10.csv"
+      ]
+    },
+    {
+      "artifact": "scperturb_timepoint_count",
+      "description": "Maximum parsed timepoint count/range endpoint from the scPerturb catalog row.",
+      "priority": 4,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "source",
+        "source_dataset_row",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Dataset-level source-maturity artifacts must pass within-dataset variation/source controls before any GPU; expected to be audit-only if constant per dataset.",
+      "source_files": [
+        "reports/scperturb_source_maturity_artifacts_20260626/scperturb_timepoint_count.csv"
+      ]
+    },
+    {
+      "artifact": "scperturb_dose_count",
+      "description": "Maximum parsed dose count/range endpoint from the scPerturb catalog row.",
+      "priority": 5,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "source",
+        "source_dataset_row",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Dataset-level source-maturity artifacts must pass within-dataset variation/source controls before any GPU; expected to be audit-only if constant per dataset.",
+      "source_files": [
+        "reports/scperturb_source_maturity_artifacts_20260626/scperturb_dose_count.csv"
+      ]
+    },
+    {
+      "artifact": "scperturb_h5ad_available",
+      "description": "Binary indicator that the scPerturb catalog row lists h5ad availability.",
+      "priority": 6,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "source",
+        "source_dataset_row",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Dataset-level source-maturity artifacts must pass within-dataset variation/source controls before any GPU; expected to be audit-only if constant per dataset.",
+      "source_files": [
+        "reports/scperturb_source_maturity_artifacts_20260626/scperturb_h5ad_available.csv"
+      ]
+    }
+  ]
+}

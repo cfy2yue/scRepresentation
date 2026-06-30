@@ -1,0 +1,14 @@
+{
+  "artifacts": [
+    "gasperini_self_abs_beta",
+    "gasperini_self_beta",
+    "gasperini_self_fold_change_remaining",
+    "gasperini_self_knockdown_strength",
+    "gasperini_self_neglog10_p_adjusted",
+    "gasperini_self_neglog10_p_empirical",
+    "gasperini_self_neglog10_p_raw"
+  ],
+  "csv": "/data/cyx/1030/reports/gasperini_author_self_effect_artifacts_20260627/gasperini_author_self_effect_artifacts.csv",
+  "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE120nnn/GSE120861/suppl/GSE120861_all_deg_results.at_scale.txt.gz",
+  "status": "gasperini_author_self_effect_artifacts_ready_no_gpu"
+}

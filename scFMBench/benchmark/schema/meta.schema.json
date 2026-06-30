@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scfm_embedding_meta_subset",
+  "title": "scFM adapter meta (minimal documented subset)",
+  "description": "Common fields returned by adapters/runners for exports and audit. Additional keys are allowed (additionalProperties).",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "encoder_role": {
+      "type": "string",
+      "description": "e.g. ExpressionOnlyEncoder"
+    },
+    "force_pert": { "type": "boolean" },
+    "force_pert_effective": {
+      "type": "boolean",
+      "description": "Whether encoding-time protected-gene coverage was applied (see fm/docs/per_cell_pert_design.md)"
+    },
+    "pert_var_idx_slot_repair": {
+      "type": "boolean",
+      "description": "xVERSE only: aligned matrix slots patched for protected genes (not a condition stream)"
+    },
+    "input_is_log1p": { "type": "boolean" },
+    "fit_scope": { "type": "string" },
+    "fit_method": { "type": "string" },
+    "dataset_fitted_align": {
+      "type": "object",
+      "description": "Obs/var counts after bench h5ad alignment with a reference file",
+      "properties": {
+        "n_obs_input": { "type": "integer" },
+        "n_obs_output": { "type": "integer" },
+        "n_obs_dropped": { "type": "integer" },
+        "n_var_input": { "type": "integer" },
+        "n_var_output": { "type": "integer" },
+        "n_var_dropped": { "type": "integer" }
+      }
+    }
+  }
+}

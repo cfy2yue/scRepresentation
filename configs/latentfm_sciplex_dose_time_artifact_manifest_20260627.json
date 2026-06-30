@@ -1,0 +1,31 @@
+{
+  "artifacts": [
+    {
+      "artifact": "sciplex_log_dose_condition_level",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "priority": "P0",
+      "promotion_note": "Needs dose-specific background+drug intercept, within-drug dose shuffle, and LODO controls before any GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/sciplex_dose_time_artifacts_20260627/sciplex_log_dose_condition_level.csv"
+      ]
+    }
+  ],
+  "boundary": {
+    "canonical_reference_excluded": true,
+    "cpu_source_only": true,
+    "gpu": false,
+    "note": "Condition key is background_drug_dose. Generic external preflight may have zero overlap with drug-level outcome rows; dose-specific semantic gate is required before GPU.",
+    "reads_canonical_multi": false,
+    "reads_local_obs_metadata_only": true,
+    "reads_trackc_query": false,
+    "train_only_cap120_drugs": true,
+    "training_or_inference": false
+  }
+}

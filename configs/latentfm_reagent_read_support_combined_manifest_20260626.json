@@ -1,0 +1,94 @@
+{
+  "artifacts": [
+    {
+      "artifact": "external_reagent_mean_umi_count",
+      "description": "Combined condition-level reagent/read-support source artifact from extracted external metadata.",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "minimum_varying_datasets": 2,
+      "optional_columns": [
+        "source",
+        "source_file",
+        "source_column",
+        "n_cells"
+      ],
+      "priority": 1,
+      "promotion_note": "If this passes, run value-signal, shuffle, source/count, tail and MMD controls plus external audit before any GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/norman_geo_reagent_artifacts_20260626/norman_geo_mean_umi_count.csv",
+        "reports/frangieh_figshare_reagent_artifacts_20260626/frangieh_figshare_mean_umi_count.csv"
+      ]
+    },
+    {
+      "artifact": "external_reagent_read_or_guide_support",
+      "description": "Combined condition-level reagent/read-support source artifact from extracted external metadata.",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "minimum_varying_datasets": 2,
+      "optional_columns": [
+        "source",
+        "source_file",
+        "source_column",
+        "n_cells"
+      ],
+      "priority": 2,
+      "promotion_note": "If this passes, run value-signal, shuffle, source/count, tail and MMD controls plus external audit before any GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/norman_geo_reagent_artifacts_20260626/norman_geo_mean_read_count.csv",
+        "reports/frangieh_figshare_reagent_artifacts_20260626/frangieh_figshare_mean_moi.csv",
+        "reports/frangieh_figshare_reagent_artifacts_20260626/frangieh_figshare_assigned_sgrna_rate.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_strict_unique_guide_count.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_strict_assigned_row_count.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_lenient_unique_guide_count.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_lenient_assigned_row_count.csv",
+        "reports/dixit_figshare_reagent_artifacts_20260626/dixit_figshare_unique_guide_count.csv",
+        "reports/dixit_figshare_reagent_artifacts_20260626/dixit_figshare_assigned_cell_count.csv"
+      ]
+    },
+    {
+      "artifact": "external_condition_source_cell_support",
+      "description": "Combined condition-level reagent/read-support source artifact from extracted external metadata.",
+      "minimum_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "minimum_varying_datasets": 2,
+      "optional_columns": [
+        "source",
+        "source_file",
+        "source_column",
+        "n_cells"
+      ],
+      "priority": 3,
+      "promotion_note": "If this passes, run value-signal, shuffle, source/count, tail and MMD controls plus external audit before any GPU.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "reports/frangieh_figshare_reagent_artifacts_20260626/frangieh_figshare_condition_cell_count.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_strict_assigned_row_fraction.csv",
+        "reports/dixit_geo_reagent_artifacts_20260626/dixit_geo_highmoi_lenient_assigned_row_fraction.csv",
+        "reports/dixit_figshare_reagent_artifacts_20260626/dixit_figshare_assigned_cell_fraction.csv"
+      ]
+    }
+  ],
+  "boundary": {
+    "source": "combined extracted condition-level external reagent/read-support metadata",
+    "uses_canonical_multi": false,
+    "uses_gpu": false,
+    "uses_trackc_query": false,
+    "uses_train_only_internal_rows": true,
+    "uses_training": false
+  },
+  "version": "20260626_reagent_read_support_combined"
+}

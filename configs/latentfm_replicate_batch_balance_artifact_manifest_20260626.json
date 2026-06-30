@@ -1,0 +1,114 @@
+{
+  "version": "20260626_replicate_batch_balance",
+  "boundary": {
+    "source": "Norman GEO gemgroup and scPerturb processed obs batch/library metadata",
+    "uses_training": false,
+    "uses_gpu": false,
+    "uses_expression_matrices": false,
+    "uses_canonical_multi": false,
+    "uses_trackc_query": false,
+    "uses_train_only_internal_rows": true
+  },
+  "artifacts": [
+    {
+      "artifact": "replicate_batch_entropy_norm",
+      "description": "Normalized entropy of condition cells across replicate/batch/gemgroup labels.",
+      "priority": 1,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "n_cells",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Requires source-block and within-dataset shuffle controls before GPU; preflight alone is not sufficient.",
+      "source_files": [
+        "reports/replicate_batch_balance_artifacts_20260626/replicate_batch_entropy_norm.csv"
+      ]
+    },
+    {
+      "artifact": "replicate_batch_count",
+      "description": "Number of replicate/batch/gemgroup labels represented by a condition.",
+      "priority": 2,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "n_cells",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Requires source-block and within-dataset shuffle controls before GPU; preflight alone is not sufficient.",
+      "source_files": [
+        "reports/replicate_batch_balance_artifacts_20260626/replicate_batch_count.csv"
+      ]
+    },
+    {
+      "artifact": "replicate_min_batch_fraction",
+      "description": "Smallest represented batch fraction; higher can indicate more balanced replicate support.",
+      "priority": 3,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "n_cells",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Requires source-block and within-dataset shuffle controls before GPU; preflight alone is not sufficient.",
+      "source_files": [
+        "reports/replicate_batch_balance_artifacts_20260626/replicate_min_batch_fraction.csv"
+      ]
+    },
+    {
+      "artifact": "replicate_single_batch_indicator",
+      "description": "Indicator that a condition is represented by one batch/gemgroup only; negative control for replicate support.",
+      "priority": 4,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "modality",
+        "perturbation_type",
+        "cell_background",
+        "n_cells",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 2,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Negative-control artifact; should not authorize GPU unless independently validated.",
+      "source_files": [
+        "reports/replicate_batch_balance_artifacts_20260626/replicate_single_batch_indicator.csv"
+      ]
+    }
+  ]
+}

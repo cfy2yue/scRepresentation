@@ -1,0 +1,109 @@
+{
+  "version": "20260626_harmonizome_depmapcrispr",
+  "boundary": {
+    "source": "Harmonizome DepMap CRISPR Gene Dependency gene-cell-line Z-score associations",
+    "uses_training": false,
+    "uses_gpu": false,
+    "uses_canonical_multi": false,
+    "uses_trackc_query": false,
+    "uses_train_only_internal_rows": true
+  },
+  "artifacts": [
+    {
+      "artifact": "harmonizome_depmapcrispr_matched_cellline_zscore",
+      "description": "Target gene dependency Z-score in matched DepMap/Harmonizome cell line; absent association encoded as 0.",
+      "priority": 1,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "target",
+        "cell_background",
+        "source_cell_line",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Must pass shuffle/LODO/source controls before GPU; this preflight is not sufficient alone.",
+      "source_files": [
+        "reports/harmonizome_depmapcrispr_artifacts_20260626/harmonizome_depmapcrispr_matched_cellline_zscore.csv"
+      ]
+    },
+    {
+      "artifact": "harmonizome_depmapcrispr_matched_cellline_indicator",
+      "description": "Binary target gene dependency indicator in matched DepMap/Harmonizome cell line.",
+      "priority": 2,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "target",
+        "cell_background",
+        "source_cell_line",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Must pass shuffle/LODO/source controls before GPU; this preflight is not sufficient alone.",
+      "source_files": [
+        "reports/harmonizome_depmapcrispr_artifacts_20260626/harmonizome_depmapcrispr_matched_cellline_indicator.csv"
+      ]
+    },
+    {
+      "artifact": "harmonizome_depmapcrispr_global_max_zscore",
+      "description": "Target-level maximum DepMap/Harmonizome CRISPR dependency Z-score across all cell lines; not cell-line matched.",
+      "priority": 3,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "target",
+        "cell_background",
+        "source_cell_line",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Higher confounding risk than matched-cell-line dependency; must beat target/actionability and gene-label shuffle controls before GPU.",
+      "source_files": [
+        "reports/harmonizome_depmapcrispr_artifacts_20260626/harmonizome_depmapcrispr_global_max_zscore.csv"
+      ]
+    },
+    {
+      "artifact": "harmonizome_depmapcrispr_global_hit_fraction",
+      "description": "Target-level fraction of DepMap/Harmonizome cell lines with a CRISPR dependency association; not cell-line matched.",
+      "priority": 4,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "target",
+        "cell_background",
+        "source_cell_line",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Higher confounding risk than matched-cell-line dependency; must beat target/actionability and gene-label shuffle controls before GPU.",
+      "source_files": [
+        "reports/harmonizome_depmapcrispr_artifacts_20260626/harmonizome_depmapcrispr_global_hit_fraction.csv"
+      ]
+    }
+  ]
+}

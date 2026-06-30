@@ -1,0 +1,109 @@
+{
+  "version": "20260626_gnomad_constraint",
+  "boundary": {
+    "source": "gnomAD v2.1.1 LoF metrics by gene",
+    "uses_training": false,
+    "uses_gpu": false,
+    "uses_canonical_multi": false,
+    "uses_trackc_query": false,
+    "uses_train_only_internal_rows": true
+  },
+  "artifacts": [
+    {
+      "artifact": "gnomad_lof_constraint_score_neglog10_loeuf",
+      "description": "Gene-level constraint score, -log10(oe_lof_upper). Higher means more LoF constrained.",
+      "priority": 1,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "target",
+        "cell_background",
+        "perturbation_type",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Tail-risk artifact only; must pass gene-label shuffle, dataset/source controls, LODO, and MMD/tail checks before GPU.",
+      "source_files": [
+        "reports/gnomad_constraint_artifacts_20260626/gnomad_lof_constraint_score_neglog10_loeuf.csv"
+      ]
+    },
+    {
+      "artifact": "gnomad_pli",
+      "description": "Gene-level pLI constraint probability. Higher means more LoF constrained.",
+      "priority": 2,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "target",
+        "cell_background",
+        "perturbation_type",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Secondary constraint artifact; same controls required before GPU.",
+      "source_files": [
+        "reports/gnomad_constraint_artifacts_20260626/gnomad_pli.csv"
+      ]
+    },
+    {
+      "artifact": "gnomad_mis_z",
+      "description": "Gene-level missense Z constraint score.",
+      "priority": 3,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "target",
+        "cell_background",
+        "perturbation_type",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Secondary constraint artifact; same controls required before GPU.",
+      "source_files": [
+        "reports/gnomad_constraint_artifacts_20260626/gnomad_mis_z.csv"
+      ]
+    },
+    {
+      "artifact": "gnomad_oe_lof_upper",
+      "description": "Raw LOEUF-like upper bound; lower means more constrained, included as sign-control.",
+      "priority": 4,
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "optional_columns": [
+        "target",
+        "cell_background",
+        "perturbation_type",
+        "source",
+        "source_file"
+      ],
+      "minimum_datasets": 3,
+      "minimum_varying_datasets": 3,
+      "minimum_overlap_rows": 20,
+      "promotion_note": "Sign-control only; lower values indicate stronger constraint.",
+      "source_files": [
+        "reports/gnomad_constraint_artifacts_20260626/gnomad_oe_lof_upper.csv"
+      ]
+    }
+  ]
+}

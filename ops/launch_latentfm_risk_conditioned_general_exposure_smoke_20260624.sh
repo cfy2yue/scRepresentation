@@ -1,0 +1,362 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT=/data/cyx/1030/scLatent
+COUPLED=${ROOT}/CoupledFM
+PYTHON=${ROOT}/software/miniconda3/envs/scdfm/bin/python
+if [[ ! -x "${PYTHON}" ]]; then
+  PYTHON=/data/cyx/software/miniconda3/envs/scdfm/bin/python
+fi
+
+if [[ "${LATENTFM_RISK_CONDITIONED_ACK:-}" != "tianactivation_trainonly_targeted_smoke" ]]; then
+  echo "Set LATENTFM_RISK_CONDITIONED_ACK=tianactivation_trainonly_targeted_smoke" >&2
+  exit 4
+fi
+
+RUN_ROOT=${ROOT}/runs/latentfm_risk_conditioned_general_exposure_smoke_20260624
+OUT_ROOT=${COUPLED}/output/latentfm_runs/risk_conditioned_general_exposure_20260624
+LOG_ROOT=${ROOT}/logs/latentfm_risk_conditioned_general_exposure_smoke_20260624
+DATA_DIR=${ROOT}/dataset/latentfm_full/xverse
+BIFLOW_DIR=${ROOT}/dataset/biFlow_data
+SPLIT_FILE=${BIFLOW_DIR}/xverse_scaling_splits_v2_20260624/split_seed42_xverse_trainonly_scaling_general_exposure_cap_v2.json
+PERT_MEANS=${ROOT}/runs/latentfm_xverse_scaling_splits_v2_20260624/artifacts/xverse_trainonly_scaling_general_exposure_cap_v2_pert_means.npz
+ANCHOR_CKPT=${COUPLED}/output/latentfm_runs/xverse_8k_full_eval_20260620/xverse_comp006_endpoint5_8k_seed42_fulleval/best.pt
+GENE_CACHE=${ROOT}/pretrainckpt/genepert_cache/scgpt_embed_gene
+GPU_HELPER=${ROOT}/ops/select_available_gpus.py
+TRAIN_LAUNCHER=${COUPLED}/model/latent/scripts/run_full_stack_latentfm.sh
+SUMMARIZER=${ROOT}/ops/summarize_latentfm_risk_conditioned_general_exposure_smoke_20260624.py
+TARGET_DATASET=TianActivation
+
+RUN_NAME=${RISK_RUN_NAME:-xverse_general_exposure_tian_mmd20_replayall_3k_seed42}
+MMD_DATASET_FILTER_VALUE=${RISK_MMD_DATASET_FILTER:-${TARGET_DATASET}}
+ANCHOR_REPLAY_DATASET_FILTER_VALUE=${RISK_ANCHOR_REPLAY_DATASET_FILTER:-}
+ANCHOR_REPLAY_WEIGHT_VALUE=${RISK_ANCHOR_REPLAY_WEIGHT:-0.5}
+SESSION=lfm_${RUN_NAME}
+RUN_DIR=${RUN_ROOT}/${RUN_NAME}
+OUT_DIR=${OUT_ROOT}/${RUN_NAME}
+LOG_DIR=${LOG_ROOT}/${RUN_NAME}
+
+mkdir -p "${RUN_ROOT}/logs" "${RUN_DIR}/logs" "${RUN_DIR}/scripts" "${OUT_ROOT}" "${LOG_DIR}" "${ROOT}/reports"
+
+for required in \
+  "${DATA_DIR}/manifest.json" \
+  "${SPLIT_FILE}" \
+  "${PERT_MEANS}" \
+  "${ANCHOR_CKPT}" \
+  "${GENE_CACHE}/manifest.json" \
+  "${GPU_HELPER}" \
+  "${TRAIN_LAUNCHER}" \
+  "${SUMMARIZER}" \
+  "${ROOT}/reports/LATENTFM_RISK_CONDITIONED_DATASET_HOOK_VALIDATION_20260624.md"; do
+  [[ -e "${required}" ]] || { echo "Missing required artifact: ${required}" >&2; exit 2; }
+done
+
+if [[ -e "${OUT_DIR}" && "${FORCE_LATENTFM_RISK_CONDITIONED_RERUN:-0}" != "1" ]]; then
+  echo "Output exists for ${RUN_NAME}; set FORCE_LATENTFM_RISK_CONDITIONED_RERUN=1" >&2
+  exit 3
+fi
+if tmux has-session -t "${SESSION}" 2>/dev/null; then
+  echo "tmux session already exists: ${SESSION}" >&2
+  exit 3
+fi
+
+split_audit=${RUN_ROOT}/logs/split_target_audit_$(date +%Y%m%d_%H%M%S).json
+"${PYTHON}" - "${SPLIT_FILE}" "${TARGET_DATASET}" "${split_audit}" "${MMD_DATASET_FILTER_VALUE}" <<'PY'
+import json, sys
+from pathlib import Path
+split = json.loads(Path(sys.argv[1]).read_text())
+target = sys.argv[2]
+out = Path(sys.argv[3])
+filter_value = sys.argv[4] if len(sys.argv) > 4 else target
+filter_datasets = [item.strip() for chunk in filter_value.split(";") for item in chunk.split(",") if item.strip()]
+datasets = sorted(set([target] + filter_datasets))
+entry = split.get(target) or {}
+audit = {
+    "target_dataset": target,
+    "mmd_dataset_filter": filter_value,
+    "train_count": len(entry.get("train") or []),
+    "internal_cross_count": len(entry.get("internal_val_cross_background_seen_gene_proxy") or []),
+    "internal_family_count": len(entry.get("internal_val_family_gene_proxy") or []),
+    "filter_dataset_counts": {},
+}
+for ds in datasets:
+    ds_entry = split.get(ds) or {}
+    audit["filter_dataset_counts"][ds] = {
+        "train_count": len(ds_entry.get("train") or []),
+        "internal_cross_count": len(ds_entry.get("internal_val_cross_background_seen_gene_proxy") or []),
+        "internal_family_count": len(ds_entry.get("internal_val_family_gene_proxy") or []),
+    }
+audit["status"] = "pass" if audit["train_count"] > 0 and audit["internal_family_count"] > 0 and all(v["train_count"] > 0 for v in audit["filter_dataset_counts"].values()) else "fail"
+out.write_text(json.dumps(audit, indent=2, sort_keys=True))
+print(json.dumps(audit, indent=2, sort_keys=True))
+raise SystemExit(0 if audit["status"] == "pass" else 5)
+PY
+
+echo "[$(date '+%F %T %Z')] exact GPU status before risk-conditioned launch" | tee "${RUN_ROOT}/logs/gpu_launch_audit.log"
+nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv | tee -a "${RUN_ROOT}/logs/gpu_launch_audit.log"
+free -h | tee -a "${RUN_ROOT}/logs/gpu_launch_audit.log"
+df -h "${ROOT}" | tee -a "${RUN_ROOT}/logs/gpu_launch_audit.log"
+
+gpu_json=${RUN_ROOT}/logs/gpu_selection_$(date +%Y%m%d_%H%M%S).json
+"${PYTHON}" "${GPU_HELPER}" \
+  --samples 3 \
+  --interval-seconds 10 \
+  --util-threshold-pct 10 \
+  --memory-threshold-mib 4096 \
+  --max-user-gpus 4 \
+  --max-jobs-per-gpu 4 \
+  --need 1 \
+  --json-only > "${gpu_json}" 2> "${RUN_ROOT}/logs/gpu_selection.stderr"
+
+assignment_json=${RUN_ROOT}/logs/gpu_assignment_$(date +%Y%m%d_%H%M%S).json
+"${PYTHON}" - "${gpu_json}" "${assignment_json}" <<'PY'
+import json, sys
+from pathlib import Path
+payload = json.loads(Path(sys.argv[1]).read_text())
+suggested = [int(x) for x in payload.get("suggested_job_gpus", [])]
+system = payload.get("system") or {}
+audit = {
+    "status": "pass",
+    "need": 1,
+    "assigned_gpus": suggested[:1],
+    "active_user_gpus": payload.get("active_user_gpus"),
+    "allowed_physical_user_gpus": payload.get("allowed_physical_user_gpus"),
+    "system": system,
+    "gpu_selection_json": str(sys.argv[1]),
+}
+reasons = []
+if len(suggested) < 1:
+    reasons.append("no_gpu_slot_suggested")
+if float(system.get("mem_available_gib") or 0) < 128:
+    reasons.append("low_ram")
+if float(system.get("load1_per_cpu") or 0) > 2:
+    reasons.append("high_cpu_load")
+if reasons:
+    audit["status"] = "fail"
+    audit["reasons"] = reasons
+Path(sys.argv[2]).write_text(json.dumps(audit, indent=2, sort_keys=True))
+print(json.dumps(audit, indent=2, sort_keys=True))
+raise SystemExit(0 if audit["status"] == "pass" else 6)
+PY
+
+GPU=$("${PYTHON}" - "${assignment_json}" <<'PY'
+import json, sys
+from pathlib import Path
+print(json.loads(Path(sys.argv[1]).read_text())["assigned_gpus"][0])
+PY
+)
+
+train_script=${RUN_DIR}/scripts/run_${RUN_NAME}.sh
+posthoc_script=${RUN_DIR}/scripts/posthoc_${RUN_NAME}.sh
+
+cat > "${train_script}" <<EOF
+#!/usr/bin/env bash
+set -euo pipefail
+source ${ROOT}/init-scdfm.sh >/dev/null
+export CUDA_VISIBLE_DEVICES=${GPU}
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+export OPENBLAS_NUM_THREADS=4
+export NUMEXPR_NUM_THREADS=4
+export BLIS_NUM_THREADS=4
+export PYTHONPATH=${COUPLED}:\${PYTHONPATH:-}
+export PERT_EMBED_SOURCE=scgpt_embed_gene
+export LATENT_BACKBONE=xverse
+export DATA_DIR=${DATA_DIR}
+export BIFLOW_DIR=${BIFLOW_DIR}
+export SPLIT_FILE=${SPLIT_FILE}
+export PERT_MEANS_FILE=${PERT_MEANS}
+export OUT_ROOT=${OUT_ROOT}
+export LOG_ROOT=${LOG_DIR}
+export GENE_CACHE=${GENE_CACHE}
+export PYTHON_BIN=${PYTHON}
+export GPU=${GPU}
+export RUN_TAG=${RUN_NAME}
+export SEED=42
+export INIT_CHECKPOINT=${ANCHOR_CKPT}
+export INIT_CHECKPOINT_USE_EMA=1
+export FINETUNE_TRAINABLE_SCOPE=all
+export TOTAL_STEPS=3000
+export BATCH_SIZE=64
+export GRAD_ACCUM_STEPS=1
+export LR=1e-4
+export GAMMA=0.20
+export GAMMA_WARMUP_START=300
+export GAMMA_WARMUP_END=1200
+export MMD_EVERY=1
+export MMD_DATASET_FILTER=${MMD_DATASET_FILTER_VALUE}
+export SELECTION_METRIC=pearson_pert_minus_mmd
+export SELECTION_MMD_LAMBDA=1.0
+export COMPOSITION_DELTA_LOSS_WEIGHT=0.06
+export COMPOSITION_DELTA_LOSS_WARMUP_START=500
+export COMPOSITION_DELTA_LOSS_WARMUP_END=1500
+export ENDPOINT_DELTA_LOSS_WEIGHT=5.0
+export ENDPOINT_DELTA_LOSS_WARMUP_START=500
+export ENDPOINT_DELTA_LOSS_WARMUP_END=1500
+export ANCHOR_REPLAY_LOSS_WEIGHT=${ANCHOR_REPLAY_WEIGHT_VALUE}
+export ANCHOR_REPLAY_LOSS_WARMUP_START=300
+export ANCHOR_REPLAY_LOSS_WARMUP_END=1200
+export ANCHOR_REPLAY_CONDITION_FILTER=all
+export ANCHOR_REPLAY_DATASET_FILTER=${ANCHOR_REPLAY_DATASET_FILTER_VALUE}
+export ANCHOR_REPLAY_CHECKPOINT=${ANCHOR_CKPT}
+export ANCHOR_REPLAY_CHECKPOINT_USE_EMA=1
+export EVAL_MAX_CONDITIONS=256
+export EVAL_MAX_CONDITIONS_PER_DATASET=12
+export EVAL_MAX_MSE_CELLS=1024
+export EVAL_MAX_MMD_CELLS=1024
+export EVAL_MAX_CHUNK=256
+export PERT_POOL_AGGREGATIONS="sum mean max min"
+export PERT_POOL_SCALE_INIT="0.5 1.0 1.0 1.0"
+export PERT_POOL_FUSION_MODE=sum
+export PERT_GENE_PROJECTOR_HIDDEN=1024
+export PERT_CHEM_PROJECTOR_HIDDEN=1024
+export PERT_TO_C_INIT_MODE=xavier_small
+export USE_PERT_IN_FUSION=1
+bash ${TRAIN_LAUNCHER}
+EOF
+chmod +x "${train_script}"
+
+cat > "${posthoc_script}" <<EOF
+#!/usr/bin/env bash
+set -euo pipefail
+source ${ROOT}/init-scdfm.sh >/dev/null
+cd ${COUPLED}
+export CUDA_VISIBLE_DEVICES=${GPU}
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+export OPENBLAS_NUM_THREADS=4
+export NUMEXPR_NUM_THREADS=4
+export BLIS_NUM_THREADS=4
+export PYTHONPATH=${COUPLED}:\${PYTHONPATH:-}
+export PERT_EMBED_SOURCE=scgpt_embed_gene
+eval_dir=${RUN_DIR}/posthoc_eval_internal
+mkdir -p "\${eval_dir}"
+common=(--data-dir ${DATA_DIR} --biflow-dir ${BIFLOW_DIR} --split-file ${SPLIT_FILE} --pert-means-file ${PERT_MEANS} --gpu 0 --ode-steps 20 --max-chunk 512 --eval-max-conditions 0 --eval-max-conditions-per-dataset 0 --eval-max-mse-cells 1024 --eval-max-mmd-cells 1024)
+${PYTHON} -m model.latent.eval_split_groups --checkpoint ${ANCHOR_CKPT} --groups test test_single internal_val_cross_background_seen_gene_proxy internal_val_family_gene_proxy --out "\${eval_dir}/split_group_eval_anchor_internal_ode20.json" "\${common[@]}"
+${PYTHON} -m model.latent.eval_condition_families --checkpoint ${ANCHOR_CKPT} --groups test_all family_gene family_drug test_single --out "\${eval_dir}/condition_family_eval_anchor_internal_ode20.json" "\${common[@]}"
+${PYTHON} -m model.latent.eval_split_groups --checkpoint ${OUT_DIR}/best.pt --groups test test_single internal_val_cross_background_seen_gene_proxy internal_val_family_gene_proxy --out "\${eval_dir}/split_group_eval_candidate_internal_ode20.json" "\${common[@]}"
+${PYTHON} -m model.latent.eval_condition_families --checkpoint ${OUT_DIR}/best.pt --groups test_all family_gene family_drug test_single --out "\${eval_dir}/condition_family_eval_candidate_internal_ode20.json" "\${common[@]}"
+${PYTHON} ${SUMMARIZER}
+EOF
+chmod +x "${posthoc_script}"
+
+date '+%F %T %Z' > "${RUN_DIR}/${RUN_NAME}.STARTED"
+tmux new -d -s "${SESSION}" "bash -lc 'bash ${train_script} > ${LOG_DIR}/launcher.log 2>&1; rc=\$?; echo \$rc > ${RUN_DIR}/${RUN_NAME}.EXIT_CODE; date \"+%F %T %Z\" > ${RUN_DIR}/${RUN_NAME}.FINISHED; if [[ \$rc -eq 0 ]]; then bash ${posthoc_script} > ${LOG_DIR}/posthoc.log 2>&1; prc=\$?; echo \$prc > ${RUN_DIR}/POSTHOC_EXIT_CODE; date \"+%F %T %Z\" > ${RUN_DIR}/POSTHOC_FINISHED; exit \$prc; else exit \$rc; fi'"
+
+cat > "${RUN_DIR}/RUN_STATUS.md" <<EOF
+# Run Status: ${RUN_NAME}
+
+## Hypothesis
+
+General exposure-cap v2 retained Pearson signal but failed from TianActivation
+tail MMD harm. A dataset-targeted MMD term can concentrate no-harm pressure on
+TianActivation while all-dataset anchor replay stabilizes non-target train-present
+behavior.
+
+## Command
+
+\`\`\`bash
+LATENTFM_RISK_CONDITIONED_ACK=tianactivation_trainonly_targeted_smoke bash ${ROOT}/ops/launch_latentfm_risk_conditioned_general_exposure_smoke_20260624.sh
+\`\`\`
+
+## Runtime classification
+
+Long GPU training plus posthoc task. Use 30-minute cadence for checks.
+
+## Start time
+
+$(cat "${RUN_DIR}/${RUN_NAME}.STARTED")
+
+## PID / tmux / scheduler ID
+
+tmux session: \`${SESSION}\`; physical GPU: ${GPU}
+
+## Log path
+
+\`${LOG_DIR}/launcher.log\`
+
+## Expected outputs
+
+* \`${OUT_DIR}/best.pt\`
+* \`${RUN_DIR}/posthoc_eval_internal/condition_family_eval_candidate_internal_ode20.json\`
+* \`${ROOT}/reports/LATENTFM_RISK_CONDITIONED_GENERAL_EXPOSURE_SMOKE_DECISION_20260624.md\`
+
+## How to check manually
+
+\`\`\`bash
+tmux ls
+tail -n 50 ${LOG_DIR}/launcher.log
+cat ${RUN_DIR}/${RUN_NAME}.EXIT_CODE 2>/dev/null || echo "still running"
+cat ${RUN_DIR}/POSTHOC_EXIT_CODE 2>/dev/null || echo "posthoc not complete"
+nvidia-smi
+\`\`\`
+
+## Current status
+
+Started.
+
+## Notes
+
+- Split: \`${SPLIT_FILE}\`.
+- Target dataset: \`${TARGET_DATASET}\`; split audit: \`${split_audit}\`.
+- MMD filter: \`${MMD_DATASET_FILTER_VALUE}\`; gamma 0.20; mmd_every 1.
+- Anchor replay dataset filter: \`${ANCHOR_REPLAY_DATASET_FILTER_VALUE:-all}\`; weight ${ANCHOR_REPLAY_WEIGHT_VALUE}, anchor checkpoint EMA.
+- Gate: improve/control TianActivation mean MMD tail without cross/family Pearson harm or broad risk-dataset MMD harm.
+- Canonical metrics, canonical multi, and held-out Track C query are not used.
+EOF
+
+cat > "${RUN_ROOT}/RUN_STATUS.md" <<EOF
+# Run Status: latentfm_risk_conditioned_general_exposure_smoke_20260624
+
+## Command
+
+\`\`\`bash
+LATENTFM_RISK_CONDITIONED_ACK=tianactivation_trainonly_targeted_smoke bash ${ROOT}/ops/launch_latentfm_risk_conditioned_general_exposure_smoke_20260624.sh
+\`\`\`
+
+## Runtime classification
+
+Long GPU training batch.
+
+## Start time
+
+$(cat "${RUN_DIR}/${RUN_NAME}.STARTED")
+
+## PID / tmux / scheduler ID
+
+tmux session: \`${SESSION}\`; physical GPU: ${GPU}
+
+## Log path
+
+\`${LOG_DIR}/launcher.log\`
+
+## Expected outputs
+
+* \`${ROOT}/reports/LATENTFM_RISK_CONDITIONED_GENERAL_EXPOSURE_SMOKE_DECISION_20260624.md\`
+* \`${ROOT}/reports/latentfm_risk_conditioned_general_exposure_smoke_decision_20260624.json\`
+
+## How to check manually
+
+\`\`\`bash
+tmux ls
+tail -n 50 ${LOG_DIR}/launcher.log
+cat ${RUN_DIR}/${RUN_NAME}.EXIT_CODE 2>/dev/null || echo "still running"
+cat ${RUN_DIR}/POSTHOC_EXIT_CODE 2>/dev/null || echo "posthoc not complete"
+nvidia-smi
+\`\`\`
+
+## Current status
+
+Started.
+
+## Notes
+
+- Bounded train-only internal risk-conditioned smoke; no canonical metrics,
+  canonical multi, or Track C query.
+- External hook audit: Singer \`019ef850-51ca-7bc3-9847-025b52426c9d\`.
+EOF
+
+echo "Launched ${RUN_NAME} on GPU ${GPU} in tmux ${SESSION}"
+tmux ls
+tail -n 30 "${LOG_DIR}/launcher.log" || true
+nvidia-smi

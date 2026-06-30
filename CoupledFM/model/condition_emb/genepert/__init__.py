@@ -1,0 +1,77 @@
+"""Perturbation condition encoding shared by latent, coupled, and raw_independent."""
+
+from .chem_embedding_hook import ChemEmbeddingCache, parse_chem_source_fields, resolve_chem_embedding
+from .gene_cache import GeneEmbeddingCache, GeneEmbeddingTable
+from .gene_embedding_source import (
+    EncoderMode,
+    GeneEmbeddingLoaderConfig,
+    describe_encoder_pairing,
+    load_gene_embedding_cache,
+)
+from .h5ad_obs import condition_metadata_from_obs_row, pick_obs_columns
+from .metainfo import apply_pert_metainfo_fallback, load_dataset_metainfo, resolve_perturbation_type
+from .perturbation import (
+    PERT_TYPE_CAS13,
+    PERT_TYPE_CRISPRA,
+    PERT_TYPE_CRISPRI,
+    PERT_TYPE_DRUG,
+    PERT_TYPE_KNOCKDOWN,
+    PERT_TYPE_KNOCKOUT,
+    PERT_TYPE_NULL,
+    PERT_TYPE_OVEREXPR,
+    ConditionMetadata,
+    PerturbationBatch,
+    canonical_sorted_gene_tuple,
+    canonicalize_gene_list_from_raw,
+    canonicalize_perturbation_type,
+    infer_nperts_from_obs,
+    normalize_gene_symbol,
+    num_perturbation_types,
+    parse_perturbation_gene_strings,
+    perturbation_batch_to_device,
+    perturbation_tuple_slice_rows,
+    perturbation_tuple_to_device,
+    perturbation_type_to_id,
+    unpack_perturbation_tuple,
+)
+from .perturbation_encoder import PerturbationConditionEncoder, UnifiedConditionEncoder
+
+__all__ = [
+    "PERT_TYPE_CAS13",
+    "PERT_TYPE_CRISPRA",
+    "PERT_TYPE_DRUG",
+    "PERT_TYPE_KNOCKDOWN",
+    "PERT_TYPE_KNOCKOUT",
+    "PERT_TYPE_NULL",
+    "PERT_TYPE_OVEREXPR",
+    "ChemEmbeddingCache",
+    "ConditionMetadata",
+    "EncoderMode",
+    "GeneEmbeddingCache",
+    "GeneEmbeddingLoaderConfig",
+    "GeneEmbeddingTable",
+    "PerturbationBatch",
+    "PerturbationConditionEncoder",
+    "UnifiedConditionEncoder",
+    "apply_pert_metainfo_fallback",
+    "canonical_sorted_gene_tuple",
+    "canonicalize_gene_list_from_raw",
+    "canonicalize_perturbation_type",
+    "condition_metadata_from_obs_row",
+    "describe_encoder_pairing",
+    "infer_nperts_from_obs",
+    "load_dataset_metainfo",
+    "load_gene_embedding_cache",
+    "normalize_gene_symbol",
+    "num_perturbation_types",
+    "parse_chem_source_fields",
+    "parse_perturbation_gene_strings",
+    "perturbation_batch_to_device",
+    "perturbation_tuple_slice_rows",
+    "perturbation_tuple_to_device",
+    "perturbation_type_to_id",
+    "pick_obs_columns",
+    "resolve_chem_embedding",
+    "resolve_perturbation_type",
+    "unpack_perturbation_tuple",
+]

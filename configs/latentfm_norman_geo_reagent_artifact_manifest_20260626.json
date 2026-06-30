@@ -1,0 +1,61 @@
+{
+  "version": "20260626_norman_geo_reagent_preview",
+  "boundary": {
+    "uses_train_only_internal_rows": true,
+    "uses_canonical_multi": false,
+    "uses_trackc_query": false,
+    "uses_training": false,
+    "uses_gpu": false,
+    "source": "GEO GSE133344 filtered_cell_identities.csv.gz condition-level Norman preview"
+  },
+  "artifacts": [
+    {
+      "artifact": "norman_geo_good_coverage_rate",
+      "description": "Norman condition-level fraction of cells with good_coverage from GEO cell identity metadata.",
+      "priority": 1,
+      "source_files": ["reports/norman_geo_reagent_artifacts_20260626/norman_geo_good_coverage_rate.csv"],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["source", "source_file", "source_column", "n_cells"],
+      "minimum_datasets": 1,
+      "minimum_overlap_rows": 10,
+      "minimum_varying_datasets": 1,
+      "promotion_note": "Preview only; even if it passes, acquire at least two more matched datasets and run shuffle/LODO/source/count controls before GPU."
+    },
+    {
+      "artifact": "norman_geo_mean_guide_coverage",
+      "description": "Norman condition-level mean guide coverage from GEO cell identity metadata.",
+      "priority": 2,
+      "source_files": ["reports/norman_geo_reagent_artifacts_20260626/norman_geo_mean_guide_coverage.csv"],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["source", "source_file", "source_column", "n_cells"],
+      "minimum_datasets": 1,
+      "minimum_overlap_rows": 10,
+      "minimum_varying_datasets": 1,
+      "promotion_note": "Preview only; even if it passes, acquire at least two more matched datasets and run shuffle/LODO/source/count controls before GPU."
+    },
+    {
+      "artifact": "norman_geo_mean_read_count",
+      "description": "Norman condition-level mean guide read_count from GEO cell identity metadata.",
+      "priority": 3,
+      "source_files": ["reports/norman_geo_reagent_artifacts_20260626/norman_geo_mean_read_count.csv"],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["source", "source_file", "source_column", "n_cells"],
+      "minimum_datasets": 1,
+      "minimum_overlap_rows": 10,
+      "minimum_varying_datasets": 1,
+      "promotion_note": "Preview only; even if it passes, acquire at least two more matched datasets and run shuffle/LODO/source/count controls before GPU."
+    },
+    {
+      "artifact": "norman_geo_mean_umi_count",
+      "description": "Norman condition-level mean UMI_count from GEO cell identity metadata.",
+      "priority": 4,
+      "source_files": ["reports/norman_geo_reagent_artifacts_20260626/norman_geo_mean_umi_count.csv"],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["source", "source_file", "source_column", "n_cells"],
+      "minimum_datasets": 1,
+      "minimum_overlap_rows": 10,
+      "minimum_varying_datasets": 1,
+      "promotion_note": "Preview only; even if it passes, acquire at least two more matched datasets and run shuffle/LODO/source/count controls before GPU."
+    }
+  ]
+}

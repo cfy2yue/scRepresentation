@@ -1,0 +1,41 @@
+{
+  "version": "20260626_norman_program_growth",
+  "boundary": {
+    "source": "Norman_2019_curation gene_program annotations from local scPerturb notebook",
+    "uses_train_only_internal_rows": true,
+    "uses_canonical_multi": false,
+    "uses_trackc_query": false,
+    "uses_training": false,
+    "uses_gpu": false
+  },
+  "artifacts": [
+    {
+      "artifact": "external_norman_program_pro_growth_indicator",
+      "description": "Norman curation program label: Pro-growth versus other curated programs. Non-QC source artifact; Norman-only unless future sources provide comparable program labels.",
+      "priority": 1,
+      "source_files": [
+        "reports/norman_program_growth_artifacts_20260626/norman_program_pro_growth_indicator.csv"
+      ],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["program", "source", "evidence_url"],
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "If this ever passes with multiple independent datasets, possible future growth-burden tail-protection smoke after external audit."
+    },
+    {
+      "artifact": "external_norman_program_growth_arrest_contrast",
+      "description": "Norman curation program contrast: Pro-growth +1, G1 arrest/apoptosis -1, other curated programs 0. Non-QC source artifact.",
+      "priority": 2,
+      "source_files": [
+        "reports/norman_program_growth_artifacts_20260626/norman_program_growth_arrest_contrast.csv"
+      ],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["program", "source", "evidence_url"],
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "If this ever passes with multiple independent datasets, possible future growth-burden tail-protection smoke after external audit."
+    }
+  ]
+}

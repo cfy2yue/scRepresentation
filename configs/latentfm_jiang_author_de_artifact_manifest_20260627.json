@@ -1,0 +1,460 @@
+{
+  "artifact_family": "jiang_author_de_background_response",
+  "artifacts": [
+    {
+      "artifact": "jiang_author_de_mean_abs_beta_max",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_beta_mean",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_beta_min",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_beta_std",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_lfc_neglog10p_max",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_lfc_neglog10p_mean",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_lfc_neglog10p_min",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_lfc_neglog10p_std",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_log2fc_max",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_log2fc_mean",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_log2fc_min",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_abs_log2fc_std",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_signed_beta_max",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_signed_beta_mean",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_signed_beta_min",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_signed_beta_std",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_signed_log2fc_max",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_signed_log2fc_mean",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_signed_log2fc_min",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_mean_signed_log2fc_std",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_sig_frac_p05_abs005_max",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_sig_frac_p05_abs005_mean",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_sig_frac_p05_abs005_min",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_sig_frac_p05_abs005_std",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_valid_gene_count_max",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_valid_gene_count_mean",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_valid_gene_count_min",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "jiang_author_de_valid_gene_count_std",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; no GPU without Jiang-specific association/shuffle/LODO audit.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+      ]
+    }
+  ],
+  "background_source_files": [
+    "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_background_artifacts.csv"
+  ],
+  "source_files": [
+    "/data/cyx/1030/reports/jiang_author_de_artifacts_20260627/jiang_author_de_condition_aggregate_artifacts.csv"
+  ],
+  "status": "jiang_author_de_artifacts_materialized_no_gpu"
+}

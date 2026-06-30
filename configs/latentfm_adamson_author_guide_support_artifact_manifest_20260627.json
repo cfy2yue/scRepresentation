@@ -1,0 +1,20 @@
+{
+  "artifacts": [
+    "adamson_guide_cell_assignments",
+    "adamson_guide_coverage_mean",
+    "adamson_guide_coverage_median",
+    "adamson_guide_good_coverage_fraction",
+    "adamson_guide_number_of_cells_field_mean",
+    "adamson_guide_read_count_mean",
+    "adamson_guide_read_count_median",
+    "adamson_guide_umi_count_mean",
+    "adamson_guide_umi_count_median"
+  ],
+  "csv": "/data/cyx/1030/reports/adamson_author_guide_support_artifacts_20260627/adamson_author_guide_support_artifacts.csv",
+  "source_files": [
+    "/data/cyx/1030/reports/external_artifact_sources_20260627/adamson_gasperini_crispri_scout/adamson_gse90546/GSM2406675_10X001_cell_identities.csv.gz",
+    "/data/cyx/1030/reports/external_artifact_sources_20260627/adamson_gasperini_crispri_scout/adamson_gse90546/GSM2406677_10X005_cell_identities.csv.gz",
+    "/data/cyx/1030/reports/external_artifact_sources_20260627/adamson_gasperini_crispri_scout/adamson_gse90546/GSM2406681_10X010_cell_identities.csv.gz"
+  ],
+  "status": "adamson_author_guide_support_artifacts_ready_diagnostic_no_gpu"
+}

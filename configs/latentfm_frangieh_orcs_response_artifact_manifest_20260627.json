@@ -1,0 +1,1045 @@
+{
+  "artifacts": [
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_neg_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_neg_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_neg_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_neg_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_neg_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_pos_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_pos_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_pos_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_pos_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_day14_vs_day7_fitness_pos_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_neg_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_neg_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_neg_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_neg_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_neg_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_pos_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_pos_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_pos_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_pos_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_ifng_vs_control_pos_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_neg_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_neg_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_neg_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_neg_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_neg_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_pos_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_pos_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_pos_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_pos_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_control_pos_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_neg_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_neg_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_neg_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_neg_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_neg_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_pos_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_pos_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_pos_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_pos_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_1to1_vs_ifng_pos_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_neg_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_neg_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_neg_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_neg_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_neg_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_pos_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_pos_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_pos_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_pos_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_control_pos_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_neg_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_neg_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_neg_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_neg_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_neg_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_pos_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_pos_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_pos_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_pos_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_2to1_vs_ifng_pos_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_neg_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_neg_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_neg_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_neg_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_neg_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_pos_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_pos_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_pos_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_pos_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_control_pos_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_neg_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_neg_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_neg_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_neg_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_neg_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_pos_fdr",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_pos_goodsgrna",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_pos_lfc",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_pos_pmvalue",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    },
+    {
+      "artifact": "frangieh_orcs_til_4to1_vs_ifng_pos_score",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "response_context",
+        "artifact_value"
+      ],
+      "single_source_note": "Frangieh/A375 only; preview diagnostic until second source or strict source-control exists.",
+      "source_files": [
+        "/data/cyx/1030/reports/frangieh_orcs_response_artifacts_20260627/frangieh_orcs_response_artifacts.csv"
+      ]
+    }
+  ],
+  "status": "frangieh_orcs_response_artifacts_materialized_no_gpu"
+}

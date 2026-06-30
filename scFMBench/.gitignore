@@ -1,0 +1,45 @@
+# ── placeholder dirs (large resources live outside the repo) ──
+data/
+pretrained/
+output/
+envs/
+fm/third_party/
+
+# ── large binary / model asset extensions ──
+*.h5ad
+*.npy
+*.npz
+*.pth
+*.pt
+*.pkl
+*.ckpt
+*.safetensors
+*.bin
+*.parquet
+*.torch
+*.loom
+*.zarr
+
+# ── logs / tmp ──
+*.log
+*.out
+nohup.out
+*.pid
+*.bak
+tmp/
+
+# ── Python ──
+**/__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── editors / OS ──
+.DS_Store
+.idea/
+.vscode/
+*.swp
+

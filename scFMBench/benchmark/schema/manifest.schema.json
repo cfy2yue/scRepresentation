@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scfm_embedding_manifest_jsonl_row",
+  "title": "embedding_runs manifest.jsonl line",
+  "description": "One JSON object per line in output/embedding_runs/manifest*.jsonl listing h5ad tasks for the embedding queue.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["path", "dataset_id", "category"],
+  "properties": {
+    "path": {
+      "type": "string",
+      "description": "Absolute path to input .h5ad with materialized X."
+    },
+    "dataset_id": {
+      "type": "string",
+      "description": "Stable dataset key used under output/embeddings/<model>/<dataset_id>/."
+    },
+    "category": {
+      "type": "string",
+      "description": "e.g. atlas_TS, chempert — used for grouping / filtering."
+    }
+  }
+}

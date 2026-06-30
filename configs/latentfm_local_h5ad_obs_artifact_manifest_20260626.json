@@ -1,0 +1,27 @@
+{
+  "version": "20260626_local_h5ad_obs",
+  "boundary": {
+    "uses_train_only_internal_rows": true,
+    "uses_canonical_multi": false,
+    "uses_trackc_query": false,
+    "uses_training": false,
+    "uses_gpu": false,
+    "source": "local raw/genepert_bench h5ad obs metadata candidate table"
+  },
+  "artifacts": [
+    {
+      "artifact": "local_h5ad_obs_coverage_quality_proxy",
+      "description": "Condition-level coverage/QC proxy derived from local raw genepert h5ad obs columns n_genes, n_genes_by_counts, and total_counts. This tests whether locally available obs metadata can reopen a reliability-weighted or filtered training route.",
+      "priority": 1,
+      "source_files": [
+        "reports/local_h5ad_obs_artifact_candidates_20260626/candidate_condition_artifacts.csv"
+      ],
+      "required_columns": ["dataset", "condition", "artifact_value"],
+      "optional_columns": ["source_file", "source_column", "family", "n_cells"],
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "If this passes CPU preflight, require shuffle/source/count/tail controls and external audit before any clipped weighting or robust-loss GPU smoke."
+    }
+  ]
+}

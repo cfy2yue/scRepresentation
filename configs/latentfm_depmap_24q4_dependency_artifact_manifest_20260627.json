@@ -1,0 +1,20 @@
+{
+  "artifacts": [
+    {
+      "artifact": "depmap_24q4_dependency_score",
+      "minimum_datasets": 3,
+      "minimum_overlap_rows": 50,
+      "minimum_varying_datasets": 3,
+      "promotion_note": "CPU gate only; higher artifact_value means more negative DepMap gene effect / stronger dependency.",
+      "required_columns": [
+        "dataset",
+        "condition",
+        "artifact_value"
+      ],
+      "source_files": [
+        "/data/cyx/1030/reports/depmap_24q4_dependency_artifacts_20260627/depmap_24q4_dependency_artifacts.csv"
+      ]
+    }
+  ],
+  "status": "depmap_24q4_dependency_artifacts_materialized_no_gpu"
+}
