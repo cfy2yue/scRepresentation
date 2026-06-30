@@ -70,3 +70,28 @@ for server sync. After push, update the server with:
 cd /data/cyx/1030/scLatent
 git pull --ff-only
 ```
+
+## Strategic Escalation & Anti-Spin (added 2026-07-01)
+
+Practice-learned division of judgment: Codex reliably handles code/training/
+execution, but can lose strategic clarity or loop inside one direction. CC's
+primary value is strategic audit and course-correction — not re-running compute.
+
+- **Labor split (judgment):** Codex owns execution and local tactical choices. CC
+  owns strategic direction, gate/stop-rule design, and course-correction. When a
+  direction is ambiguous or not converging, treat it as a *strategy* bottleneck
+  (CC's job), not a reason for more compute.
+- **Anti-spin rule (Codex):** if two substantive attempts do not move measurably
+  toward the goal's success criteria, or the same failure class repeats twice,
+  **STOP**. Append a `DECISION NEEDED` block to `RUN_STATUS.md`: (1) what was
+  tried, (2) what failed and why, (3) 1–2 concrete strategic options, (4) the
+  specific question for CC. Do not keep burning compute on a stuck direction.
+- **Escalation triggers (Codex → CC):** strategic ambiguity; repeated
+  non-convergence; success criteria look unreachable within the cost/resource
+  plan; scope creep; or a result that contradicts the goal's stated hypothesis.
+- **CC cadence:** low-frequency (~1h) *strategic* check, not mechanical log
+  polling. CC reads `RUN_STATUS.md` + codex last message, judges convergence and
+  strategic soundness, and intervenes only to correct.
+- **Corrective handoff (CC → Codex):** never silently mutate a running goal. CC
+  writes a new dated subsection in the dated handoff doc (revised bounded goal,
+  adjusted gate, pivot, or close) and re-hands it. Preserve negative evidence.

@@ -10,6 +10,24 @@ docs/local_archive/20260630_pre_slim/DECISIONS.md
 
 This file records only decisions that should guide new agents.
 
+## 2026-07-01: CC Audit — Close Track-C Support-Only If No-Hard-Fail Violated; Pivot To Manuscript
+
+Decision: after a clean three-way sync (local = GitHub = server at `56a9bd2`),
+hand remote Codex one bounded CPU-only goal — evaluate the predeclared Track-C
+support-only 2/3-seed + no-hard-fail gate from the completed posthoc. If the
+no-hard-fail condition is violated (seed45 hard-failed), close the support-only
+branch with negative evidence preserved and assemble the existing CPU-only
+scaling-axis/failure-map report into a manuscript-ready artifact. No new GPU.
+
+Reason: a seed-level hard fail violates the predeclared no-harm gate, so the
+branch is very likely not promotable. The highest-value deliverable now is the
+CPU-only manuscript package, not further GPU exploration.
+
+Consequence: see `docs/CC_AUDIT_AND_HANDOFF_20260701.md` for the full goal +
+ownership and the anti-spin escalation rule (if seed44 posthoc passes cleanly and
+seed45 re-scores non-hard-fail, escalate instead of closing). CC owns
+goal/index/review/decision/handoff docs; Codex owns runs/reports/RUN_STATUS.
+
 ## 2026-07-01: Use scRepresentation As The GitHub Repository
 
 Decision: the active GitHub repository for `/data/cyx/1030/scLatent` is

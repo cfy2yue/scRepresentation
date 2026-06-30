@@ -62,6 +62,19 @@ root-level paths as provenance; new scripts and entry docs should not.
    Codex for server execution rather than pretending local Windows can run
    GPU/data-heavy work.
 
+## CC Audit + Active Handoff (2026-07-01)
+
+- Three-way sync verified: local = GitHub = server, all at `56a9bd2`, clean.
+- Audit verdict: goal + direction reasonable; keep leakage-safe latent +
+  scaling-axis audit framing. Track-C support-only gate: seed45 hard-failed the
+  no-hard-fail condition → branch likely not promotable.
+- Active Codex goal: evaluate the gate from posthoc; if no-hard-fail is violated,
+  close the support-only branch (preserve negative evidence) and package the
+  CPU-only scaling-axis/failure-map manuscript artifact — no new GPU. Details +
+  ownership in `docs/CC_AUDIT_AND_HANDOFF_20260701.md`.
+- Ownership: CC owns goal/index/review/decision/handoff docs; Codex owns runs/
+  reports/RUN_STATUS.
+
 ## Read First
 
 ```text
