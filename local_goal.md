@@ -58,10 +58,11 @@ Active long-horizon acceptance target for the current scaling line:
 
 The `Exact Next Task` below is only the current materialization stage toward
 that final scientific target. Completing materialization or a preflight report
-does not complete the scaling line. Remote Codex must end the stage with either
-validated inputs for the next regression/analysis stage, a precise
-`DATA_BLOCKED` report, or a local-audit decision request tied to the
-long-horizon acceptance target.
+does not complete the scaling line. Remote Codex should end the stage with
+validated inputs for the next regression/analysis stage, a precise subroute
+`DATA_BLOCKED` report, or a route pivot recorded in `remote_decision.md`; if the
+final target is not achieved and no hard boundary is hit, it should continue
+with the next safe scaling, zebrafish, or architecture audit route.
 
 ## Remote Long-Run Operating Rule
 
@@ -84,9 +85,13 @@ Remote Codex should keep progressing until one of these happens:
 - `BLOCKED`: a hard blocker requires changing final target, resource boundary,
   data source, held-out/query permission, destructive operation, or other
   user-owned decision;
-- `LOCAL_AUDIT_REQUEST`: repeated negative/ambiguous results, suspected bug or
-  split issue, or route drift makes local strategy audit the right next step;
 - user interrupts manually.
+
+`LOCAL_AUDIT_REQUEST` is a soft audit marker, not a stop condition. Remote
+Codex may write it in RUN_STATUS/reports/`remote_decision.md` to help future
+local audit, but should not mark the long goal blocked unless all reasonable
+next routes require changing the final target, resource boundary, data source,
+held-out/query permission, destructive operation, or other user-owned decision.
 
 Within the written resource and safety boundaries, remote Codex may make
 `AUTONOMOUS_DECISION` route choices, add lightweight controls, run bounded
@@ -138,15 +143,17 @@ required.
    indexes, audits contradictions and risk, then writes the next remote task
    package into `local_goal.md`, `local_audit.md`, and `local_suggestion.md`.
 2. Local CC/Codex commits/pushes these files. The user makes remote Codex pull.
-3. Remote Codex reads this packet plus `goal.md` and `docs/START_HERE.md`.
+3. Remote Codex reads this packet plus `goal.md`, `remote_decision.md`, and
+   `docs/START_HERE.md`.
 4. Remote Codex starts from and prioritizes the concrete `Exact Next Task`.
    Further autonomous stages must stay inside the final goal, resource limits,
    and long-run operating rule; remote must not infer extra experiments from
    archived handoffs or broad research vision text.
 5. Remote Codex records execution results in run/report/status outputs, not in
    the three `local_*.md` files.
-6. When blocked or after completion, remote Codex reports structured results and
-   suggested changes so the next local audit can update the three local files.
+6. When a subroute is blocked or after a stage completes, remote Codex reports
+   structured results, writes the decision/pivot to `remote_decision.md`, and
+   continues with the next safe route unless a hard boundary is reached.
 
 Archive note: files under `docs/archive/legacy_auto_coordination_20260701/` and
 `prompts/archive/legacy_auto_coordination_20260701/` are historical evidence
@@ -162,6 +169,7 @@ Remote Codex must read these before acting:
 - `local_goal.md`
 - `local_audit.md`
 - `local_suggestion.md`
+- `remote_decision.md`
 - `docs/START_HERE.md`
 - `docs/PROJECT_OVERVIEW.md`
 - `docs/PROJECT_REVIEW.md`
@@ -245,8 +253,10 @@ DONE criteria:
 - preflight must record split train condition keys, observed condition/name
   columns, source matrix path, train-only mask, and the exact mapping from split
   rows to materialized NPZ keys;
-- if materialization cannot be done safely, output `DATA_BLOCKED` with exact
-  missing paths and do not rerun regression;
+- if materialization cannot be done safely, output subroute `DATA_BLOCKED` with
+  exact missing paths, do not rerun regression, record the pivot in
+  `remote_decision.md`, and continue with a safe alternative such as scaling
+  schema audit, zebrafish inventory, or architecture audit if within limits;
 - if materialization succeeds, rerun the CPU gate and decide whether any
   information/geometry axis should be tested further, while preserving the
   no-scaling-law claim unless gates actually pass.
@@ -275,10 +285,13 @@ Forbidden actions:
 
 Stop rules:
 
-- stop and output `LOCAL_AUDIT_REQUEST` if source matrices/splits cannot be
-  found, if train-only boundaries are ambiguous, if outputs would overwrite
-  prior artifacts, or if the repair needs GPU/large data processing beyond the
-  resource limit.
+- stop the current materialization subtask, record a `SOFT_BLOCK` or
+  `ROUTE_PIVOT` in `remote_decision.md`, and continue with another safe route
+  if source matrices/splits cannot be found, train-only boundaries are
+  ambiguous, or outputs would overwrite prior artifacts;
+- mark hard `BLOCKED` only if every reasonable next route needs GPU/large data
+  processing beyond the resource limit, held-out/query permission, new data
+  source, destructive operations, or final-goal changes.
 
 ## Default Resource Rules
 
@@ -311,21 +324,23 @@ Stop rules:
 
 ## Stop Rules
 
-Remote Codex must stop and output a structured local-audit request when:
+Remote Codex must hard-stop only when:
 
 - the exact task is missing, ambiguous, or contradicted by current docs;
-- required data/report/run artifacts are absent or provenance does not match;
-- a gate hard-fails, metrics are missing, or a result would require changing
-  claim scope;
+- required data/report/run artifacts are absent and all safe reconstruction or
+  alternative audit routes are exhausted;
+- a result would require changing final claim scope rather than selecting a new
+  bounded research route;
 - resource use would exceed the task limits or require GPU/network/data access
   not authorized in the exact task;
-- the task needs code changes outside the approved scope;
+- every useful next route needs code changes outside the approved scope;
 - there is evidence of leakage, split mismatch, overwritten outputs, or
   duplicated/generated artifacts entering Git.
 
 ## Expected Remote Output Shape
 
-At completion or block, remote Codex should report:
+At stage completion, soft block, hard block, or achievement, remote Codex should
+report:
 
 - files read;
 - commands run and whether they were CPU/GPU/network/disk-heavy;
@@ -334,3 +349,4 @@ At completion or block, remote Codex should report:
 - whether the task is positive, negative, blocked, or ambiguous;
 - recommended updates to `local_goal.md`, `local_audit.md`, and
   `local_suggestion.md` for the next local audit, without editing those files.
+Remote should also append the key decision to `remote_decision.md` in Chinese.

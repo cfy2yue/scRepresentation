@@ -8,9 +8,10 @@ fallback routes, gates, and the decision tree for interpreting execution
 results.
 
 Remote Codex must not edit this file during execution. If a suggestion becomes
-wrong, incomplete, or blocked, remote Codex should report that and recommend
-changes for the next local audit. Local CC/Codex updates this file and pushes
-it.
+wrong, incomplete, or softly blocked, remote Codex should report that in
+RUN_STATUS/reports/`remote_decision.md`, choose a new safe route when possible,
+and recommend changes for the next local audit. Local CC/Codex updates this
+file and pushes it.
 
 The concrete remote task still lives in `local_goal.md` under `Exact Next
 Task`; this file explains how to execute and interpret that task.
@@ -87,8 +88,10 @@ Promotion gate:
 
 Fail-close:
 
-- if inputs are missing or collapse cannot be repaired, output a blocked report
-  with exact missing paths and do not claim a scaling law.
+- if inputs are missing or collapse cannot be repaired, output a subroute
+  `DATA_BLOCKED`/soft-block report with exact missing paths, do not claim a
+  scaling law, record the pivot in `remote_decision.md`, and continue with a
+  safe alternative insight route if available.
 
 ### B. Manuscript Package Polish CPU Task
 
@@ -210,17 +213,20 @@ Negative:
 
 Blocked:
 
-- require a `LOCAL_AUDIT_REQUEST` with exact missing files, commands attempted,
-  partial outputs, and at least three possible next directions;
-- do not let remote Codex invent a replacement heavy experiment;
-- local audit decides whether to repair prerequisites, switch tasks, or close
-  the route.
+- require a `remote_decision.md` entry with exact missing files, commands
+  attempted, partial outputs, and at least three possible next directions;
+- do not let remote Codex invent a replacement heavy experiment, but do allow a
+  safe replacement audit/diagnostic route inside the same final goal;
+- local audit later decides whether to repair prerequisites, switch tasks, or
+  close the route.
 
 Ambiguous:
 
 - ask for the smallest CPU-only disambiguation check;
 - prefer provenance and negative controls over more training;
-- if ambiguity touches split/query leakage, stop as blocked.
+- if ambiguity touches split/query leakage, stop that unsafe subroute, record
+  it in `remote_decision.md`, and pivot to a safe route that does not use the
+  ambiguous split/query data.
 
 ## Remote Prompt Snippet
 
@@ -230,8 +236,9 @@ Use only after `local_goal.md` has a filled `Exact Next Task`:
 Read `goal.md`, `local_goal.md`, `local_audit.md`, `local_suggestion.md`, and
 `docs/START_HERE.md` first. Execute only the filled `Exact Next Task`; do not
 infer extra experiments from archived legacy handoffs. Respect resource limits,
-forbidden actions, and stop rules. If blocked, output `LOCAL_AUDIT_REQUEST`
-with files read, commands run, changed/generated paths, metrics, anomalies,
-suspected bottlenecks, and suggested updates to the three local docs.
+forbidden actions, and hard stop rules. If a subroute is blocked, write
+`remote_decision.md` with files read, commands run, changed/generated paths,
+metrics, anomalies, suspected bottlenecks, and suggested updates to the three
+local docs, then continue with a safe route if available.
 Do not edit the three local docs on the remote side.
 ```
