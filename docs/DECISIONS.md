@@ -10,6 +10,31 @@ docs/local_archive/20260630_pre_slim/DECISIONS.md
 
 This file records only decisions that should guide new agents.
 
+## 2026-07-01: REPRIORITIZE — Insight-Driven Scaling-Unit + Zebrafish Flow-Regularizer Over Flow-Matching Tuning
+
+Decision: elevate two analysis-first, insight-driven scLatent threads above direct
+flow-matching metric tuning (per user steering): (1) find the correct single-cell
+SCALING UNIT — an information / effective-state axis (Vendi N_eff) and an
+abundance/response-energy-weighted effective-gene-count G_eff, tested by CPU
+regression over existing runs vs cell count; (2) mine the zebrafish wild-type
+developmental reference atlas for GENERALIZABLE dynamic-response geometric laws (L2
+developmental-tangent split, L1 state preservation) and spec each as a DIFFERENTIABLE
+flow-matching regularizer. Both are CPU-only, decisive (win or publishable negative).
+
+Reason: every raw-count scaling axis is closed (non-monotonic / no-harm-fail); the
+HVG thesis is half-validated (concentration real; HVG-specific collapses to
+abundance). Zebrafish is a rare GT for perturbation dynamics; UCE/species-latent is
+closed, so mine geometry in expression + encoder-agnostic latent and constrain the
+flow structurally. Architecture audit confirms the velocity field admits such a
+regularizer cleanly, but an expression-space prior must attach in the raw-expr
+trainer (no latent->gene decoder); it also found two metric defects (P4 eval MSE
+random pairing; P1 aux 1-step vs eval 20-step) recorded for a later hygiene pass.
+
+Consequence: goal docs `docs/CC_AUDIT_AND_HANDOFF_20260701_scaling_unit.md` and
+`docs/CC_AUDIT_AND_HANDOFF_20260701_zebrafish_regularizer.md`; architecture record
+`docs/LATENTFM_ARCHITECTURE_AUDIT_20260701.md`. De-prioritized: flow-matching
+endpoint tuning. Closed (do not reopen): UCE/species-latent; Track-C support-only GPU.
+
 ## 2026-07-01: RESULT — Track-C Support-Only CLOSED; CPU-Only Manuscript Manifest Built
 
 Decision: CLOSE the Track-C pair-type support-only branch. Gate evaluation (Codex):
