@@ -58,6 +58,13 @@ final goal and active long-horizon acceptance target as the objective. `Exact
 Next Task` is the current priority stage and starting direction, not a
 short-job completion condition.
 
+The current route is a hypothesis under the same final goal, not a step in a
+step-to-step decomposition. If the route fails, underperforms, or becomes
+unpromising, the right action is to record the evidence, audit/optimize the
+route, and continue toward the same final target or request local route
+optimization. Do not mark the goal complete merely because the current stage is
+done.
+
 Remote Codex should keep progressing until one of these happens:
 
 - `ACHIEVED`: the long-horizon acceptance target is actually met with evidence,
@@ -115,8 +122,10 @@ required.
    package into `local_goal.md`, `local_audit.md`, and `local_suggestion.md`.
 2. Local CC/Codex commits/pushes these files. The user makes remote Codex pull.
 3. Remote Codex reads this packet plus `goal.md` and `docs/START_HERE.md`.
-4. Remote Codex executes only the concrete `Exact Next Task`; it does not infer
-   extra experiments from archived handoffs or broad research vision text.
+4. Remote Codex starts from and prioritizes the concrete `Exact Next Task`.
+   Further autonomous stages must stay inside the final goal, resource limits,
+   and long-run operating rule; remote must not infer extra experiments from
+   archived handoffs or broad research vision text.
 5. Remote Codex records execution results in run/report/status outputs, not in
    the three `local_*.md` files.
 6. When blocked or after completion, remote Codex reports structured results and
