@@ -51,6 +51,39 @@ validated inputs for the next regression/analysis stage, a precise
 `DATA_BLOCKED` report, or a local-audit decision request tied to the
 long-horizon acceptance target.
 
+## Remote Long-Run Operating Rule
+
+When the user starts remote goal mode, remote Codex should treat the durable
+final goal and active long-horizon acceptance target as the objective. `Exact
+Next Task` is the current priority stage and starting direction, not a
+short-job completion condition.
+
+Remote Codex should keep progressing until one of these happens:
+
+- `ACHIEVED`: the long-horizon acceptance target is actually met with evidence,
+  metrics, controls, output paths, and claim boundaries recorded;
+- `BLOCKED`: a hard blocker requires changing final target, resource boundary,
+  data source, held-out/query permission, destructive operation, or other
+  user-owned decision;
+- `LOCAL_AUDIT_REQUEST`: repeated negative/ambiguous results, suspected bug or
+  split issue, or route drift makes local strategy audit the right next step;
+- user interrupts manually.
+
+Within the written resource and safety boundaries, remote Codex may make
+`AUTONOMOUS_DECISION` route choices, add lightweight controls, run bounded
+diagnostics, and pre-explore the next stage after the current stage completes.
+It may also launch remote subagents for independent read-only/code-review style
+audits when available. Subagents must read the same `goal.md` and
+`local_*.md` files, stay inside the project/resource boundaries, avoid editing
+the three `local_*.md` files, and summarize their evidence in RUN_STATUS or the
+report before the main remote agent continues.
+
+Remote Codex should not stop merely because a preflight, materialization, or
+rerun summary is written. If the final target is not achieved and there is no
+hard block, it should record the result, choose the next bounded stage inside
+the same final goal, and continue or clearly explain why local audit is
+required.
+
 ## Current Direction And Boundaries
 
 - Current default/deployable LatentFM state remains `xverse_8k_anchor` until a
