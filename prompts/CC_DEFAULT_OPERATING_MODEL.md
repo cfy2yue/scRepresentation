@@ -252,6 +252,10 @@ Use this file-pointer pattern instead:
 CC/user decision recorded at runs/<run>/CC_DECISION_<date>_<slug>.md. Read it and continue this same session; keep updating runs/<run>/RUN_STATUS.md.
 ```
 
+   Use `tmux load-buffer` + `tmux paste-buffer` + `Enter` for this one-line
+   pointer. Avoid raw `tmux send-keys -l` for text with spaces; depending on
+   quoting and tmux/TUI parsing, it may concatenate words.
+
 4. CC then polls `RUN_STATUS.md` and `tmux capture-pane` to confirm Codex read
    the decision and resumed work.
 

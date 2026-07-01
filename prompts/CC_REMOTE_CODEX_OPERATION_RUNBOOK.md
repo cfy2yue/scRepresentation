@@ -201,9 +201,14 @@ Stop rules:
 - write DONE only if H2026_1 positive_20d_rate > 0.60 and active_exposure >= 0.50 with leakage PASS.
 DECISION
 
-tmux send-keys -t codex_stock_goal_YYYYMMDD_HHMM -l \
-  "CC/user decision recorded at runs/codex_goal_stock_20260701/CC_DECISION_20260701_new_signal_family.md. Read it and continue this same session; keep updating runs/codex_goal_stock_20260701/RUN_STATUS.md."
-tmux send-keys -t codex_stock_goal_YYYYMMDD_HHMM C-m
+POINTER=/tmp/codex_pointer_stock_decision.txt
+printf '%s\n' \
+  "CC/user decision recorded at runs/codex_goal_stock_20260701/CC_DECISION_20260701_new_signal_family.md. Read it and continue this same session; keep updating runs/codex_goal_stock_20260701/RUN_STATUS.md." \
+  > "$POINTER"
+tmux send-keys -t codex_stock_goal_YYYYMMDD_HHMM C-u
+tmux load-buffer "$POINTER"
+tmux paste-buffer -t codex_stock_goal_YYYYMMDD_HHMM -d
+tmux send-keys -t codex_stock_goal_YYYYMMDD_HHMM Enter
 ```
 
 After 1-3 minutes, verify that Codex read the decision:
@@ -248,9 +253,14 @@ new external resources, or it has exhausted the autonomous decision budget and
 no authorized next route remains.
 DECISION
 
-tmux send-keys -t codex_stock_newsignal_YYYYMMDD_HHMM -l \
-  "CC/user autonomy policy recorded at runs/codex_goal_stock_newsignal_20260701/CC_DECISION_20260701_autonomy_policy.md. Read it, append an AUTONOMOUS_DECISION block, and continue within bounds."
-tmux send-keys -t codex_stock_newsignal_YYYYMMDD_HHMM C-m
+POINTER=/tmp/codex_pointer_stock_autonomy.txt
+printf '%s\n' \
+  "CC/user autonomy policy recorded at runs/codex_goal_stock_newsignal_20260701/CC_DECISION_20260701_autonomy_policy.md. Read it, append an AUTONOMOUS_DECISION block, and continue within bounds." \
+  > "$POINTER"
+tmux send-keys -t codex_stock_newsignal_YYYYMMDD_HHMM C-u
+tmux load-buffer "$POINTER"
+tmux paste-buffer -t codex_stock_newsignal_YYYYMMDD_HHMM -d
+tmux send-keys -t codex_stock_newsignal_YYYYMMDD_HHMM Enter
 ```
 
 CC then checks every 10 minutes for hard stops and every 60 minutes for decision

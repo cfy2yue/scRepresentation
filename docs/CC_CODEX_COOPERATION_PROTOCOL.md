@@ -211,6 +211,8 @@ Use the file-pointer pattern:
    continuation or a clean restart.
 2. Send exactly one short line to the existing tmux session:
    `CC/user decision recorded at runs/<run>/CC_DECISION_<date>_<slug>.md. Read it and continue this same session; keep updating runs/<run>/RUN_STATUS.md.`
+   Use `tmux load-buffer` + `tmux paste-buffer` + `Enter`; avoid raw
+   `send-keys -l` for text with spaces because it can concatenate words.
 3. Poll `tmux capture-pane` and `RUN_STATUS.md` after 1-3 minutes to verify Codex
    read the file and resumed.
 
