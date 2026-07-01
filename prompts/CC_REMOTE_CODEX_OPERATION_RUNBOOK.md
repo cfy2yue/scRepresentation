@@ -218,6 +218,45 @@ session ignores the pointer, stop using that session. Rename it with `_done` or
 `_error`, then start a new visible session whose initial `/goal` prompt reads the
 old `RUN_STATUS.md`, final report, and `CC_DECISION_*.md`.
 
+## Delegate Bounded Decisions Back To Codex
+
+Use this when Codex stopped at `DECISION NEEDED`, but the user wants automation
+and the remaining choices are inside the same durable goal. The point is to make
+Codex decide, document the decision, and continue, while CC audits later.
+
+```bash
+ssh cyx-server-cfy
+cd /data/cyx/1030/stock
+cat > runs/codex_goal_stock_newsignal_20260701/CC_DECISION_20260701_autonomy_policy.md <<'DECISION'
+# CC Decision - 2026-07-01 - Autonomous Continuation Policy
+
+Selected option: continue autonomously within the current durable goal.
+
+Codex is authorized to make bounded implementation/research decisions without
+stopping for CC/user input when all are true:
+- the durable goal and success criteria are unchanged;
+- no final OOT/test-set result is used for feature, threshold, model, strategy,
+  or claim selection;
+- no online/paid data, secrets, destructive cleanup, git operations, or resource
+  escalation is needed;
+- each new route is preregistered before final-OOT/test-set scoring;
+- every decision is logged as `AUTONOMOUS_DECISION` in `RUN_STATUS.md`.
+
+Codex should stop with `DECISION NEEDED` only if it would need to change the
+durable goal, relax success criteria, use final-OOT/test-set selection, consume
+new external resources, or it has exhausted the autonomous decision budget and
+no authorized next route remains.
+DECISION
+
+tmux send-keys -t codex_stock_newsignal_YYYYMMDD_HHMM -l \
+  "CC/user autonomy policy recorded at runs/codex_goal_stock_newsignal_20260701/CC_DECISION_20260701_autonomy_policy.md. Read it, append an AUTONOMOUS_DECISION block, and continue within bounds."
+tmux send-keys -t codex_stock_newsignal_YYYYMMDD_HHMM C-m
+```
+
+CC then checks every 10 minutes for hard stops and every 60 minutes for decision
+quality. If an `AUTONOMOUS_DECISION` is bad, CC writes a corrective
+`CC_DECISION_*.md` and points Codex to it.
+
 ## Resume
 
 ```bash

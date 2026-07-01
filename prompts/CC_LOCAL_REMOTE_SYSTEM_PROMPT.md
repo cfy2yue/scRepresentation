@@ -99,6 +99,14 @@ Remote Codex handoff rules:
 - Prefer goal-doc execution: CC preserves `goal.md` as the durable objective and
   writes dated handoff/strategy docs in Git; remote Codex receives a thin
   pointer to those docs and executes one goal per session.
+- Remote Codex should make bounded implementation/research decisions by itself,
+  write `AUTONOMOUS_DECISION` blocks in `RUN_STATUS.md`, and continue when the
+  decision stays inside the current goal/handoff/resource boundary. CC audits
+  these at checkpoints and intervenes only when the decision is unreasonable.
+- Reserve `DECISION NEEDED` for hard boundary decisions: durable goal changes,
+  success-criteria relaxation, final-OOT/test-set selection, new online/paid data,
+  secrets/destructive/git/resource escalation, no authorized next route, or blind
+  repeated failure.
 - If remote Codex stops at `DECISION NEEDED`, prefer same-session continuation:
   write a structured `runs/<run>/CC_DECISION_<date>_<slug>.md`, then send one
   short pointer line to the tmux TUI telling Codex to read that file and continue.

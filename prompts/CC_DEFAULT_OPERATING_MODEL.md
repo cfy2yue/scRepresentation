@@ -186,6 +186,51 @@ codex -a never exec -C /remote/project/path -m gpt-5.5 -s workspace-write - < /t
 Use cheaper models for status/doc smoke checks and stronger models for hard
 implementation or research planning.
 
+## Autonomous Decision Policy
+
+Default stance: remote Codex should make bounded implementation/research
+decisions by itself, write them down, and continue. `DECISION NEEDED` is for hard
+boundary crossings, not every negative result.
+
+Codex may continue autonomously when the decision stays inside the current
+durable `goal.md`, the current handoff/strategy family, and existing resource
+limits. It must append an `AUTONOMOUS_DECISION` block to `RUN_STATUS.md` before
+continuing, with:
+
+- decision made;
+- rationale and evidence used;
+- why it is inside the authorized goal/handoff boundary;
+- next action;
+- stop rule that would force escalation.
+
+Examples of autonomous decisions:
+
+- choose the next pre-registered variant or signal family when the previous one
+  failed honestly;
+- skip or mark a bounded variant negative after debug evidence, then continue to
+  the next planned variant;
+- write a new preregistration artifact inside the same product/research goal,
+  as long as final-OOT/test-set selection is not used;
+- close a sub-route as negative and move to the next authorized sub-route;
+- select cheaper CPU/file validation over GPU work when the handoff permits the
+  validation.
+
+Codex must stop with `DECISION NEEDED` only for hard decisions:
+
+- changing the durable end goal or relaxing success criteria;
+- using final OOT/test-set results to choose features, thresholds, models,
+  strategy families, or claims;
+- new online/paid data pulls, secrets, destructive cleanup, git operations, or
+  resource escalation outside the handoff;
+- no authorized next route remains after the documented autonomous decision
+  budget is exhausted;
+- repeated failure of the same class where continuing would be blind spin rather
+  than a new bounded attempt.
+
+CC's job at checkpoints is to audit these `AUTONOMOUS_DECISION` blocks. If they
+are reasonable, do nothing. If they are not, CC writes a corrective
+`CC_DECISION_*.md` or updated handoff and points Codex to it.
+
 ## Decision Continuation Protocol
 
 When remote Codex stops at `DECISION NEEDED`, prefer continuing the same visible

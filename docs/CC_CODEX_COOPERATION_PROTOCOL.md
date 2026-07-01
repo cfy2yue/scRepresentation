@@ -222,3 +222,23 @@ much that a clean context is safer. A restart prompt must explicitly read the ol
 Default monitoring is two-level: every 10 minutes do a light decision check
 (`tmux`, recent pane output, recent `RUN_STATUS.md`); every 60 minutes do a
 deeper review of reports, `git status`, convergence, and boundary adherence.
+
+## Autonomous Decision Override (added 2026-07-01)
+
+Remote Codex should not stop at every negative result. Within the current
+`goal.md`, handoff doc, and resource limits, Codex may make bounded decisions,
+document them, and continue. It must append an `AUTONOMOUS_DECISION` block to
+`RUN_STATUS.md` with the decision, rationale, evidence, boundary check, next
+action, and stop rule.
+
+Autonomous decisions are allowed for choosing the next pre-registered variant or
+signal family, skipping a failed bounded variant after evidence, closing a
+sub-route as negative and moving to the next authorized sub-route, or writing a
+new preregistration artifact before final evaluation.
+
+Use `DECISION NEEDED` only for hard boundaries: changing the durable goal,
+relaxing success criteria, using final OOT/test-set results for selection,
+online/paid data, secrets, destructive cleanup, git operations, resource
+escalation, no authorized next route, or repeated blind failure. CC audits
+`AUTONOMOUS_DECISION` blocks during 10/60 minute polling and intervenes only when
+the decision is unreasonable.
