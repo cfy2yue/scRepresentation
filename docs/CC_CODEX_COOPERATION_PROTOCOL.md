@@ -137,3 +137,25 @@ before executing.
 - The same model should scale beyond the current three projects and beyond one
   server. Add new projects/servers to the registry first, then reuse the same
   subagent-audit and remote-goal-session workflow.
+
+## Standard Task Processing Flow (default, solidified 2026-07-01)
+
+Division of labor: **audit / direction / strategy judgment + planning + writing goal
+docs = CC's job.** Codex only EXECUTES well-defined goals CC writes (implementation,
+experiments, stats, training). Do NOT hand audit/strategy/direction judgment to Codex.
+
+Every task follows this pipeline; multiple tasks run it IN PARALLEL — one subagent per
+task (isolated to one repo), main CC coordinates + interfaces with the user; never
+serialize independent tasks:
+1. **Sync** — confirm the local git repo is current (fetch/status/rev-list; reconcile if
+   diverged) before editing.
+2. **CC audit + plan (local)** — audit strategy/defects/direction, decide the bounded
+   next goal.
+3. **(Optional) grounding** if the plan is uncertain — light checks/experiments via self
+   SSH (read-only/small); HEAVY experiments via remote Codex, results fed back to CC.
+4. **Finalize goal doc + audit doc → git commit + push** (secret scan + `diff --check`).
+5. **Remote: git pull + launch Codex in goal-doc mode** via the 1030 wrapper
+   `/data/cyx/1030/software/bin/codex` (preflight: `CODEX_HOME=/data/cyx/1030/software/codex_home`).
+   Prefer a sidebar/resume-visible session IF it doesn't hurt efficiency/effect.
+6. **Poll ~1h** — tmux/RUN_STATUS/last-message/convergence; anti-spin correct via a dated
+   handoff.
