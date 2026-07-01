@@ -107,3 +107,33 @@ audit them serially in one shared context. Instead:
   priority calls, and performs the git commits/pushes and Codex handoffs.
 - This avoids context confusion and cross-project bleed. Keep each subagent scoped
   to a single project; keep commits and handoffs centralized in the main session.
+
+## Codex Goal-Doc Execution (preferred, added 2026-07-01)
+
+Preferred handoff pattern: CC maintains the goal INSIDE the repo (`goal.md` and the
+dated `docs/CC_AUDIT_AND_HANDOFF_<date>.md`), version-controlled. When launching
+remote Codex, use goal mode and point Codex directly at that in-repo goal doc to
+execute it - rather than maintaining a separate throwaway prompt. The launch prompt
+should be a thin pointer, e.g.: "Read and execute the goal in
+docs/CC_AUDIT_AND_HANDOFF_<date>.md; honor its ownership, stop rules, and success
+criteria; start with a brief plan in runs/<run>/RUN_STATUS.md." This keeps a single
+version-controlled source of truth. If goal-tracking is needed, enable it first
+(`codex features enable goals`) and have Codex `/plan` to form a measurable goal
+before executing.
+
+## Default CC/Codex Role Model (added 2026-07-01)
+
+- CC is the local coordinator and thinking layer: audit, critique, cheap local
+  exploration, goal refinement, handoff docs, commits, pushes, and monitoring.
+- For multi-project work, main CC should launch one independent CC subagent per
+  project. Each subagent audits exactly one project and reports findings; it does
+  not push, launch remote jobs, or edit outside its scope unless explicitly
+  delegated.
+- Main CC synthesizes subagent outputs, resolves contradictions, edits `goal.md`
+  and dated handoff docs, then syncs through GitHub.
+- Remote Codex is the remote execution layer: one approved remote task should get
+  one dedicated goal session, usually one `tmux` session, with progress written
+  to `runs/<run>/RUN_STATUS.md` or the task's equivalent status path.
+- The same model should scale beyond the current three projects and beyond one
+  server. Add new projects/servers to the registry first, then reuse the same
+  subagent-audit and remote-goal-session workflow.

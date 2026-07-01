@@ -19,6 +19,20 @@ ssh cyx-server-proxy-cfy "cd /data/cyx/1030/<repo> && git fetch origin --prune &
 
 If local, GitHub, and server differ, sync first or report the divergence.
 
+## Default Multi-Project Pattern
+
+- Main CC does intake, sync checks, `ccusage` checks, synthesis, commits, pushes,
+  remote session launch, and monitoring.
+- Use one CC subagent per project for audit and initial exploration. Keep each
+  subagent scoped to one repo; subagents do not push or start remote jobs unless
+  explicitly delegated.
+- Use one remote Codex goal session per remote task, normally one `tmux` session
+  per project/goal. Do not run unrelated projects in the same Codex session.
+- CC updates `goal.md` and `docs/CC_AUDIT_AND_HANDOFF_<date>.md`; remote Codex
+  receives a thin pointer to those version-controlled docs.
+- The same pattern should scale to more projects and more remote servers by
+  updating the local project registry first.
+
 ## Local Command Paths
 
 Use this in already-open terminals if `git` or `codex` is not found:
