@@ -30,12 +30,24 @@ The scientific acceptance target is a leakage-safe, publication-ready workflow:
 strong benchmark evidence, clearly bounded LatentFM claims, preserved negative
 evidence, and no model/scaling claim without strict gates.
 
+Current research priority is insight-first. Scaling-law discovery and
+zebrafish/ZSCAPE dynamic-response biology have priority over direct
+flow-matching endpoint metric chasing, because their purpose is to reveal the
+training information and biological constraints that should shape LatentFM.
+LatentFM architecture audit remains an important parallel engineering thread,
+but architecture findings are not permission to train or promote a new default
+model without a separate gate.
+
 Active long-horizon acceptance target for the current scaling line:
 
 - reveal whether effective-state / information axes such as Vendi `N_eff`,
   effective rank, participation ratio, pair-mode diversity, `G_eff`, or
   `N_eff x G_eff` explain perturbation-model performance better than raw cell
   count or condition count;
+- define scaling `x` as effective perturbation-training information rather
+  than raw cell count: state coverage, cluster/centroid coverage,
+  condition/pair-mode diversity, transition coverage, gene-token/HVG
+  information, and information density are all candidate axes;
 - use leakage-safe train-only per-arm geometry, not collapsed dataset-level
   means;
 - pass held-out/confound-aware checks such as LODO or source-held-out fit,
@@ -110,6 +122,11 @@ required.
   mining run was negative: no validated differentiable regularizer should be
   launched from that coverage. Any future zebrafish task must broaden the
   discovery question or verify new coverage before proposing model constraints.
+- Zebrafish is treated as rare perturbation time-series ground truth. Future
+  work should look for reproducible perturbation dynamic laws in expression and
+  latent spaces before proposing regularizers: distribution shifts across time,
+  multi-timepoint OT pseudo-tracking, target/marker gene propagation,
+  GRN/pathway cascade structure, and latent geometry/direction.
 - Closed or de-prioritized routes: UCE/species-latent zebrafish route,
   flow-matching endpoint tuning as the main priority, Track-C query use without
   a new frozen support-val/no-harm protocol, and GPU scaling replays from the
@@ -153,6 +170,9 @@ Remote Codex must read these before acting:
 - `docs/RESULTS_SUMMARY.md`
 - `docs/LATENTFM_ARCHITECTURE_AUDIT_20260701.md` if model architecture,
   regularizer attachment, or metric defects are relevant.
+- `docs/literature/SCALING_ZSCAPE_SQUIDIFF_NOTES_20260701.md` and
+  `ref/zebrafish_dataset.pdf` if zebrafish/ZSCAPE dynamic analysis is relevant
+  and the paths exist on the remote.
 
 For any run-specific task, also read the relevant `runs/<run>/RUN_STATUS.md`,
 `reports/<report>/...`, and source script paths named in `local_audit.md` or
@@ -230,6 +250,11 @@ DONE criteria:
 - if materialization succeeds, rerun the CPU gate and decide whether any
   information/geometry axis should be tested further, while preserving the
   no-scaling-law claim unless gates actually pass.
+- whether materialization succeeds or blocks, write a next-stage
+  scaling-axis schema proposal covering cluster/centroid coverage,
+  condition+OT pair-mode diversity, basic statistics, information-theoretic
+  metrics, gene-token/HVG or `G_eff` information, information density, and
+  dataset/source/abundance confound controls.
 
 Resource limits:
 

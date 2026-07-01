@@ -33,16 +33,22 @@ contain older handoff language.
 ## Current Priority Order
 
 1. Scaling per-arm geometry materialization, if the user wants the next
-   scientific insight step. This unblocks fair regression of information axes
-   against model performance.
-2. Manuscript/reviewer-package polish, if the user wants publication packaging
-   with no new experiment.
-3. Broader zebrafish discovery audit, only if it introduces new coverage or a
+   scientific insight step. This unblocks fair regression of effective
+   information axes, information density, and mode coverage against model
+   performance.
+2. Broader zebrafish discovery audit, because ZSCAPE time-series perturbation
+   ground truth can reveal dynamic biological constraints for LatentFM before
+   any new regularizer is launched. The task must introduce new coverage or a
    broader analysis lens beyond the rejected narrow regularizer-mining run.
-4. Architecture hygiene planning or a tiny metric-only code fix proposal, only
+3. LatentFM architecture audit in parallel with the insight tracks, especially
+   bottlenecks suggested by scaling or zebrafish results; code edits or model
+   promotion still require a separate explicit gate.
+4. Manuscript/reviewer-package polish, if the user wants publication packaging
+   with no new experiment.
+5. Architecture hygiene planning or a tiny metric-only code fix proposal, only
    after local audit separates it from the insight tracks and defines no-harm
    gates. Code edits require explicit user approval.
-5. Chemical V2 or any GPU branch only after exact ACK, resource audit, split
+6. Chemical V2 or any GPU branch only after exact ACK, resource audit, split
    boundary, written hypothesis, stop rule, and `RUN_STATUS.md`.
 
 ## Candidate Task Templates
@@ -59,8 +65,9 @@ Minimum task:
   condition/name columns, source matrix path, train-only mask, and the mapping
   from split rows to planned NPZ keys;
 - materialize per-arm rows for Vendi `N_eff`, effective rank, participation
-  ratio, pair-mode diversity if available, and abundance/response-energy
-  weighted `G_eff`;
+  ratio, cluster/centroid coverage, pair-mode diversity if available,
+  gene-token/HVG information, information density, and abundance/response-
+  energy weighted `G_eff`;
 - write all new NPZs to a fresh run-scoped artifact directory; never overwrite
   existing `*_pert_means.npz`;
 - write a report explaining which arms were materialized, which were missing,
@@ -75,6 +82,8 @@ Promotion gate:
 - information axis improves out-of-sample or leave-one-dataset-out fit versus
   raw cell count and condition count;
 - abundance/source/dataset confounds are controlled or reported as blockers.
+- next-stage schema explicitly says which scaling `x` axes are meaningful
+  perturbation-training information and which are abundance proxies.
 
 Fail-close:
 
@@ -105,6 +114,16 @@ Fail-close:
 Hypothesis: broader time-series/distribution/pseudo-single-cell tracking or
 GRN/pathway-cascade analysis can find a reproducible biological regularity,
 even though the narrow dynamic-law regularizer run was negative.
+
+Preferred lenses:
+
+- macro distribution dynamics across timepoints, perturbations, lineages, and
+  cell types;
+- multi-timepoint OT pseudo-tracking, with one cell/prototype sampled per
+  stage to form synthetic trajectories;
+- expression-space target/marker propagation, optional CellOracle/GEARS-style
+  GRN checks, and pathway cascade/enrichment relationships;
+- latent-space geometry, direction, branching, delay, and curvature.
 
 Promotion gate:
 

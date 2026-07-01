@@ -81,6 +81,54 @@ the user explicitly asks for such work.
   conflict, batch-mean heterogeneity collapse, and linear-path/Euler sensitivity.
   These are audit facts, not permission to edit code.
 
+## User Research Intent - 2026-07-01
+
+The user wants computation plus biological insight to guide and constrain
+LatentFM, not simply endpoint metric chasing. Scaling and zebrafish/ZSCAPE are
+therefore higher-priority research lines than direct flow-matching optimization
+unless a method change is motivated by those insights.
+
+Scaling intent:
+
+- raw cell count is probably too weak as the scaling `x` unit for single-cell
+  perturbation data;
+- the target is a quantitative notion of effective perturbation-training
+  information, information density, or mode coverage;
+- candidate views include cluster/centroid coverage, condition+OT pair modes,
+  transition diversity, statistical summaries, information-theoretic axes,
+  gene-token information, HVG contribution, `G_eff`, and combinations such as
+  `N_eff x G_eff`;
+- external review of scFM data selection motivates the concern that low
+  heterogeneity or repeated cells can make a large raw cell count look like a
+  large scale while adding little useful training information;
+- the main data regime is perturb-seq, and any scaling claim must separate
+  information from abundance/source/dataset confounds.
+
+Zebrafish/ZSCAPE intent:
+
+- zebrafish is valuable because it provides perturbation dynamic transition
+  ground truth rather than just endpoint perturbation labels;
+- the goal is scientific discovery of generalizable dynamic response laws in
+  both expression and latent space, not immediate regularizer launch;
+- macro views include distribution statistics across timepoints, e-distance or
+  mean-shift trajectories, and time/lineage/perturbation controls;
+- pseudo-individual views may use OT across multiple timepoints to construct
+  synthetic single-cell tracks, sampling one cell or prototype per stage;
+- expression-space views include target genes, marker genes, possible
+  CellOracle/GEARS-style GRN propagation, pathway enrichment, and pathway
+  cascade relationships;
+- latent-space views include geometry, direction, branching, delay, and
+  trajectory curvature. These laws may later inform regularization, but only
+  after controls pass.
+
+Architecture intent:
+
+- LatentFM architecture should be audited in parallel for bottlenecks and
+  optimization space, especially if scaling/ZSCAPE findings suggest constraints
+  that the current additive-conditioning or estimator design cannot express;
+- code changes, new training, or default-model promotion still require a fresh
+  explicit gate.
+
 ## Closed Or Restricted Branches
 
 - CLOSED: Track-C support-only GPU branch.
