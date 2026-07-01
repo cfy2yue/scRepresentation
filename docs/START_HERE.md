@@ -53,12 +53,17 @@ Codex must wait rather than infer work from this repository.
 ## Remote Trigger Protocol
 
 When the user types `本地审计指令`, remote Codex must pause new large work,
-avoid git commit/push/reset/delete operations, and output a structured
+avoid remote git commit/push/reset/delete operations in that status-export
+turn, and output a structured
 `LOCAL_AUDIT_REQUEST` containing project path, branch, HEAD, dirty state, files
 read, final target, current route, recent commands, changed files, metrics,
 best/negative/anomalous results, suspected bottlenecks, at least three
 directions for local audit, and suggested updates to `local_goal.md`,
 `local_audit.md`, and `local_suggestion.md`.
+
+This does not forbid local CC/Codex from later committing and pushing updated
+`local_goal.md`, `local_audit.md`, and `local_suggestion.md`; that push is the
+normal way remote Codex receives the next local-audited packet.
 
 When the user types `本地审计结束`, remote Codex must run `git fetch origin`
 and `git pull --ff-only`, read `goal.md`, `local_goal.md`, `local_audit.md`,
