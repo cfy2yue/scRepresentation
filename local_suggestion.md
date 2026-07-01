@@ -55,9 +55,14 @@ raw cell count once per-arm geometry is materialized.
 Minimum task:
 
 - find the existing per-arm inputs without reading held-out query data;
+- before materialization, preflight split train condition keys, observed
+  condition/name columns, source matrix path, train-only mask, and the mapping
+  from split rows to planned NPZ keys;
 - materialize per-arm rows for Vendi `N_eff`, effective rank, participation
   ratio, pair-mode diversity if available, and abundance/response-energy
   weighted `G_eff`;
+- write all new NPZs to a fresh run-scoped artifact directory; never overwrite
+  existing `*_pert_means.npz`;
 - write a report explaining which arms were materialized, which were missing,
   and why;
 - only rerun regression if the per-arm table passes completeness/provenance

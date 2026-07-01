@@ -162,6 +162,53 @@ Check source paths only as needed for the next task:
 Do not run remote-only scripts locally on Windows unless they are clearly
 platform-independent and tiny.
 
+## First-Round Local Audit Update - 2026-07-01
+
+User context: first manual local-audit round for all three projects; no new
+remote `LOCAL_AUDIT_REQUEST` was provided. Local audit used SSH read-only
+checks on `/data/cyx/1030/scLatent` for server-local scaling and ZSCAPE
+summaries.
+
+Remote sync/state:
+
+- HEAD: `0fde3f6`.
+- Remote dirty state: 5 untracked entries: `docs/literature/`,
+  `ops/analyze_scaling_perarm_regression_20260701.py`,
+  `ops/analyze_scaling_unit_regression_20260701.py`,
+  `ops/mine_zscape_dynamic_regularizer_laws_20260701.py`, and `ref/`.
+
+Remote evidence verified:
+
+- `runs/scaling_unit_cpu_regression_20260701/RUN_STATUS.md` and
+  `reports/scaling_unit_regression_20260701/scaling_unit_decision.md`:
+  all 17 scaling rows lack usable per-train-condition vectors. Referenced
+  `*_pert_means.npz` artifacts contain dataset-label vectors, with
+  `condition_name_hits=0` and `condition_key_hits=0`; regression was correctly
+  stopped.
+- `reports/scaling_unit_regression_20260701/missing_per_arm_artifacts.csv`
+  has 17 data rows. Examples: expected 586 or 1582 train-condition vectors for
+  early arms but observed only 22 dataset-label keys.
+- `runs/scaling_perarm_regression_20260701/RUN_STATUS.md` and
+  `reports/scaling_perarm_regression_20260701/scaling_perarm_decision.md`:
+  condition-level NPZ rows `0/17`; dataset-mean NPZ geometry rows `17/17`;
+  winning scaling-x `none`; pair-mode diversity skipped because condition/OT
+  inputs are absent.
+- `runs/zscape_regularizer_mining_20260701_123950/RUN_STATUS.md` and report:
+  strict rerun decision `none_generalized_close_route`; no law generalized past
+  nulls across expression PCA and encoder-agnostic latent proxy spaces; no GPU
+  escalation is justified.
+
+Local subagent review:
+
+- scLatent independent subagent agreed the first remote goal should repair the
+  per-train-condition mean materialization prerequisite rather than wait for
+  user decision.
+- Optional tightening from subagent has been applied to `local_goal.md`: new
+  NPZ outputs must be written to a fresh run-scoped artifact directory and must
+  never overwrite old `*_pert_means.npz`; preflight must record split train
+  keys, observed condition/name fields, source matrix path, train-only mask, and
+  mapping to materialized NPZ keys.
+
 ## Open Questions For Next Audit
 
 - Is the next remote cycle manuscript polish, scaling per-arm geometry, broader

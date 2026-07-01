@@ -30,6 +30,27 @@ The scientific acceptance target is a leakage-safe, publication-ready workflow:
 strong benchmark evidence, clearly bounded LatentFM claims, preserved negative
 evidence, and no model/scaling claim without strict gates.
 
+Active long-horizon acceptance target for the current scaling line:
+
+- reveal whether effective-state / information axes such as Vendi `N_eff`,
+  effective rank, participation ratio, pair-mode diversity, `G_eff`, or
+  `N_eff x G_eff` explain perturbation-model performance better than raw cell
+  count or condition count;
+- use leakage-safe train-only per-arm geometry, not collapsed dataset-level
+  means;
+- pass held-out/confound-aware checks such as LODO or source-held-out fit,
+  dataset/abundance controls, and fail-close power floors before claiming any
+  scaling law;
+- preserve a negative or underpowered result as useful evidence rather than
+  promoting a model, checkpoint, or scaling claim.
+
+The `Exact Next Task` below is only the current materialization stage toward
+that final scientific target. Completing materialization or a preflight report
+does not complete the scaling line. Remote Codex must end the stage with either
+validated inputs for the next regression/analysis stage, a precise
+`DATA_BLOCKED` report, or a local-audit decision request tied to the
+long-horizon acceptance target.
+
 ## Current Direction And Boundaries
 
 - Current default/deployable LatentFM state remains `xverse_8k_anchor` until a
@@ -97,23 +118,100 @@ For any run-specific task, also read the relevant `runs/<run>/RUN_STATUS.md`,
 
 ## Exact Next Task
 
-Status: NOT ACTIVE.
+Date: 2026-07-01
 
-Local audit must replace this block before the user starts remote execution.
-Until this block is filled with a single bounded task, this is a read-only
-execution packet in waiting state and remote Codex must wait.
+Goal: CPU-only materialization preflight for leakage-safe per-train-condition
+geometry, then materialize the smallest valid per-condition mean artifacts if
+the preflight passes.
 
-Required fields for the next remote task:
+Why now: two remote CPU audits found the same hard blocker. All 17 scaling rows
+have referenced `*_pert_means.npz` artifacts, but those NPZs are dataset-label
+means, not train-condition vectors (`0/17` rows have condition-level vectors).
+The scaling-law question cannot be answered fairly until this prerequisite is
+repaired. Local audit chooses the first repair route rather than asking the
+user to decide.
 
-- Goal:
-- Why now:
-- Inputs and files to read:
-- Allowed commands:
-- Expected outputs:
-- DONE criteria:
-- Resource limits:
-- Forbidden actions:
-- Stop rules:
+Inputs and files to read:
+
+- the first-read files listed above;
+- `runs/scaling_unit_cpu_regression_20260701/RUN_STATUS.md`;
+- `reports/scaling_unit_regression_20260701/scaling_unit_decision.md`;
+- `runs/scaling_perarm_regression_20260701/RUN_STATUS.md`;
+- `reports/scaling_perarm_regression_20260701/scaling_perarm_decision.md`;
+- `reports/multiaxis_information_scaling_incremental_gate_20260629/multiaxis_information_scaling_join_rows.csv`;
+- `reports/downstream_information_scaling_preflight_20260628/split_information_metrics.csv`;
+- split JSON files and referenced dataset/cache artifacts named by those CSVs;
+- existing scripts:
+  - `ops/analyze_scaling_unit_regression_20260701.py`;
+  - `ops/analyze_scaling_perarm_regression_20260701.py`.
+
+Allowed commands:
+
+- read-only path/provenance checks;
+- CPU-only Python preflight to identify where train-condition source matrices
+  can be loaded from;
+- if and only if the preflight proves source paths are complete, create one
+  small materializer script such as
+  `ops/materialize_scaling_condition_means_20260701.py` or extend an existing
+  untracked ops script;
+- run a two-arm smoke first; if successful, materialize all 17 rows within the
+  limits below;
+- rerun only the prerequisite audit portion or a clearly labeled CPU regression
+  rerun after materialization, without changing model/checkpoint code.
+
+Expected outputs:
+
+- `runs/scaling_condition_mean_materialization_20260701/RUN_STATUS.md`;
+- `reports/scaling_condition_mean_materialization_20260701/PREFLIGHT.md`;
+- `reports/scaling_condition_mean_materialization_20260701/materialized_condition_mean_inventory.csv`;
+- materialized NPZ outputs under a generated server-local artifact directory
+  named in the report, not added to Git. The directory must be new and
+  run-scoped, for example under
+  `runs/scaling_condition_mean_materialization_20260701/artifacts/`; never
+  overwrite existing `*_pert_means.npz`;
+- if rerun is valid:
+  - `reports/scaling_condition_mean_materialization_20260701/scaling_rerun_summary.md`.
+
+DONE criteria:
+
+- report branch/HEAD/dirty state and confirm no `local_*.md` edits;
+- prove whether each of 17 rows has loadable train-condition source data;
+- for every materialized artifact, record split name, arm, source path,
+  condition count, vector dimension, train-only boundary, and checksum/size;
+- demonstrate that materialized keys are train-condition keys/names rather than
+  dataset-label keys;
+- preflight must record split train condition keys, observed condition/name
+  columns, source matrix path, train-only mask, and the exact mapping from split
+  rows to materialized NPZ keys;
+- if materialization cannot be done safely, output `DATA_BLOCKED` with exact
+  missing paths and do not rerun regression;
+- if materialization succeeds, rerun the CPU gate and decide whether any
+  information/geometry axis should be tested further, while preserving the
+  no-scaling-law claim unless gates actually pass.
+
+Resource limits:
+
+- CPU only; no GPU, no training, no inference, no checkpoint selection, no
+  held-out Track-C query/canonical-multi use.
+- Target 2 hours; hard stop 3 hours with a partial report.
+- Start with 2 arms; stop if a single arm requires more than 20 minutes,
+  unbounded memory, or dataset-wide processing beyond existing caches.
+- Keep generated artifacts server-local and out of Git.
+
+Forbidden actions:
+
+- do not edit `local_goal.md`, `local_audit.md`, or `local_suggestion.md`;
+- do not reopen Track-C support-only GPU work, UCE/species-latent, or the
+  narrow ZSCAPE regularizer route;
+- do not fabricate per-condition geometry from dataset-level vectors;
+- do not claim a scaling law from collapsed or underpowered data.
+
+Stop rules:
+
+- stop and output `LOCAL_AUDIT_REQUEST` if source matrices/splits cannot be
+  found, if train-only boundaries are ambiguous, if outputs would overwrite
+  prior artifacts, or if the repair needs GPU/large data processing beyond the
+  resource limit.
 
 ## Default Resource Rules
 
