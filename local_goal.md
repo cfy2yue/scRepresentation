@@ -1,6 +1,6 @@
 # local_goal.md
 
-Updated: 2026-07-01.
+Updated: 2026-07-02.
 
 This is the local-authored remote execution packet for scLatent /
 scRepresentation. Remote Codex reads this file, `local_audit.md`, and
@@ -118,11 +118,25 @@ required.
 - The CPU-only manuscript package for the Track-C closure and scaling-axis /
   failure-map evidence has been verified. Further work here is narrative,
   reviewer-package, or provenance polish unless a new hypothesis is audited.
-- Scaling is an active insight direction, but not a deployable scaling-law
-  claim. The current next scientific blocker is per-arm geometry materialization
-  for information/effective-state axes: Vendi `N_eff`, effective rank,
-  participation ratio, pair-mode diversity, and abundance/response-energy
-  weighted `G_eff`.
+- Scaling is an active insight direction, but the plain per-train-condition
+  mean geometry sub-route is now CLOSED as an underpowered negative (see
+  `local_audit.md` 2026-07-02). The 2026-07-01 materialization prerequisite is
+  REPAIRED (17/17 arms, 11737 train-condition vectors, dim 384, keys
+  `dataset::condition`), but the CPU rerun returned `none_no_scaling_law_claim`:
+  no geometry/information axis beat condition count under LODO/confound control.
+  Decisive evidence that this is a POWER/CONFOUND floor, not an axis-selection
+  failure: condition count is itself the strongest full-table correlate
+  (spearman ~0.60, p~0.01 vs `family_mmd_delta`/`tail_score`) yet its own LODO
+  out-of-sample R2 is negative; every geometry/information axis sits at partial
+  rho ~|0.4| with negative LODO OOS R2. On 17 dataset-level rows no axis,
+  including the baseline, can leave-one-dataset-out generalize.
+- The next scientific blocker is therefore NOT another axis on the same 17 rows.
+  It is (a) whether a genuinely new mechanism axis (explicit train-only OT
+  pair-mode diversity, cluster/centroid coverage, gene-token/HVG information) is
+  even recoverable from existing artifacts, and (b) whether a power-adequate,
+  confound-controlled scaling DESIGN exists (more arms/rows, or within-dataset
+  budget sweeps that vary the axis while holding dataset/source fixed). Do NOT
+  re-run the condition-mean geometry regression on the current 17 rows.
 - Zebrafish/ZSCAPE remains an insight source. The narrow dynamic-law regularizer
   mining run was negative: no validated differentiable regularizer should be
   launched from that coverage. Any future zebrafish task must broaden the
@@ -188,110 +202,206 @@ For any run-specific task, also read the relevant `runs/<run>/RUN_STATUS.md`,
 
 ## Exact Next Task
 
-Date: 2026-07-01
+Date: 2026-07-02
 
-Goal: CPU-only materialization preflight for leakage-safe per-train-condition
-geometry, then materialize the smallest valid per-condition mean artifacts if
-the preflight passes.
+Task name: `next_route_audit_20260702` — CPU-only route-selection audit after the
+condition-mean geometry negative. It decides which of three tracks becomes the
+next execution stage: (A) a power-adequate + new-mechanism scaling redesign,
+(B) broader zebrafish/ZSCAPE discovery, or (C) architecture-hygiene planning.
+This supersedes the completed `scaling_condition_mean_materialization_20260701`
+task; do NOT re-run the condition-mean geometry regression.
 
-Why now: two remote CPU audits found the same hard blocker. All 17 scaling rows
-have referenced `*_pert_means.npz` artifacts, but those NPZs are dataset-label
-means, not train-condition vectors (`0/17` rows have condition-level vectors).
-The scaling-law question cannot be answered fairly until this prerequisite is
-repaired. Local audit chooses the first repair route rather than asking the
-user to decide.
+Why a route audit and not a new regression: local audit verified the 17-row
+condition-mean geometry route is an underpowered negative. Condition count is the
+strongest full-table axis yet fails leave-one-dataset-out; every geometry/
+information axis has negative LODO OOS R2. Swapping in a new axis on the same 17
+rows repeats the error. Before spending any regression/analysis run, the remote
+must establish (A) whether a genuinely new axis is recoverable AND whether a
+higher-power design exists, and in parallel scope the two other prioritized
+tracks the user cares about (zebrafish discovery, architecture hygiene). User
+priority is insight-first: scaling and zebrafish outrank flow-matching endpoint
+tuning; architecture hygiene runs in parallel as low-risk engineering.
 
-Inputs and files to read:
+Prior-stage results confirmed by local audit (build on, do not redo):
 
-- the first-read files listed above;
-- `runs/scaling_unit_cpu_regression_20260701/RUN_STATUS.md`;
-- `reports/scaling_unit_regression_20260701/scaling_unit_decision.md`;
-- `runs/scaling_perarm_regression_20260701/RUN_STATUS.md`;
-- `reports/scaling_perarm_regression_20260701/scaling_perarm_decision.md`;
-- `reports/multiaxis_information_scaling_incremental_gate_20260629/multiaxis_information_scaling_join_rows.csv`;
-- `reports/downstream_information_scaling_preflight_20260628/split_information_metrics.csv`;
-- split JSON files and referenced dataset/cache artifacts named by those CSVs;
-- existing scripts:
-  - `ops/analyze_scaling_unit_regression_20260701.py`;
-  - `ops/analyze_scaling_perarm_regression_20260701.py`.
+- materialization REPAIRED: 17/17 arms, 11737 train-condition vectors, dim 384,
+  NPZ keys `dataset::condition` (inventory
+  `reports/scaling_condition_mean_materialization_20260701/materialized_condition_mean_inventory.csv`);
+- rerun decision `none_no_scaling_law_claim`, winning axis `none`
+  (`.../scaling_rerun_summary.md`);
+- failed candidates: `condition_mean_pairwise_l2_mass` vs `cross_pp_delta`
+  (partial rho -0.4641, LODO OOS R2 -0.0007, margin -0.0022, pass False);
+  `condition_mean_vendi_rbf_effective_count` vs `family_pp_delta` (partial rho
+  0.4444, LODO OOS R2 -0.0174, margin -0.0476, pass False);
+- decisive power evidence: condition count spearman ~0.60 (p~0.01) but its own
+  LODO OOS R2 negative;
+- benign anomaly RESOLVED locally: run-start HEAD `90fd97a` is an ancestor of
+  current `54e9520` (forward docs commits after run start), not an integrity
+  issue;
+- `budget64` true-cell rows were mis-pathed to a `budget128` artifact in
+  `split_information_metrics.csv`; remote's `AUTONOMOUS_DECISION` corrected via
+  exact manifest split-name match. This correction must be persisted in a
+  tracked doc this round (sub-goal C0).
 
-Allowed commands:
+Sub-goals (ALL CPU-only, read-mostly; no GPU/training/inference/checkpoint; no
+held-out Track-C query/canonical-multi; never overwrite `*_pert_means.npz`):
 
-- read-only path/provenance checks;
-- CPU-only Python preflight to identify where train-condition source matrices
-  can be loaded from;
-- if and only if the preflight proves source paths are complete, create one
-  small materializer script such as
-  `ops/materialize_scaling_condition_means_20260701.py` or extend an existing
-  untracked ops script;
-- run a two-arm CPU-only materializer/preflight smoke first; if successful,
-  materialize all 17 rows within the limits below;
-- rerun only the prerequisite audit portion or a clearly labeled CPU regression
-  rerun after materialization, without changing model/checkpoint code.
+Track A — scaling salvageability (primary):
+
+- A1. Formally close the condition-mean geometry route: write a failure-map entry
+  summarizing the LODO/power evidence above (negative evidence to PRESERVE, not a
+  route to rerun).
+- A2. OT pair-mode / cluster artifact inventory: search existing runs/reports for
+  RECOVERABLE train-only OT coupling / pair-mode assignments and cluster/centroid
+  assignments (files mapping train cells/conditions to explicit pair modes or
+  clusters, with traceable provenance). Read `CoupledFM/model/latent/fm_ot.py` and
+  `CoupledFM/model/latent/../utils/data/ot_pairer.py` only as static schema
+  context. Classify each candidate as (i) usable train-only assignment with
+  traceable mapping, or (ii) collapsed/dataset-level only.
+- A3. Power/design feasibility: enumerate how many independent scaling arms/rows
+  are actually available beyond 17, and whether a within-dataset budget-sweep
+  design (vary the axis while holding dataset/source fixed) can raise effective N
+  and control the dataset/abundance confound that sinks LODO today. State the
+  minimum arm count for a meaningful LODO/source-held-out test.
+- A4. Gene-token/HVG information axis feasibility: check whether HVG masks / gene-
+  token importance are computable from existing caches for a gene-information-
+  weighted axis, without new dataset-wide processing.
+
+Track B — zebrafish/ZSCAPE discovery readiness (parallel; likely primary pivot if
+Track A is power-blocked):
+
+- B1. Inventory ZSCAPE assets on the server: timepoints, lineages, perturbations,
+  cell counts, and which are already encodable/loadable on CPU. Read
+  `docs/literature/SCALING_ZSCAPE_SQUIDIFF_NOTES_20260701.md` and
+  `ref/zebrafish_dataset.pdf` if present (remote-only, untracked; summarize, do
+  not add to Git).
+- B2. Define the FIRST broader-discovery CPU smoke that avoids repeating the
+  rejected narrow regularizer-mining coverage: a macro distribution-dynamics
+  analysis across timepoints (e-distance / mean-shift trajectories) with
+  wrong-time, wrong-lineage, and permutation nulls, and/or a multi-timepoint OT
+  pseudo-tracking scaffold (one cell/prototype per stage). Specify inputs,
+  controls, and the fail-close rule. Do NOT launch a differentiable regularizer.
+
+Track C — architecture-hygiene localization (parallel; planning only, NO code
+edits this round):
+
+- C0. Persist provenance corrections into a tracked doc (e.g. `docs/DECISIONS.md`
+  or `docs/EXPERIMENT_INDEX.md`): the `budget64`->`budget128` split-name
+  correction and the `/data/cyx/1030/runs` -> `/data/cyx/1030/scLatent/runs`
+  old-root drift, so future audits do not re-trip them.
+- C1. Localize and write a concrete fix PLAN (do NOT edit model/training code this
+  round) for the two confirmed metric-only defects:
+  - P4 eval velocity-MSE random pairing (`CoupledFM/model/latent/train.py:3500-3501`):
+    eval permutes src/gt independently instead of OT-pairing, so `test_mse` is not
+    comparable to `train_mse` and biases model selection; plan the R1 fix to
+    OT-pair src/gt in eval, mirroring `OTPrefetchIter` / `ot_pairer.py`;
+  - P1 train/eval estimator mismatch (`train.py:2941,2958,2969,3003` single Euler
+    step vs 20-step eval): plan the R2 alignment (short `ode_integrate_diff` for the
+    aux endpoint estimator).
+  - For each, write the exact no-harm gate: headline ODE-MMD/Pearson (pairing-free)
+    unchanged; only the diagnostic metric changes; default model stays
+    `xverse_8k_anchor`. APPLYING these fixes needs an explicit user greenlight in
+    the goal-start message (code edits are gated); this round is localization +
+    plan + gate only.
+  - Note the biggest structural gap for the user's "regularize in expression AND
+    latent space" plan: the latent trainer has NO latent->expression decoder
+    (emb_dim 2058, latent-only); an expression-space prior must attach in
+    `CoupledFM/model/train.py` (~1643-1644) or requires a frozen decoder. Record
+    this as a constraint, not a task.
+
+Decision output (REQUIRED):
+
+- write `reports/next_route_audit_20260702/NEXT_AXIS_DECISION.md` recommending
+  EXACTLY ONE next execution stage with justification tied to the long-horizon
+  acceptance target, chosen from:
+  - `SCALING_REDESIGN`: Track A found BOTH a recoverable new train-only axis AND a
+    power-adequate/confound-controlled design -> next stage materializes+tests that
+    axis with LODO/source-held-out controls;
+  - `ZEBRAFISH_DISCOVERY`: Track A is power-blocked or axis-blocked -> promote the
+    Track B first discovery smoke as the next execution stage;
+  - `ARCH_HYGIENE`: only if the user greenlights code edits -> apply the R1
+    metric-only fix under its no-harm gate as the next stage;
+  - `DATA_BLOCKED`: name the exact missing artifact and the minimal materialize
+    task if no track is runnable.
+- append a dated `AUTONOMOUS_DECISION` entry to `remote_decision.md` recording this
+  route audit AND back-filling the un-logged
+  `scaling_condition_mean_materialization_20260701` result.
+
+Allowed inputs: the first-read files; the materialization run/report dir; split
+JSONs; existing OT/coupling/cluster artifacts if discoverable;
+`CoupledFM/model/latent/fm_ot.py`, `utils/data/ot_pairer.py`, `train.py` (static
+read for C1 localization only); ZSCAPE assets and literature/ref (read-only).
 
 Expected outputs:
 
-- `runs/scaling_condition_mean_materialization_20260701/RUN_STATUS.md`;
-- `reports/scaling_condition_mean_materialization_20260701/PREFLIGHT.md`;
-- `reports/scaling_condition_mean_materialization_20260701/materialized_condition_mean_inventory.csv`;
-- materialized NPZ outputs under a generated server-local artifact directory
-  named in the report, not added to Git. The directory must be new and
-  run-scoped, for example under
-  `runs/scaling_condition_mean_materialization_20260701/artifacts/`; never
-  overwrite existing `*_pert_means.npz`;
-- if rerun is valid:
-  - `reports/scaling_condition_mean_materialization_20260701/scaling_rerun_summary.md`.
+- `runs/next_route_audit_20260702/RUN_STATUS.md`;
+- `reports/next_route_audit_20260702/OT_PAIRMODE_CLUSTER_INVENTORY.md` (+ a
+  `pairmode_artifact_inventory.csv`);
+- `reports/next_route_audit_20260702/SCALING_POWER_FEASIBILITY.md`;
+- `reports/next_route_audit_20260702/ZSCAPE_ASSET_INVENTORY.md`;
+- `reports/next_route_audit_20260702/ARCH_HYGIENE_FIX_PLAN.md`;
+- `reports/next_route_audit_20260702/NEXT_AXIS_DECISION.md`;
+- `remote_decision.md` appended entry; provenance-correction note in a tracked doc
+  (C0).
 
 DONE criteria:
 
 - report branch/HEAD/dirty state and confirm no `local_*.md` edits;
-- prove whether each of 17 rows has loadable train-condition source data;
-- for every materialized artifact, record split name, arm, source path,
-  condition count, vector dimension, train-only boundary, and checksum/size;
-- demonstrate that materialized keys are train-condition keys/names rather than
-  dataset-label keys;
-- preflight must record split train condition keys, observed condition/name
-  columns, source matrix path, train-only mask, and the exact mapping from split
-  rows to materialized NPZ keys;
-- if materialization cannot be done safely, output subroute `DATA_BLOCKED` with
-  exact missing paths, do not rerun regression, record the pivot in
-  `remote_decision.md`, and continue with a safe alternative such as scaling
-  schema audit, zebrafish inventory, or architecture audit if within limits;
-- if materialization succeeds, rerun the CPU gate and decide whether any
-  information/geometry axis should be tested further, while preserving the
-  no-scaling-law claim unless gates actually pass.
-- whether materialization succeeds or blocks, write a next-stage
-  scaling-axis schema proposal covering cluster/centroid coverage,
-  condition+OT pair-mode diversity, basic statistics, information-theoretic
-  metrics, gene-token/HVG or `G_eff` information, information density, and
-  dataset/source/abundance confound controls.
+- condition-mean geometry route explicitly closed as preserved negative;
+- OT pair-mode/cluster artifacts classified usable vs collapsed with exact paths;
+- scaling power-feasibility states available arm count and the minimum for a
+  meaningful LODO test;
+- ZSCAPE asset inventory + one fail-closed first discovery smoke spec;
+- P4/P1 localized with exact file:line, an R1/R2 fix plan, and no-harm gates;
+- `NEXT_AXIS_DECISION.md` picks exactly one next stage;
+- provenance corrections persisted to a tracked doc.
+
+Conditional next-stage authorization (remote may proceed WITHOUT a new local round
+IF its own DONE gate holds):
+
+- if `ZEBRAFISH_DISCOVERY`: run the single specified CPU distribution-dynamics /
+  OT-pseudo-tracking smoke with wrong-time/wrong-lineage/permutation nulls;
+  promotion requires the regularity to survive ALL nulls in expression space (and
+  an encoder-agnostic latent view if used); a surviving result is discovery
+  evidence only, NOT a regularizer launch;
+- if `SCALING_REDESIGN`: materialize the one recovered train-only axis into a
+  fresh run-scoped dir (never overwrite NPZs) and rerun the CPU gate ONLY with the
+  power-adequate design; promotion requires the axis to beat BOTH raw cell count
+  AND condition count under LODO/source-held-out with confound controls; otherwise
+  preserve as negative;
+- if `ARCH_HYGIENE` AND the user greenlit code edits: apply ONLY the R1 metric-only
+  fix; no-harm gate = headline ODE-MMD/Pearson unchanged, default model unchanged;
+- any negative/ambiguous/blocked outcome -> log honestly in `remote_decision.md`
+  and request local audit rather than sweeping variants.
 
 Resource limits:
 
 - CPU only; no GPU, no training, no inference, no checkpoint selection, no
   held-out Track-C query/canonical-multi use.
+- Writes only under the two `next_route_audit_20260702/` dirs, the authorized
+  `remote_decision.md` append, and the single C0 tracked-doc provenance note.
+- Never overwrite `*_pert_means.npz` or any prior artifact.
 - Target 2 hours; hard stop 3 hours with a partial report.
-- Start with 2 arms; stop if a single arm requires more than 20 minutes,
-  unbounded memory, or dataset-wide processing beyond existing caches.
-- Keep generated artifacts server-local and out of Git.
+- No dataset-wide processing beyond existing caches; if any sub-goal needs a large
+  recompute, mark it `DATA_BLOCKED` and continue with the others.
 
 Forbidden actions:
 
 - do not edit `local_goal.md`, `local_audit.md`, or `local_suggestion.md`;
-- do not reopen Track-C support-only GPU work, UCE/species-latent, or the
-  narrow ZSCAPE regularizer route;
+- do not reopen Track-C support-only GPU work, UCE/species-latent, or the narrow
+  ZSCAPE regularizer route;
 - do not fabricate per-condition geometry from dataset-level vectors;
-- do not claim a scaling law from collapsed or underpowered data.
+- do not claim a scaling law from collapsed or underpowered data;
+- do not edit model/training code this round (Track C is planning only) unless the
+  user explicitly greenlights the R1 metric-only fix.
 
 Stop rules:
 
-- stop the current materialization subtask, record a `SOFT_BLOCK` or
-  `ROUTE_PIVOT` in `remote_decision.md`, and continue with another safe route
-  if source matrices/splits cannot be found, train-only boundaries are
-  ambiguous, or outputs would overwrite prior artifacts;
-- mark hard `BLOCKED` only if every reasonable next route needs GPU/large data
-  processing beyond the resource limit, held-out/query permission, new data
-  source, destructive operations, or final-goal changes.
+- soft-block a single track and continue the others if its inputs are missing;
+  record `SOFT_BLOCK`/`ROUTE_PIVOT` in `remote_decision.md`;
+- mark hard `BLOCKED` only if every track needs GPU/large data processing beyond
+  the resource limit, held-out/query permission, new data source, destructive
+  operations, or final-goal changes.
 
 ## Default Resource Rules
 

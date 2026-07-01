@@ -1,6 +1,6 @@
 # local_suggestion.md
 
-Updated: 2026-07-01.
+Updated: 2026-07-02.
 
 This file is part of the local-authored remote execution packet. Remote Codex
 must read it with `local_goal.md` and `local_audit.md`; it gives priorities,
@@ -33,31 +33,72 @@ contain older handoff language.
 
 ## Current Priority Order
 
-1. Scaling per-arm geometry materialization, if the user wants the next
-   scientific insight step. This unblocks fair regression of effective
-   information axes, information density, and mode coverage against model
-   performance.
-2. Broader zebrafish discovery audit, because ZSCAPE time-series perturbation
-   ground truth can reveal dynamic biological constraints for LatentFM before
-   any new regularizer is launched. The task must introduce new coverage or a
-   broader analysis lens beyond the rejected narrow regularizer-mining run.
-3. LatentFM architecture audit in parallel with the insight tracks, especially
-   bottlenecks suggested by scaling or zebrafish results; code edits or model
-   promotion still require a separate explicit gate.
-4. Manuscript/reviewer-package polish, if the user wants publication packaging
-   with no new experiment.
-5. Architecture hygiene planning or a tiny metric-only code fix proposal, only
-   after local audit separates it from the insight tracks and defines no-harm
-   gates. Code edits require explicit user approval.
-6. Chemical V2 or any GPU branch only after exact ACK, resource audit, split
+Updated 2026-07-02 after the condition-mean geometry negative. The immediate next
+remote task is the CPU-only `next_route_audit_20260702` (see `local_goal.md`),
+which picks the next execution stage among the tracks below.
+
+1. Scaling REDESIGN (not a rerun): recover explicit train-only OT pair-mode /
+   cluster-centroid / gene-token-HVG assignments AND establish a power-adequate,
+   confound-controlled design (more arms, or within-dataset budget sweeps).
+   Rationale: the 17-row condition-mean geometry route is a closed underpowered
+   negative — even condition count fails LODO — so the fix is a new axis PLUS
+   power, not another axis on the same rows. The plain per-condition mean geometry
+   regression is DEMOTED and must not be rerun.
+2. Broader zebrafish/ZSCAPE discovery: raised toward primary pivot because the
+   scaling line is power-blocked. Must introduce a broader lens than the rejected
+   narrow regularizer-mining run: macro distribution dynamics, multi-timepoint OT
+   pseudo-tracking, GRN/pathway cascade, latent geometry/direction — all under
+   wrong-time/wrong-lineage/permutation nulls. Discovery only; no regularizer
+   launch until controls pass.
+3. LatentFM architecture hygiene (parallel, planning-first): localize the two
+   confirmed metric-only defects (P4 eval velocity-MSE random pairing at
+   `train.py:3500-3501`; P1 estimator mismatch at `train.py:2941,2958,2969,3003`)
+   and write the R1/R2 fix plan + no-harm gate. APPLYING even the near-zero-risk R1
+   fix requires explicit user approval (code edits are gated).
+4. Manuscript/reviewer-package polish, only if the user wants packaging with no new
+   experiment.
+5. Chemical V2 or any GPU branch only after exact ACK, resource audit, split
    boundary, written hypothesis, stop rule, and `RUN_STATUS.md`.
+
+## Second-Round Guidance - 2026-07-02
+
+The condition-mean geometry route is a closed underpowered negative (condition
+count itself fails LODO; all axes have negative LODO OOS R2). Do not rerun it. The
+next remote task `next_route_audit_20260702` is a CPU-only route-selection audit;
+its `NEXT_AXIS_DECISION.md` must pick exactly one next execution stage:
+
+- `SCALING_REDESIGN` only if BOTH a recoverable train-only new axis (OT pair-mode /
+  cluster / gene-token-HVG) AND a power-adequate confound-controlled design are
+  found. Promotion of any scaling axis then requires it to beat BOTH raw cell count
+  AND condition count under LODO/source-held-out with confound controls; otherwise
+  preserve as negative.
+- `ZEBRAFISH_DISCOVERY` if scaling is power/axis-blocked. First smoke is macro
+  distribution dynamics and/or multi-timepoint OT pseudo-tracking with
+  wrong-time/wrong-lineage/permutation nulls; a regularity is discovery evidence
+  only and must survive ALL nulls before any regularizer is even proposed.
+- `ARCH_HYGIENE` only if the user greenlights code edits; then apply ONLY the R1
+  metric-only eval-pairing fix under its no-harm gate (headline ODE-MMD/Pearson
+  unchanged, default model `xverse_8k_anchor` unchanged).
+- `DATA_BLOCKED` with the exact missing artifact if no track is runnable.
+
+Standing gates this round: no scaling-law claim without beating cell/condition
+count under held-out/confound control; no zebrafish regularizer without passing all
+nulls; no code edit or model promotion without an explicit gate; never overwrite
+`*_pert_means.npz`; persist the budget64/128 and old-root provenance corrections to
+a tracked doc.
 
 ## Candidate Task Templates
 
 ### A. Scaling Per-Arm Geometry CPU Task
 
-Hypothesis: effective-state / information axes explain performance better than
-raw cell count once per-arm geometry is materialized.
+Note (2026-07-02): the plain per-condition MEAN geometry version of this task is
+CLOSED as an underpowered negative. The live variant is OT pair-mode / cluster /
+gene-token-HVG axes PLUS a power-adequate design; see `Second-Round Guidance` above
+and `next_route_audit_20260702` in `local_goal.md`.
+
+Hypothesis: effective-state / information axes explain performance better than raw
+cell count once a RECOVERABLE new axis is materialized AND the design has enough
+independent arms to leave-one-dataset-out generalize.
 
 Minimum task:
 
