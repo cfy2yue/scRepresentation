@@ -81,6 +81,12 @@ docs/DECISIONS.md
 docs/BUGS_AND_FIXES.md
 ```
 
+The current CC/Codex workflow is manual and audit-first. `local_goal.md`,
+`local_audit.md`, and `local_suggestion.md` form the local audit packet.
+`local_goal.md` is not an active remote goal until local audit fills its
+`Exact Next Task` section for one bounded remote task. The remote-side trigger
+words are documented in `docs/START_HERE.md`: `本地审计指令` and `本地审计结束`.
+
 Legacy auto-coordination docs and prompts are archived under
 `docs/archive/legacy_auto_coordination_20260701/` and
 `prompts/archive/legacy_auto_coordination_20260701/`. They are historical
@@ -115,8 +121,8 @@ record any future physical migrations in `docs/DECISIONS.md` and `goal.md`.
 
 For CC/Windows review, clone the GitHub repo locally for reading, planning, and
 Markdown/code review. Server-only work such as GPU jobs, large data reads, and
-run integration belongs on `cyx-server-cfy`, normally through Codex unless
-the user explicitly pauses Codex for the scoped file or branch.
+run integration belongs on `cyx-server-cfy`, normally through Codex after the
+manual local audit packet names the exact task and limits.
 
 ## Prompts
 

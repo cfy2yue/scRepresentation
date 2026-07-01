@@ -37,12 +37,20 @@ Coordinator responsibilities:
 - keep the mainline state coherent;
 - execute only after the user manually starts or continues goal mode;
 - treat `local_goal.md`, `local_audit.md`, and `local_suggestion.md` as the
-  current local-audited route;
+  current local-audited route, and do not execute if `local_goal.md` has no
+  filled `Exact Next Task`;
 - integrate results into run status files, reports, `docs/PROJECT_REVIEW.md`,
   and `docs/EXPERIMENT_INDEX.md`;
 - record branch closures and negative evidence;
 - when blocked, output a structured local-audit request instead of assuming
   automatic local/remote coordination.
+
+Manual boundary triggers:
+
+- `本地审计指令`: pause new large work and output `LOCAL_AUDIT_REQUEST`.
+- `本地审计结束`: pull latest docs, reread the local audit packet, summarize the
+  exact next task and limits, then wait for the user to start/continue goal
+  mode.
 
 Before finalizing any turn, report what changed, what is running or paused, and
 the exact files that matter next.

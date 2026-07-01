@@ -58,5 +58,11 @@ Output requirements:
    changes the durable final target.
 7. Flag any code edits that should wait until Codex pauses.
 
+The audit output should preserve the manual boundary: remote execution is not
+active until `local_goal.md` has a filled `Exact Next Task`. Archived legacy
+auto-coordination prompts are evidence only, not active instructions. Use
+`本地审计指令` for a remote local-audit request and `本地审计结束` after local
+audit has updated the packet.
+
 Keep the audit sharp and actionable. The goal is to improve the next execution
 cycle, not to write a broad essay.

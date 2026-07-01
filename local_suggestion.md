@@ -1,31 +1,203 @@
 # local_suggestion.md
 
-Status: template. Replace this file during the next local audit.
+Updated: 2026-07-01.
 
-## Top Priorities
+This file defines how local audit should generate the next remote Codex
+suggestion. It is not itself permission to execute. The concrete remote task
+must be copied into `local_goal.md` under `Exact Next Task`.
 
-Rank the most important next actions.
+## Suggestion Generation Rules
 
-## Recommended Next Remote Tasks
+Each suggested remote task must be:
 
-Give concrete tasks for remote Codex.
+- one bounded goal, not a bundle of speculative experiments;
+- grounded in current docs, run status, and report provenance;
+- explicit about data/split boundaries and forbidden inputs;
+- CPU-only unless a fresh GPU resource audit is part of the task;
+- measurable by predeclared metrics, negative controls, and fail-close rules;
+- safe to stop with a useful local-audit request if artifacts are missing;
+- clear about which files may be edited and which outputs are server-local.
 
-## Alternative Routes
+Do not suggest tasks that reopen closed branches merely because archived notes
+contain older handoff language.
 
-Explain lower-priority options and why they are not first.
+## Current Priority Order
 
-## File And Function Targets
+1. Scaling per-arm geometry materialization, if the user wants the next
+   scientific insight step. This unblocks fair regression of information axes
+   against model performance.
+2. Manuscript/reviewer-package polish, if the user wants publication packaging
+   with no new experiment.
+3. Broader zebrafish discovery audit, only if it introduces new coverage or a
+   broader analysis lens beyond the rejected narrow regularizer-mining run.
+4. Architecture hygiene planning or a tiny metric-only code fix proposal, only
+   after local audit separates it from the insight tracks and defines no-harm
+   gates. Code edits require explicit user approval.
+5. Chemical V2 or any GPU branch only after exact ACK, resource audit, split
+   boundary, written hypothesis, stop rule, and `RUN_STATUS.md`.
 
-List exact files/functions/scripts likely involved.
+## Candidate Task Templates
+
+### A. Scaling Per-Arm Geometry CPU Task
+
+Hypothesis: effective-state / information axes explain performance better than
+raw cell count once per-arm geometry is materialized.
+
+Minimum task:
+
+- find the existing per-arm inputs without reading held-out query data;
+- materialize per-arm rows for Vendi `N_eff`, effective rank, participation
+  ratio, pair-mode diversity if available, and abundance/response-energy
+  weighted `G_eff`;
+- write a report explaining which arms were materialized, which were missing,
+  and why;
+- only rerun regression if the per-arm table passes completeness/provenance
+  checks.
+
+Promotion gate:
+
+- per-arm table covers the predeclared true-cell/scaling arms;
+- no collapsed-parent geometry remains in the joined regression table;
+- information axis improves out-of-sample or leave-one-dataset-out fit versus
+  raw cell count and condition count;
+- abundance/source/dataset confounds are controlled or reported as blockers.
+
+Fail-close:
+
+- if inputs are missing or collapse cannot be repaired, output a blocked report
+  with exact missing paths and do not claim a scaling law.
+
+### B. Manuscript Package Polish CPU Task
+
+Hypothesis: current negative and scaling-axis evidence is ready for reviewer
+interpretation without more experiments.
+
+Promotion gate:
+
+- manifest validates;
+- referenced paths exist;
+- claims stay within "scaling-axis/failure-map, no-harm-gated, negative
+  evidence preserved";
+- no wording says promoted checkpoint, solved Track-C query, or monotonic
+  scaling law.
+
+Fail-close:
+
+- if provenance is incomplete or figures/scripts do not validate, report the
+  exact missing artifacts and stop.
+
+### C. Broader Zebrafish Discovery CPU Task
+
+Hypothesis: broader time-series/distribution/pseudo-single-cell tracking or
+GRN/pathway-cascade analysis can find a reproducible biological regularity,
+even though the narrow dynamic-law regularizer run was negative.
+
+Promotion gate:
+
+- regularity survives wrong-time, wrong-lineage, permutation, abundance/support,
+  and coverage controls;
+- result is reproducible in expression space and, if used, an encoder-agnostic
+  latent view;
+- proposed regularizer has a clear attachment point and no claim is made before
+  validation.
+
+Fail-close:
+
+- if controls fail, preserve the negative as biological insight and do not
+  launch a model regularizer.
+
+### D. Architecture Hygiene Planning
+
+Hypothesis: a known metric/protocol defect can be corrected without changing
+scientific claim scope.
+
+Possible first targets from the audit:
+
+- eval velocity-MSE OT pairing caveat;
+- aux one-step endpoint estimator versus multi-step eval mismatch;
+- condition-dropout/CFG or gradient-conflict handling only after gates are
+  specified.
+
+Promotion gate:
+
+- small tests pass;
+- old claims are not rewritten;
+- default model remains `xverse_8k_anchor` unless a separate strict no-harm
+  gate passes.
+
+Fail-close:
+
+- if fixing it changes metric comparability or requires training, stop and ask
+  for local audit.
 
 ## Metrics And Gates
 
-Define metrics, baselines, negative controls, and promotion/stop gates.
+Every suggestion must state at least one primary metric and one control.
 
-## Decision Tree After Results
+Allowed metric families:
 
-State what to do if the next run is positive, negative, blocked, or ambiguous.
+- LatentFM: ODE-MMD, Pearson perturbation (`pp`), Pearson cell (`pc`), family
+  gene/drug metrics, split-group metrics, bootstrap/CI, tail/no-harm rows.
+- Scaling: cell count, condition count, Vendi `N_eff`, effective rank,
+  participation ratio, Kish/state entropy, pair-mode diversity, `G_eff`,
+  `N_eff x G_eff`, LODO or source-held-out regression fit, confound controls.
+- Zebrafish: time/lineage/direction consistency, wrong-time and wrong-lineage
+  nulls, permutation nulls, abundance/support residualization, expression-vs-
+  latent agreement, coverage and pairability checks.
+- Manuscript: manifest validity, path existence, figure QA, reproduction-script
+  count, claim-scope lint.
+
+Hard gates:
+
+- no hard fail when a no-hard-fail rule is predeclared;
+- no held-out query use without fresh authorization;
+- no model promotion without canonical no-harm and promotion gates;
+- no scaling-law claim unless the information axis beats raw cell count under
+  held-out/confound-controlled evaluation;
+- no zebrafish regularizer launch unless dynamic law controls pass.
+
+## Decision Tree After Remote Results
+
+Positive:
+
+- verify outputs and paths;
+- update `docs/DECISIONS.md`, `docs/EXPERIMENT_INDEX.md`, and the relevant
+  project review summary if the user authorizes documentation updates;
+- decide whether the next step is confirmatory validation, manuscript polish,
+  or a stricter gate;
+- do not promote defaults until strict promotion/no-harm criteria pass.
+
+Negative:
+
+- preserve the negative evidence;
+- close or narrow the branch in the next local audit;
+- update suggested claim language to avoid overreach;
+- choose a different mechanism only if it is not a cosmetic variant of the
+  failed branch.
+
+Blocked:
+
+- require a `LOCAL_AUDIT_REQUEST` with exact missing files, commands attempted,
+  partial outputs, and at least three possible next directions;
+- do not let remote Codex invent a replacement heavy experiment;
+- local audit decides whether to repair prerequisites, switch tasks, or close
+  the route.
+
+Ambiguous:
+
+- ask for the smallest CPU-only disambiguation check;
+- prefer provenance and negative controls over more training;
+- if ambiguity touches split/query leakage, stop as blocked.
 
 ## Remote Prompt Snippet
 
-Optional extra prompt text for remote Codex.
+Use only after `local_goal.md` has a filled `Exact Next Task`:
+
+```text
+Read `goal.md`, `local_goal.md`, `local_audit.md`, `local_suggestion.md`, and
+`docs/START_HERE.md` first. Execute only the filled `Exact Next Task`; do not
+infer extra experiments from archived legacy handoffs. Respect resource limits,
+forbidden actions, and stop rules. If blocked, output `LOCAL_AUDIT_REQUEST`
+with files read, commands run, changed/generated paths, metrics, anomalies,
+suspected bottlenecks, and suggested updates to the three local docs.
+```

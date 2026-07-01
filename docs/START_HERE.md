@@ -31,6 +31,9 @@ Current manual local-audit workflow:
 10. `docs/PROJECT_REVIEW.md`
 11. `docs/EXPERIMENT_INDEX.md`
 
+`local_goal.md` is a standing local-audit packet, not an active remote goal.
+Remote execution starts only after local audit fills its `Exact Next Task`.
+
 Files under `docs/archive/legacy_auto_coordination_20260701/` and
 `prompts/archive/legacy_auto_coordination_20260701/` are historical evidence
 only. Do not treat them as active instructions.
@@ -44,7 +47,8 @@ bottlenecks, optionally runs small checks, and updates `local_goal.md`,
 Remote Codex executes only after the user manually pulls GitHub and starts a
 goal. Remote Codex should read the three `local_*.md` files plus `goal.md`,
 record decisions and results, and output a structured local-audit request when
-blocked.
+blocked. If `local_goal.md` still says `Exact Next Task` is `NOT ACTIVE`, remote
+Codex must wait rather than infer work from this repository.
 
 ## Remote Trigger Protocol
 
@@ -60,15 +64,16 @@ When the user types `本地审计结束`, remote Codex must run `git fetch origi
 and `git pull --ff-only`, read `goal.md`, `local_goal.md`, `local_audit.md`,
 `local_suggestion.md`, and this file, then summarize the next task, resource
 limits, stop rules, and any document conflicts. It must then wait for the user
-to start or continue goal mode.
+to start or continue goal mode. If `local_goal.md` still says `Exact Next Task`
+is `NOT ACTIVE`, remote Codex must not start a remote goal.
 
 Manual goal prompt:
 
 ```text
-目标与路线：local_goal.md
-本地审计：local_audit.md（不存在则跳过）
-本地建议：local_suggestion.md（不存在则跳过）
-资源限制：<fill in this round's limits>
+目标与路线: local_goal.md
+本地审计: local_audit.md
+本地建议: local_suggestion.md
+资源限制: <fill in this round's limits>
 ```
 
 ## Do Not Touch Without Approval
