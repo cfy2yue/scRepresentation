@@ -2,10 +2,18 @@
 
 Updated: 2026-07-01.
 
-This is the standing local-audit packet for scLatent / scRepresentation. It is
-not a remote execution goal by itself. Remote Codex has an active goal only
-after local CC/Codex has completed a fresh audit and filled the `Exact Next
-Task` section below with a concrete task, outputs, limits, and stop rules.
+This is the local-authored remote execution packet for scLatent /
+scRepresentation. Remote Codex reads this file, `local_audit.md`, and
+`local_suggestion.md` as the authoritative task package when the user starts a
+remote goal.
+
+Remote Codex must not edit these three `local_*.md` files during execution.
+They are updated only by local CC/Codex audit and then pushed to GitHub for the
+remote to pull.
+
+This packet becomes executable only after local CC/Codex fills the `Exact Next
+Task` section below with a concrete task, outputs, limits, and stop rules. If
+that section is not filled, remote Codex waits rather than inventing work.
 
 ## Durable Final Goal
 
@@ -49,14 +57,16 @@ evidence, and no model/scaling claim without strict gates.
 ## Local-To-Remote Operating Model
 
 1. Local CC/Codex reads the current documents and any relevant server report
-   indexes, audits contradictions and risk, then updates `local_goal.md`,
-   `local_audit.md`, and `local_suggestion.md`.
-2. The user manually syncs/pulls the remote repository and starts remote Codex.
+   indexes, audits contradictions and risk, then writes the next remote task
+   package into `local_goal.md`, `local_audit.md`, and `local_suggestion.md`.
+2. Local CC/Codex commits/pushes these files. The user makes remote Codex pull.
 3. Remote Codex reads this packet plus `goal.md` and `docs/START_HERE.md`.
 4. Remote Codex executes only the concrete `Exact Next Task`; it does not infer
    extra experiments from archived handoffs or broad research vision text.
-5. When blocked or after completion, remote Codex reports structured results so
-   the next local audit can decide the next exact task.
+5. Remote Codex records execution results in run/report/status outputs, not in
+   the three `local_*.md` files.
+6. When blocked or after completion, remote Codex reports structured results and
+   suggested changes so the next local audit can update the three local files.
 
 Archive note: files under `docs/archive/legacy_auto_coordination_20260701/` and
 `prompts/archive/legacy_auto_coordination_20260701/` are historical evidence
@@ -90,8 +100,8 @@ For any run-specific task, also read the relevant `runs/<run>/RUN_STATUS.md`,
 Status: NOT ACTIVE.
 
 Local audit must replace this block before the user starts remote execution.
-Until this block is filled with a single bounded task, this document is only a
-standing packet and remote Codex must wait.
+Until this block is filled with a single bounded task, this is a read-only
+execution packet in waiting state and remote Codex must wait.
 
 Required fields for the next remote task:
 
@@ -129,6 +139,8 @@ Required fields for the next remote task:
   local audit explicitly authorizes the exact protocol.
 - Do not move/delete datasets, checkpoints, reports, runs, logs, local archives,
   caches, secrets, or other project roots.
+- Do not edit `local_goal.md`, `local_audit.md`, or `local_suggestion.md`
+  during remote execution; propose updates in the final/block report instead.
 - Do not commit, push, reset, force-push, or clean files unless the user
   explicitly asks for that Git operation.
 
@@ -156,4 +168,4 @@ At completion or block, remote Codex should report:
 - key metrics, gates, negative controls, and anomalies;
 - whether the task is positive, negative, blocked, or ambiguous;
 - recommended updates to `local_goal.md`, `local_audit.md`, and
-  `local_suggestion.md` for the next local audit.
+  `local_suggestion.md` for the next local audit, without editing those files.

@@ -2,17 +2,23 @@
 
 Updated: 2026-07-01.
 
-This file defines what a local CC/Codex audit must understand before writing a
-remote `Exact Next Task`. It is deliberately project-specific and should be
-refreshed after each remote result.
+This file is part of the local-authored remote execution packet. Remote Codex
+must read it before executing `local_goal.md`; it provides the evidence,
+negative results, risks, and context behind the next task.
+
+Remote Codex must not edit this file during execution. If execution reveals new
+evidence, blockers, or corrections, remote Codex should write them in
+RUN_STATUS/reports/final output and suggest updates for the next local audit.
+Local CC/Codex then updates this file and pushes it.
 
 ## Audit Scope
 
-Local audit owns strategy, document consistency, risk review, and the next
-bounded remote task. It may read Git-tracked docs/source and report indexes and
-may run small grep/static checks. It should not run large experiments, SSH to
-the server, launch GPU work, edit code, or treat archived handoffs as active
-instructions.
+Local audit owns strategy, document consistency, risk review, and authoring the
+next bounded remote task package. Remote Codex owns execution of that package.
+Local audit may read Git-tracked docs/source and report indexes and may run
+small grep/static checks. It should not run large experiments, launch GPU work,
+edit production code, or treat archived handoffs as active instructions unless
+the user explicitly asks for such work.
 
 ## Data Flow To Understand
 

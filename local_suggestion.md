@@ -2,9 +2,18 @@
 
 Updated: 2026-07-01.
 
-This file defines how local audit should generate the next remote Codex
-suggestion. It is not itself permission to execute. The concrete remote task
-must be copied into `local_goal.md` under `Exact Next Task`.
+This file is part of the local-authored remote execution packet. Remote Codex
+must read it with `local_goal.md` and `local_audit.md`; it gives priorities,
+fallback routes, gates, and the decision tree for interpreting execution
+results.
+
+Remote Codex must not edit this file during execution. If a suggestion becomes
+wrong, incomplete, or blocked, remote Codex should report that and recommend
+changes for the next local audit. Local CC/Codex updates this file and pushes
+it.
+
+The concrete remote task still lives in `local_goal.md` under `Exact Next
+Task`; this file explains how to execute and interpret that task.
 
 ## Suggestion Generation Rules
 
@@ -200,4 +209,5 @@ infer extra experiments from archived legacy handoffs. Respect resource limits,
 forbidden actions, and stop rules. If blocked, output `LOCAL_AUDIT_REQUEST`
 with files read, commands run, changed/generated paths, metrics, anomalies,
 suspected bottlenecks, and suggested updates to the three local docs.
+Do not edit the three local docs on the remote side.
 ```
