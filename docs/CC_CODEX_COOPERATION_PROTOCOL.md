@@ -159,3 +159,14 @@ serialize independent tasks:
    Prefer a sidebar/resume-visible session IF it doesn't hurt efficiency/effect.
 6. **Poll ~1h** — tmux/RUN_STATUS/last-message/convergence; anti-spin correct via a dated
    handoff.
+
+**Goal mode + concrete DONE conditions (added 2026-07-01):** Prefer TRUE goal mode (the
+`goals` feature is stable/enabled): interactive `codex` TUI in tmux (PTY) + `/goal`
+pointing at the goal doc → codex keeps pushing until the goal is met, resumable via
+`codex resume`, sidebar-visible. (`codex exec` is one-shot — completes bounded goals but
+is not persistent/visible.) If using `exec`, the launch prompt MUST say "do not stop until
+the concrete success criteria/thresholds are met; iterate within bounds — stop only for a
+genuine evidence-based blocker/honest-negative, not after a shallow first pass." **Every
+goal doc MUST state concrete numeric targets/thresholds + the exact DONE condition** so
+codex can tell when it is finished; anti-spin/DECISION-NEEDED is for genuine blockers, not
+early stopping.
