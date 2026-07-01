@@ -194,3 +194,31 @@ This section supersedes any earlier wording that implies CC should rewrite
 - If CC cannot reliably start an interactive remote session, it should stop
   after audit/doc work and give the user the exact SSH/tmux command plus the
   exact `/goal` prompt to paste manually.
+
+## Decision Continuation Override (added 2026-07-01)
+
+When remote Codex writes `DECISION NEEDED`, CC should usually continue the same
+visible tmux session to preserve context. Do not paste a long multi-line
+decision or new goal directly into an already-running Codex TUI. Multi-line
+`tmux send-keys` can be parsed as partial slash/UI commands and produce errors
+such as `unknown command: do`.
+
+Use the file-pointer pattern:
+
+1. Write the decision to `runs/<run>/CC_DECISION_<date>_<slug>.md` or a dated
+   handoff doc. Include the selected option, rationale, objective, success
+   criteria, stop rules, files to read first, and whether this is a same-session
+   continuation or a clean restart.
+2. Send exactly one short line to the existing tmux session:
+   `CC/user decision recorded at runs/<run>/CC_DECISION_<date>_<slug>.md. Read it and continue this same session; keep updating runs/<run>/RUN_STATUS.md.`
+3. Poll `tmux capture-pane` and `RUN_STATUS.md` after 1-3 minutes to verify Codex
+   read the file and resumed.
+
+Start a new Codex session only when the old session has exited, is visibly
+polluted by a parser error, ignores the pointer line, or the task has changed so
+much that a clean context is safer. A restart prompt must explicitly read the old
+`RUN_STATUS.md`, final report, and `CC_DECISION_*.md` before acting.
+
+Default monitoring is two-level: every 10 minutes do a light decision check
+(`tmux`, recent pane output, recent `RUN_STATUS.md`); every 60 minutes do a
+deeper review of reports, `git status`, convergence, and boundary adherence.

@@ -76,7 +76,10 @@ Local toolchain:
 
 Remote Codex handoff rules:
 
-- Use prompt files and stdin for long prompts.
+- For new interactive sessions, write long prompts to server-side prompt files
+  and pass their contents as the initial Codex `[PROMPT]` argument. For an
+  already-running TUI, never paste a long multi-line prompt; use a structured
+  decision/handoff file plus one short pointer line.
 - For long-running remote work, default to an interactive Codex TUI inside a
   dedicated `tmux` session, launched with `--no-alt-screen` and a `/goal` prompt
   that points at the version-controlled handoff doc. This keeps the session
@@ -96,9 +99,15 @@ Remote Codex handoff rules:
 - Prefer goal-doc execution: CC preserves `goal.md` as the durable objective and
   writes dated handoff/strategy docs in Git; remote Codex receives a thin
   pointer to those docs and executes one goal per session.
-- Poll long-running remote sessions at the requested low frequency, normally
-  3600 seconds, checking CC-side `ccusage`, `tmux`, `git status`,
-  `RUN_STATUS.md`, final message paths, scope, cost, and stop-rule adherence.
+- If remote Codex stops at `DECISION NEEDED`, prefer same-session continuation:
+  write a structured `runs/<run>/CC_DECISION_<date>_<slug>.md`, then send one
+  short pointer line to the tmux TUI telling Codex to read that file and continue.
+  Do not inject long multi-line decisions into an already-running TUI; this can
+  be parsed as partial commands.
+- Poll long-running remote sessions with two levels unless the user says
+  otherwise: every 10 minutes do a light decision check (`tmux`, recent
+  `RUN_STATUS.md`, recent pane output); every 60 minutes do a deeper review of
+  reports, `git status`, convergence, scope, cost, and stop-rule adherence.
   The configured `ccusage` threshold is local-machine CC/Claude Code usage above
   USD 90 in the last 24 hours. It is not a remote Codex goal-session stop rule
   unless the user explicitly says so.

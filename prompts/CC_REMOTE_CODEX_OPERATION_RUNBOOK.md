@@ -164,6 +164,60 @@ tmux attach -t codex_sclatent_goal_YYYYMMDD_HHMM
 tmux capture-pane -p -S -200 -t codex_sclatent_goal_YYYYMMDD_HHMM
 ```
 
+## Continue After DECISION NEEDED In The Same Session
+
+Use this when Codex has stopped at `DECISION NEEDED` and the tmux session is
+still alive. Keep the context in the same TUI, but do not paste a long multi-line
+decision into it. Write the decision to a file, then send one short pointer line.
+
+```bash
+ssh cyx-server-cfy
+cd /data/cyx/1030/stock
+mkdir -p runs/codex_goal_stock_20260701
+cat > runs/codex_goal_stock_20260701/CC_DECISION_20260701_new_signal_family.md <<'DECISION'
+# CC Decision - 2026-07-01 - New Signal Family
+
+Selected option: preregister a new signal family.
+
+Rationale: the previous target60 run reached an honest `DECISION NEEDED`; the
+pre-OOT-selected strategy failed H2026_1, and choosing a different H2026_1 winner
+would be OOT selection.
+
+Continue objective: preregister exactly one new signal family before final OOT
+scoring, then evaluate H2026_1 once under the existing no-leakage and exposure
+rules.
+
+Read first:
+- runs/codex_goal_stock_20260701/RUN_STATUS.md
+- reports/date_generalization/p0_target60_codex_goal_stock_20260701/target60_report.md
+- goal.md
+- docs/CC_AUDIT_AND_HANDOFF_20260701_p0_target60.md
+
+Stop rules:
+- no online/paid data pulls;
+- no git commit/push/pull;
+- no future/forward/label/result columns;
+- no H2026_1 feature/threshold/model selection;
+- write DONE only if H2026_1 positive_20d_rate > 0.60 and active_exposure >= 0.50 with leakage PASS.
+DECISION
+
+tmux send-keys -t codex_stock_goal_YYYYMMDD_HHMM -l \
+  "CC/user decision recorded at runs/codex_goal_stock_20260701/CC_DECISION_20260701_new_signal_family.md. Read it and continue this same session; keep updating runs/codex_goal_stock_20260701/RUN_STATUS.md."
+tmux send-keys -t codex_stock_goal_YYYYMMDD_HHMM C-m
+```
+
+After 1-3 minutes, verify that Codex read the decision:
+
+```bash
+tmux capture-pane -p -S -120 -t codex_stock_goal_YYYYMMDD_HHMM
+tail -120 runs/codex_goal_stock_20260701/RUN_STATUS.md
+```
+
+If the TUI shows a parser error such as `unknown command: ...`, or if the
+session ignores the pointer, stop using that session. Rename it with `_done` or
+`_error`, then start a new visible session whose initial `/goal` prompt reads the
+old `RUN_STATUS.md`, final report, and `CC_DECISION_*.md`.
+
 ## Resume
 
 ```bash

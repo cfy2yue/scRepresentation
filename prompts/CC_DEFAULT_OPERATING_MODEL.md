@@ -186,10 +186,49 @@ codex -a never exec -C /remote/project/path -m gpt-5.5 -s workspace-write - < /t
 Use cheaper models for status/doc smoke checks and stronger models for hard
 implementation or research planning.
 
+## Decision Continuation Protocol
+
+When remote Codex stops at `DECISION NEEDED`, prefer continuing the same visible
+session so the existing context stays alive. Do not inject a long multi-line
+decision prompt directly into an already-running TUI. Multi-line `tmux
+send-keys` can be split into partial UI commands and cause parser errors such as
+`unknown command: do`.
+
+Use this file-pointer pattern instead:
+
+1. CC writes the decision as a structured file in the repo or run directory, for
+   example `runs/<run>/CC_DECISION_<date>_<slug>.md`.
+2. The decision file states the selected option, rationale, exact new/continued
+   objective, files to read, success criteria, stop rules, and whether the
+   current session should continue or a new session is required.
+3. CC sends only one short line to the existing tmux TUI:
+
+```text
+CC/user decision recorded at runs/<run>/CC_DECISION_<date>_<slug>.md. Read it and continue this same session; keep updating runs/<run>/RUN_STATUS.md.
+```
+
+4. CC then polls `RUN_STATUS.md` and `tmux capture-pane` to confirm Codex read
+   the decision and resumed work.
+
+Start a new session only when the old session has exited, the TUI is visibly
+polluted by a parser error, the decision changes the task so much that a clean
+context is safer, or the old session ignores the one-line pointer. In that case,
+the new `/goal` prompt must explicitly read the old `RUN_STATUS.md`, final
+report, and the `CC_DECISION_*.md` file before acting.
+
 ## Monitoring And Correction
 
-Default polling interval for long-running work is 3600 seconds unless the user
-asks otherwise. Polling should check:
+Default polling has two levels unless the user asks otherwise:
+
+- Every 10 minutes: light decision check. Read `tmux ls`, recent
+  `RUN_STATUS.md`, and recent `tmux capture-pane`; only decide whether there is
+  `DECISION NEEDED`, a stalled/exited session, a boundary violation, or a user/CC
+  decision requirement.
+- Every 60 minutes: deep review. Read latest reports, broader `RUN_STATUS.md`,
+  `git status -sb`, and enough pane history to judge convergence, direction
+  quality, and whether CC should revise a handoff doc.
+
+Polling should check:
 
 - `ccusage` cost gate before starting new expensive CC-side actions.
 - Remote `tmux ls`.
