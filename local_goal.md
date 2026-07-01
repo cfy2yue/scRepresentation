@@ -406,6 +406,16 @@ audit is a cheap front-end, NOT a stopping point):
   a genuine data/resource/permission/final-goal blocker appears. Do NOT stop and
   wait just because a stage completed.
 
+Experiment-driven exploration: remote GPU is abundant. Do NOT force the full CPU
+route audit to be exhausted before any GPU work. If the route audit is inconclusive,
+or there is no clearly better analytical/CPU path, the remote is encouraged to just
+RUN a bounded GPU training experiment — a LatentFM variant with a candidate scaling
+axis, a zebrafish-informed regularizer, or a diagnostic training run — and let the
+results guide the next plan; empirical results are often more informative than more
+upfront analysis. Safety still holds: no reopening closed branches, no held-out
+Track-C query, and no scaling-law / regularizer / new-default-model CLAIM without its
+gate. Within those, prefer running an informative experiment over waiting.
+
 Resource limits:
 
 - The route-audit stage (sub-goals A-C) is CPU-only. The chosen execution stage may
