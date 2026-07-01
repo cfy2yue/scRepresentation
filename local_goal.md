@@ -108,6 +108,20 @@ hard block, it should record the result, choose the next bounded stage inside
 the same final goal, and continue or clearly explain why local audit is
 required.
 
+Gate semantics (collaboration mode): the final goal and its acceptance thresholds
+are DURABLE — the remote must not lower or drop them, and local audit changes only
+the route, implementation, and strategy, not the target. The routes and gates in
+this packet are local SUGGESTIONS/HYPOTHESES, not the only path; the remote is
+expected to have its own problem-solving ability. A promotion/claim gate (beating
+cell/condition count under held-out; surviving all nulls; no-harm) is a quality bar
+for CLAIMING success, NOT a stop condition. If a suggested route or gate does not
+work out, do NOT declare `BLOCKED`: log the honest negative in `remote_decision.md`,
+find a new in-boundary strategy yourself, and keep advancing across the
+scaling/zebrafish/architecture tracks toward the same target — the recorded
+decisions are read by the next local audit. Reserve hard `BLOCKED` only for genuine
+user-owned decisions (changing the final target/threshold/resource
+boundary/permission/data source, or a destructive operation).
+
 ## Current Direction And Boundaries
 
 - Current default/deployable LatentFM state remains `xverse_8k_anchor` until a
@@ -356,34 +370,60 @@ DONE criteria:
 - `NEXT_AXIS_DECISION.md` picks exactly one next stage;
 - provenance corrections persisted to a tracked doc.
 
-Conditional next-stage authorization (remote may proceed WITHOUT a new local round
-IF its own DONE gate holds):
+Authorized long-run continuation (this is an OVERNIGHT AUTONOMOUS goal; after
+`NEXT_AXIS_DECISION` the remote proceeds into the chosen track's execution WITHOUT a
+new local round, using its own route-finding and subagents, until the long-horizon
+acceptance target is met, a hard blocker is hit, or the user interrupts. The route
+audit is a cheap front-end, NOT a stopping point):
 
-- if `ZEBRAFISH_DISCOVERY`: run the single specified CPU distribution-dynamics /
-  OT-pseudo-tracking smoke with wrong-time/wrong-lineage/permutation nulls;
-  promotion requires the regularity to survive ALL nulls in expression space (and
-  an encoder-agnostic latent view if used); a surviving result is discovery
-  evidence only, NOT a regularizer launch;
-- if `SCALING_REDESIGN`: materialize the one recovered train-only axis into a
-  fresh run-scoped dir (never overwrite NPZs) and rerun the CPU gate ONLY with the
-  power-adequate design; promotion requires the axis to beat BOTH raw cell count
-  AND condition count under LODO/source-held-out with confound controls; otherwise
-  preserve as negative;
-- if `ARCH_HYGIENE` AND the user greenlit code edits: apply ONLY the R1 metric-only
-  fix; no-harm gate = headline ODE-MMD/Pearson unchanged, default model unchanged;
-- any negative/ambiguous/blocked outcome -> log honestly in `remote_decision.md`
-  and request local audit rather than sweeping variants.
+- if `SCALING_REDESIGN`: materialize the recovered train-only axis into a fresh
+  run-scoped dir (never overwrite NPZs) and test it with the power-adequate design.
+  Once the axis shows signal on the analysis side, the remote may TRAIN LatentFM
+  variants (GPU AUTHORIZED, up to the project GPU budget after a fresh low-util
+  audit) to test whether the axis predicts/improves perturbation-model performance
+  under LODO/source-held-out with confound controls. No scaling-law claim unless the
+  axis beats BOTH raw cell count AND condition count under held-out/confound control.
+- if `ZEBRAFISH_DISCOVERY`: run the distribution-dynamics / OT-pseudo-tracking
+  discovery with wrong-time/wrong-lineage/permutation nulls. If a regularity
+  survives ALL nulls (expression space, plus an encoder-agnostic latent view if
+  used), the remote may TRAIN a zebrafish-informed LatentFM regularizer variant
+  (GPU AUTHORIZED, project budget, fresh low-util audit) and compare to
+  `xverse_8k_anchor` under the no-harm gate. A regularizer is only claimed/kept if
+  it passes no-harm; a surviving law with no trained gain is still preserved as
+  discovery evidence.
+- if `ARCH_HYGIENE` AND the user greenlit code edits: apply the R1 metric-only fix,
+  then optionally the R2 estimator alignment, each under its no-harm gate (headline
+  ODE-MMD/Pearson unchanged, default model unchanged). Retraining to validate a fix
+  is GPU-authorized under the project budget.
+- STILL CLOSED regardless of GPU authorization (do not reopen): Track-C support-only
+  GPU branch, UCE/species-latent zebrafish route, held-out Track-C
+  query/canonical-multi, and promoting a new default model without a strict
+  no-harm/promotion gate. GPU is authorized for NEW work toward the final goal, not
+  for reopening these.
+- a negative/ambiguous outcome on one track -> log honestly in `remote_decision.md`
+  and move to the next best in-boundary track (scaling <-> zebrafish <-> arch);
+  return to local audit only when all reasonable in-boundary routes are exhausted or
+  a genuine data/resource/permission/final-goal blocker appears. Do NOT stop and
+  wait just because a stage completed.
 
 Resource limits:
 
-- CPU only; no GPU, no training, no inference, no checkpoint selection, no
-  held-out Track-C query/canonical-multi use.
-- Writes only under the two `next_route_audit_20260702/` dirs, the authorized
-  `remote_decision.md` append, and the single C0 tracked-doc provenance note.
-- Never overwrite `*_pert_means.npz` or any prior artifact.
-- Target 2 hours; hard stop 3 hours with a partial report.
-- No dataset-wide processing beyond existing caches; if any sub-goal needs a large
-  recompute, mark it `DATA_BLOCKED` and continue with the others.
+- The route-audit stage (sub-goals A-C) is CPU-only. The chosen execution stage may
+  use GPU up to the project budget after a fresh low-util GPU audit, for NEW
+  training/validation only.
+- Still forbidden regardless of stage: held-out Track-C query/canonical-multi use;
+  reopening the closed Track-C support-only or UCE/species-latent branches;
+  promoting a default model without a strict no-harm/promotion gate.
+- Route-audit writes only under the two `next_route_audit_20260702/` dirs, the
+  authorized `remote_decision.md` append, and the single C0 tracked-doc provenance
+  note; execution stages write to their own fresh run-scoped dirs and never overwrite
+  `*_pert_means.npz` or any prior artifact.
+- Route-audit target ~2 hours; the subsequent execution stage is a long-running
+  overnight job — use detached execution with a RUN_STATUS, and do not stop merely
+  because the audit or a stage completes.
+- No dataset-wide processing beyond existing caches for the audit stage; if a
+  sub-goal needs a large recompute, mark it `DATA_BLOCKED` for that sub-goal and
+  continue the others.
 
 Forbidden actions:
 
