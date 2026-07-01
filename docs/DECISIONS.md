@@ -10,6 +10,33 @@ docs/local_archive/20260630_pre_slim/DECISIONS.md
 
 This file records only decisions that should guide new agents.
 
+## 2026-07-01: RESULT — Scaling-Unit BLOCKED (needs per-arm geometry); Zebrafish Regularizer NEGATIVE; Manuscript VERIFIED
+
+- SCALING-UNIT (run `scaling_unit_cpu_regression_20260701`): STOPPED at the hard
+  prerequisite (anti-spin working). Existing artifacts collapse the best runs to one
+  parent geometry, so the info/HVG-weighted-vs-cell-count regression cannot be fairly
+  evaluated yet; no scaling-law claim allowed. Documented what's missing
+  (`reports/scaling_unit_regression_20260701/missing_per_arm_artifacts.csv`,
+  `per_arm_geometry_rows.csv`). NEXT (bounded CPU): materialize per-arm geometry
+  (Vendi effective-count, effective rank, abundance/response-energy-weighted G_eff)
+  from existing `*_pert_means.npz`, then rerun the regression vs cell count.
+- ZEBRAFISH REGULARIZER (run `zscape_regularizer_mining_20260701_123950`): DECISIVE
+  NEGATIVE — no candidate dynamic-response regularity generalized past the
+  wrong-time/wrong-lineage/permutation nulls, so NO validated differentiable flow
+  regularizer emerges (specs are diagnostic/rejected templates only). Confirmed a
+  future expression-space prior must attach at `CoupledFM/model/train.py` `x1_hat/x_gt`
+  (latent-only specs -> `v_pred` / `ode_integrate_diff`). Report:
+  `reports/zscape_regularizer_mining_20260701_123950/LATENTFM_ZSCAPE_DYNAMIC_REGULARIZER_LAWS_20260701.md`.
+  The negative PROTECTS the model from a false constraint; do NOT launch a regularizer
+  from this coverage.
+- MANUSCRIPT (run `cpu_manuscript_package_review_20260701_next`): CPU package verified
+  reviewer-ready — manifest.json valid, 46/46 paths OK, 10/10 figures pass, 14/14 repro
+  scripts, NARRATIVE_DRAFT + README_REVIEWER + VERIFICATION_REPORT added.
+
+Both insight goals returned honest, bounded outcomes; default model stays
+xverse_8k_anchor. Scaling next step is per-arm geometry materialization (CPU);
+zebrafish regularizer is not supported on current coverage.
+
 ## 2026-07-01: REPRIORITIZE — Insight-Driven Scaling-Unit + Zebrafish Flow-Regularizer Over Flow-Matching Tuning
 
 Decision: elevate two analysis-first, insight-driven scLatent threads above direct
