@@ -15,7 +15,7 @@ https://github.com/cfy2yue/scRepresentation
 Server entry:
 
 ```bash
-ssh cyx-server-proxy-cfy
+ssh cyx-server-cfy
 cd /data/cyx/1030/scLatent
 ```
 
@@ -108,7 +108,7 @@ record any future physical migrations in `docs/DECISIONS.md` and `goal.md`.
 
 For CC/Windows review, clone the GitHub repo locally for reading, planning, and
 Markdown/code review. Server-only work such as GPU jobs, large data reads, and
-run integration belongs on `cyx-server-proxy-cfy`, normally through Codex unless
+run integration belongs on `cyx-server-cfy`, normally through Codex unless
 the user explicitly pauses Codex for the scoped file or branch.
 
 ## Prompts

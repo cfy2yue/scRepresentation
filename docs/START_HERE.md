@@ -10,7 +10,7 @@ scripts/docs.
 
 - Server directory: `/data/cyx/1030/scLatent`
 - GitHub target: `https://github.com/cfy2yue/scRepresentation`
-- SSH entry: `ssh cyx-server-proxy-cfy`, then `cd /data/cyx/1030/scLatent`
+- SSH entry: `ssh cyx-server-cfy`, then `cd /data/cyx/1030/scLatent`
 - Shared data root: `/data/cyx/1030/dataset`
 - Shared runtime root: `/data/cyx/1030/software`
 - Runtime entry: `source /data/cyx/1030/scLatent/init-scdfm.sh`

@@ -24,7 +24,7 @@ Before non-trivial work:
 git -C E:\cc_workspace\scLatent fetch origin --prune
 git -C E:\cc_workspace\scLatent status -sb
 git -C E:\cc_workspace\scLatent rev-list --left-right --count HEAD...origin/main
-ssh cyx-server-proxy-cfy "cd /data/cyx/1030/scLatent && git fetch origin --prune && git status -sb && git rev-list --left-right --count HEAD...origin/main"
+ssh cyx-server-cfy "cd /data/cyx/1030/scLatent && git fetch origin --prune && git status -sb && git rev-list --left-right --count HEAD...origin/main"
 ```
 
 If local, GitHub, and server differ, sync first or report the divergence. Do not
@@ -170,3 +170,27 @@ genuine evidence-based blocker/honest-negative, not after a shallow first pass."
 goal doc MUST state concrete numeric targets/thresholds + the exact DONE condition** so
 codex can tell when it is finished; anti-spin/DECISION-NEEDED is for genuine blockers, not
 early stopping.
+
+## Source-Of-Truth And Visible-Session Override (added 2026-07-01)
+
+This section supersedes any earlier wording that implies CC should rewrite
+`goal.md` for every task or that long-running remote work should default to
+`codex exec`.
+
+- `goal.md` is the durable project objective and hard-boundary document. It is
+  the north star. CC should not rewrite its final objective unless the user
+  explicitly changes the end goal.
+- CC writes the changing route in strategy/handoff docs, usually
+  `docs/CC_AUDIT_AND_HANDOFF_<date>_<slug>.md`. These docs are task contracts,
+  not replacements for `goal.md`.
+- Remote Codex should receive a thin `/goal` pointer: read `goal.md` as durable
+  context, then execute the specific handoff doc. Start by writing a plan to
+  `runs/<run>/RUN_STATUS.md`.
+- Default long-running launch mode is visible interactive Codex TUI in `tmux`
+  with `--no-alt-screen`, then `/goal ...`. This lets the user or CC attach,
+  inspect scrollback, steer, and resume.
+- Use `codex exec` only for smoke checks, short bounded tasks, or when the user
+  explicitly accepts an invisible one-shot run.
+- If CC cannot reliably start an interactive remote session, it should stop
+  after audit/doc work and give the user the exact SSH/tmux command plus the
+  exact `/goal` prompt to paste manually.

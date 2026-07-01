@@ -21,7 +21,11 @@ CC owns:
 - Doing small local experiments or static checks when they are cheap and safe.
 - Pulling one independent CC subagent per project for parallel audits.
 - Synthesizing subagent findings into one coherent priority order.
-- Updating `goal.md`, handoff docs, decision docs, protocol docs, and prompts.
+- Updating strategy overlays, handoff docs, decision docs, protocol docs, and
+  prompts.
+- Editing the durable objective in `goal.md` only when the user explicitly
+  changes the end goal. By default, CC preserves `goal.md` as the north-star
+  target and plans the path toward it in separate overlay/handoff docs.
 - Committing and pushing documentation or small safe local fixes when sync is
   required.
 - Starting or requesting one remote Codex goal session per remote task.
@@ -37,6 +41,26 @@ Remote Codex owns:
 - Writing progress to `runs/<run>/RUN_STATUS.md` or the task's equivalent status
   path.
 - Producing final concise summaries, exact changed files, and blockers.
+
+## Source Of Truth Hierarchy
+
+Do not let every agent create its own "goal" file with a different meaning.
+Use this hierarchy:
+
+1. User instruction in the current conversation.
+2. `goal.md`: durable project north star, hard boundaries, and current product or
+   research target. This usually changes slowly.
+3. `docs/CC_STRATEGY_OVERLAY.md` or a dated `docs/CC_AUDIT_AND_HANDOFF_*.md`:
+   CC's current implementation route, risk assessment, task decomposition,
+   success criteria, stop rules, and remote Codex contract.
+4. `runs/<run>/RUN_STATUS.md`: remote Codex execution log, progress, metrics,
+   blockers, and final result for one run.
+5. `docs/DECISIONS.md`: durable decisions promoted from completed runs.
+
+CC should normally edit layer 3, then promote stable conclusions to layer 4/5.
+Only edit layer 2 when the user explicitly changes the final target or when a
+completed run proves the old objective/boundary is wrong and the user approves
+promotion.
 
 ## Scalable Project Registry
 
@@ -56,9 +80,9 @@ Current registry:
 
 | project | local path | GitHub | remote |
 |---|---|---|---|
-| scLatent / scRepresentation | `E:\cc_workspace\scLatent` | `cfy2yue/scRepresentation` | `cyx-server-proxy-cfy:/data/cyx/1030/scLatent` |
-| CellClip | `E:\cc_workspace\CellClip` | `cfy2yue/CellCLIP` | `cyx-server-proxy-cfy:/data/cyx/1030/CellClip` |
-| StockHome | `E:\cc_workspace\stock` | `cfy2yue/StockHome` | `cyx-server-proxy-cfy:/data/cyx/1030/stock` |
+| scLatent / scRepresentation | `E:\cc_workspace\scLatent` | `cfy2yue/scRepresentation` | `cyx-server-cfy:/data/cyx/1030/scLatent` |
+| CellClip | `E:\cc_workspace\CellClip` | `cfy2yue/CellCLIP` | `cyx-server-cfy:/data/cyx/1030/CellClip` |
+| StockHome | `E:\cc_workspace\stock` | `cfy2yue/StockHome` | `cyx-server-cfy:/data/cyx/1030/stock` |
 
 When new projects or servers are added, update the registry first, then reuse
 the same workflow below.
@@ -66,15 +90,19 @@ the same workflow below.
 ## Default Multi-Project Workflow
 
 1. Main CC performs the intake and sync gate.
-2. Main CC checks `ccusage`; if the current session/day cost is above the user's
-   stop threshold, do not start new expensive work.
+2. Main CC checks `ccusage`; if the local-machine CC/Claude Code usage in the
+   last 24 hours is above the user's stop threshold, do not start new expensive
+   CC-side work. This is a CC coordination budget gate, not a remote Codex goal
+   stopping rule.
 3. Main CC launches one CC subagent per in-scope project.
 4. Each subagent audits exactly one project and returns a structured finding
    set; subagents do not push, launch remote jobs, or edit outside their project
    unless explicitly delegated.
 5. Main CC compares the subagent outputs, resolves contradictions, and decides
    the project-level goals and priorities.
-6. Main CC updates version-controlled goal/handoff docs in each project.
+6. Main CC updates version-controlled strategy overlays and handoff docs in each
+   project. It preserves the durable objective in `goal.md` unless explicitly
+   told to change it.
 7. Main CC commits and pushes the docs/fixes needed for remote synchronization.
 8. Main CC syncs the relevant remote repo(s) through GitHub.
 9. Main CC starts one remote Codex goal session per approved remote task.
@@ -105,29 +133,51 @@ decisions.
 ## Remote Codex Goal Session Contract
 
 Open one remote Codex session per task, not one overloaded session for many
-projects. Prefer one `tmux` session per goal:
+projects. The default for long-running work is a visible interactive Codex TUI
+inside `tmux`, not `codex exec`.
 
 ```bash
 tmux new -d -s codex_<project>_<goal>_$(date +%Y%m%d) 'bash /tmp/launch_<project>_<goal>.sh'
 ```
 
-The launch prompt should be a thin pointer to version-controlled goal docs:
-
-```text
-Read and execute the goal in docs/CC_AUDIT_AND_HANDOFF_<date>.md and goal.md.
-Honor ownership, success criteria, stop rules, files to read first, and files
-not to touch. Start by writing a brief plan to runs/<run>/RUN_STATUS.md. Keep
-progress there and produce a concise final summary.
-```
-
-Use remote Codex goal mode when available for complex work:
+The launch script should read a short `/goal` pointer from a prompt file and pass
+it as the initial `[PROMPT]` argument to interactive Codex. This preserves tmux
+scrollback, makes the session attachable/watchable, and is more reliable than
+injecting keys after the TUI starts:
 
 ```bash
-codex features enable goals
+#!/usr/bin/env bash
+set -euo pipefail
+PROJECT=/remote/project/path
+PROMPT_FILE=/tmp/codex_goal_<project>_<goal>.txt
+cd "$PROJECT"
+codex features enable goals >/dev/null 2>&1 || true
+PROMPT="$(cat "$PROMPT_FILE")"
+exec codex -C "$PROJECT" -m gpt-5.5 -s workspace-write -a never --no-alt-screen "$PROMPT"
 ```
 
-For noninteractive execution on the current remote CLI, keep the known-safe
-global flag order:
+The goal text should be a thin pointer to version-controlled docs:
+
+```text
+/goal Read goal.md as the durable project objective and hard boundary. Execute
+the implementation contract in docs/CC_AUDIT_AND_HANDOFF_<date>_<slug>.md.
+Do not rewrite the durable objective. Start by writing a brief plan to
+runs/<run>/RUN_STATUS.md. Keep progress there, honor stop rules, and continue
+until the DONE criteria are met or a real blocker is recorded.
+```
+
+Attach/watch/resume:
+
+```bash
+tmux new-session -d -s codex_<project>_<goal>_YYYYMMDD 'bash /tmp/launch_<project>_<goal>.sh'
+tmux attach -t codex_<project>_<goal>_YYYYMMDD
+tmux capture-pane -p -S -200 -t codex_<project>_<goal>_YYYYMMDD
+codex resume --last -C /remote/project/path -m gpt-5.5 -s workspace-write -a never --no-alt-screen
+```
+
+Use `codex exec` only for smoke checks, short bounded tasks, or when the user
+explicitly accepts an invisible one-shot run. For noninteractive execution on
+the current remote CLI, keep the known-safe global flag order:
 
 ```bash
 codex -a never exec -C /remote/project/path -m gpt-5.5 -s workspace-write - < /tmp/handoff.txt
@@ -141,7 +191,7 @@ implementation or research planning.
 Default polling interval for long-running work is 3600 seconds unless the user
 asks otherwise. Polling should check:
 
-- `ccusage` cost gate before starting new expensive actions.
+- `ccusage` cost gate before starting new expensive CC-side actions.
 - Remote `tmux ls`.
 - Codex process/log health.
 - Remote `git status -sb`.
@@ -153,6 +203,11 @@ If a session stalls, expands scope, ignores a stop rule, or produces confusing
 evidence, CC should start a new audit/correction round: update the goal/handoff
 doc, commit/push it, and then resume or restart the remote Codex session with a
 thin pointer to the revised doc.
+
+If CC cannot reliably start an interactive remote session, it should stop after
+audit/doc work and give the user an exact SSH command plus the exact `/goal`
+prompt to paste. Manual launch is preferred over an invisible long-running
+`exec` session when observability matters.
 
 ## Conflict Rules
 
@@ -169,10 +224,11 @@ thin pointer to the revised doc.
 
 Stop starting new high-cost work and report to the user when:
 
-- `ccusage` crosses the user's configured threshold, currently USD 80.
+- Local-machine `ccusage` for CC/Claude Code crosses the user's configured
+  24-hour threshold, currently USD 90. Do not apply this threshold as a remote
+  Codex goal-session stop rule unless the user explicitly says so.
 - Local, GitHub, and remote diverge in a way that cannot be safely fast-forwarded.
 - A remote goal would require secrets to be printed, copied, committed, or pasted.
 - The task would delete or move data, reports, runs, checkpoints, caches, archives,
   or credentials without explicit approval.
 - The remote task exceeds the cost/scope/model limits written in the goal doc.
-

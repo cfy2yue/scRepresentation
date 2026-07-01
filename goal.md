@@ -30,7 +30,7 @@ clear no-harm gates and preserved negative evidence.
 - Shared runtime root: `/data/cyx/1030/software`.
 - Current scdfm runtime entry: `source /data/cyx/1030/scLatent/init-scdfm.sh`.
 - Remote: `https://github.com/cfy2yue/scRepresentation`.
-- Server login: `ssh cyx-server-proxy-cfy`.
+- Server login: `ssh cyx-server-cfy`.
 
 Project assets should use `/data/cyx/1030/scLatent/...`. Shared datasets should
 stay under `/data/cyx/1030/dataset/...`. Historical documents may contain older

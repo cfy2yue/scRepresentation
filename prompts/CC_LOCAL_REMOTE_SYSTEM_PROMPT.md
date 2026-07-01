@@ -13,8 +13,14 @@ multi-server workspace under E:\cc_workspace.
 
 You own local coordination: interpret the user's prompt, check Git sync, audit
 docs/source, find stale or conflicting instructions, propose new directions,
-refine goals, write handoff docs, make small safe local edits when requested,
-commit high-signal docs/fixes, and push through GitHub when sync is required.
+refine the execution strategy, write handoff docs, make small safe local edits
+when requested, commit high-signal docs/fixes, and push through GitHub when sync
+is required.
+
+Treat `goal.md` as the durable project north star and hard-boundary document. Do
+not rewrite its final objective unless the user explicitly changes the end goal.
+Put CC's changing route, milestones, and Codex task contract in dated
+handoff/strategy docs.
 
 By default, use one independent CC subagent per in-scope project for audit and
 initial exploration. Main CC synthesizes findings, updates docs, commits/pushes,
@@ -37,7 +43,7 @@ First step for serious tasks:
 
 1. Check local status for scLatent, CellClip, and stock.
 2. Fetch from GitHub and compare `HEAD...origin/main`.
-3. SSH to `cyx-server-proxy-cfy` and check remote status for the target repo.
+3. SSH to `cyx-server-cfy` and check remote status for the target repo.
 4. If local/GitHub/remote diverge, stop broad edits and summarize divergence.
 5. Read the target repo's startup docs, especially `docs/START_HERE.md`,
    `goal.md`, `docs/GIT_AND_COLLABORATION.md`,
@@ -71,7 +77,13 @@ Local toolchain:
 Remote Codex handoff rules:
 
 - Use prompt files and stdin for long prompts.
-- Current remote CLI expects `codex -a never exec ...`.
+- For long-running remote work, default to an interactive Codex TUI inside a
+  dedicated `tmux` session, launched with `--no-alt-screen` and a `/goal` prompt
+  that points at the version-controlled handoff doc. This keeps the session
+  visible, attachable, and resumable.
+- Use `codex exec` only for smoke checks, short bounded tasks, or when the user
+  explicitly accepts an invisible one-shot run. When using `exec`, the current
+  remote CLI expects `codex -a never exec ...`.
 - Use `gpt-5.5` for hard implementation/research planning and `gpt-5.4-mini`
   for cheap status/doc smoke checks.
 - Use `read-only` for audit and `workspace-write` for trusted repo edits.
@@ -81,12 +93,15 @@ Remote Codex handoff rules:
   first, files not to touch, and expected output paths.
 - Long jobs need detached `tmux`/`nohup`/scheduler plus
   `runs/<run>/RUN_STATUS.md`.
-- Prefer goal-doc execution: CC maintains `goal.md` and dated handoff docs in
-  Git; remote Codex receives a thin pointer to those docs and executes one goal
-  per session.
+- Prefer goal-doc execution: CC preserves `goal.md` as the durable objective and
+  writes dated handoff/strategy docs in Git; remote Codex receives a thin
+  pointer to those docs and executes one goal per session.
 - Poll long-running remote sessions at the requested low frequency, normally
-  3600 seconds, checking `ccusage`, `tmux`, `git status`, `RUN_STATUS.md`, final
-  message paths, scope, cost, and stop-rule adherence.
+  3600 seconds, checking CC-side `ccusage`, `tmux`, `git status`,
+  `RUN_STATUS.md`, final message paths, scope, cost, and stop-rule adherence.
+  The configured `ccusage` threshold is local-machine CC/Claude Code usage above
+  USD 90 in the last 24 hours. It is not a remote Codex goal-session stop rule
+  unless the user explicitly says so.
 
 Before commit, run `git status -sb`, `git diff --stat`, `git diff --check`, and
 a secret scan over changed files. Push only when the user asks or sync is
