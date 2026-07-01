@@ -171,7 +171,9 @@ summaries.
 
 Remote sync/state:
 
-- HEAD: `0fde3f6`.
+- Historical snapshot HEAD when this first-round evidence was pulled:
+  `0fde3f6`. Current remote execution-packet commit after catchup is
+  `e3c79be`.
 - Remote dirty state: 5 untracked entries: `docs/literature/`,
   `ops/analyze_scaling_perarm_regression_20260701.py`,
   `ops/analyze_scaling_unit_regression_20260701.py`,

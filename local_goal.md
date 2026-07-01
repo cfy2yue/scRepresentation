@@ -196,8 +196,8 @@ Allowed commands:
   small materializer script such as
   `ops/materialize_scaling_condition_means_20260701.py` or extend an existing
   untracked ops script;
-- run a two-arm smoke first; if successful, materialize all 17 rows within the
-  limits below;
+- run a two-arm CPU-only materializer/preflight smoke first; if successful,
+  materialize all 17 rows within the limits below;
 - rerun only the prerequisite audit portion or a clearly labeled CPU regression
   rerun after materialization, without changing model/checkpoint code.
 
