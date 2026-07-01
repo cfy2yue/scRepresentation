@@ -15,8 +15,11 @@ Read first:
 README.md
 AGENTS.md
 goal.md
+local_goal.md
+local_audit.md
+local_suggestion.md
+docs/START_HERE.md
 docs/WORKSPACE_ORGANIZATION.md
-docs/CODEX_CC_COLLABORATION.md
 docs/PROJECT_OVERVIEW.md
 docs/PROJECT_REVIEW.md
 docs/EXPERIMENT_INDEX.md
@@ -50,8 +53,9 @@ Output requirements:
    - resource plan;
    - promotion gate;
    - fail-close rule.
-6. Propose concrete edits to `goal.md` and project docs. If allowed to edit
-   docs, append dated sections rather than rewriting old history.
+6. Propose concrete edits to `local_goal.md`, `local_audit.md`, and
+   `local_suggestion.md`. Do not edit `goal.md` unless the user explicitly
+   changes the durable final target.
 7. Flag any code edits that should wait until Codex pauses.
 
 Keep the audit sharp and actionable. The goal is to improve the next execution

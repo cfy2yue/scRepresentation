@@ -14,3 +14,8 @@ Available prompts:
   organize its own project and document data dependencies on scLatent.
 - `STOCK_DIRECTORY_ORGANIZATION_PROMPT.md`: ask the stock session to organize
   its own project and remove redundant clutter safely.
+
+Legacy local/remote auto-coordination prompts are archived under
+`prompts/archive/legacy_auto_coordination_20260701/`. Do not use them for new
+work. Current remote execution should be driven by repository-root
+`local_goal.md`, `local_audit.md`, and `local_suggestion.md`.

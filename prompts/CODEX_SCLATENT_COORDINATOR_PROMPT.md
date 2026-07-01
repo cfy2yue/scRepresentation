@@ -8,8 +8,11 @@ First read:
 README.md
 AGENTS.md
 goal.md
+local_goal.md
+local_audit.md
+local_suggestion.md
+docs/START_HERE.md
 docs/WORKSPACE_ORGANIZATION.md
-docs/CODEX_CC_COLLABORATION.md
 docs/PROJECT_OVERVIEW.md
 docs/PROJECT_REVIEW.md
 docs/EXPERIMENT_INDEX.md
@@ -32,12 +35,14 @@ launch experiments.
 Coordinator responsibilities:
 
 - keep the mainline state coherent;
-- use subagents for side branches and external critique when appropriate;
-- integrate results into `goal.md`, `docs/PROJECT_REVIEW.md`, and
-  `docs/EXPERIMENT_INDEX.md`;
+- execute only after the user manually starts or continues goal mode;
+- treat `local_goal.md`, `local_audit.md`, and `local_suggestion.md` as the
+  current local-audited route;
+- integrate results into run status files, reports, `docs/PROJECT_REVIEW.md`,
+  and `docs/EXPERIMENT_INDEX.md`;
 - record branch closures and negative evidence;
-- avoid simultaneous code edits with CC unless the user explicitly coordinates
-  the handoff.
+- when blocked, output a structured local-audit request instead of assuming
+  automatic local/remote coordination.
 
 Before finalizing any turn, report what changed, what is running or paused, and
 the exact files that matter next.

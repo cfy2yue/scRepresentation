@@ -58,8 +58,9 @@ which files, tasks, and branches. Avoid editing the same code file at the same
 time. Markdown can be parallelized, but prefer appending dated sections over
 rewriting long history.
 
-For the engineered local/remote workflow, read
-`docs/CC_CODEX_COOPERATION_PROTOCOL.md` before starting parallel work.
+For the current manual local-audit workflow, read `docs/START_HERE.md` and the
+repository-root `local_goal.md`, `local_audit.md`, and `local_suggestion.md`.
+Archived auto-coordination docs are historical only.
 
 ## Git Hygiene
 

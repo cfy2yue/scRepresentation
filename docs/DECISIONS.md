@@ -57,8 +57,9 @@ regularizer cleanly, but an expression-space prior must attach in the raw-expr
 trainer (no latent->gene decoder); it also found two metric defects (P4 eval MSE
 random pairing; P1 aux 1-step vs eval 20-step) recorded for a later hygiene pass.
 
-Consequence: goal docs `docs/CC_AUDIT_AND_HANDOFF_20260701_scaling_unit.md` and
-`docs/CC_AUDIT_AND_HANDOFF_20260701_zebrafish_regularizer.md`; architecture record
+Consequence: historical route notes archived at
+`docs/archive/legacy_auto_coordination_20260701/CC_AUDIT_AND_HANDOFF_20260701_scaling_unit.md` and
+`docs/archive/legacy_auto_coordination_20260701/CC_AUDIT_AND_HANDOFF_20260701_zebrafish_regularizer.md`; architecture record
 `docs/LATENTFM_ARCHITECTURE_AUDIT_20260701.md`. De-prioritized: flow-matching
 endpoint tuning. Closed (do not reopen): UCE/species-latent; Track-C support-only GPU.
 
@@ -93,10 +94,10 @@ Reason: a seed-level hard fail violates the predeclared no-harm gate, so the
 branch is very likely not promotable. The highest-value deliverable now is the
 CPU-only manuscript package, not further GPU exploration.
 
-Consequence: see `docs/CC_AUDIT_AND_HANDOFF_20260701.md` for the full goal +
-ownership and the anti-spin escalation rule (if seed44 posthoc passes cleanly and
-seed45 re-scores non-hard-fail, escalate instead of closing). CC owns
-goal/index/review/decision/handoff docs; Codex owns runs/reports/RUN_STATUS.
+Consequence: historical goal/handoff note archived at
+`docs/archive/legacy_auto_coordination_20260701/CC_AUDIT_AND_HANDOFF_20260701.md`.
+Use current `local_goal.md`, `local_audit.md`, and `local_suggestion.md` for
+new remote execution.
 
 ## 2026-07-01: Use scRepresentation As The GitHub Repository
 

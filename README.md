@@ -65,10 +65,12 @@ scLatent/software -> ../software
 
 ```text
 AGENTS.md
+local_goal.md
+local_audit.md
+local_suggestion.md
 goal.md
 docs/START_HERE.md
 docs/WORKSPACE_ORGANIZATION.md
-docs/CODEX_CC_COLLABORATION.md
 docs/GIT_AND_COLLABORATION.md
 docs/GITHUB_FILE_MAP.md
 docs/PROJECT_OVERVIEW.md
@@ -78,6 +80,11 @@ docs/RESULTS_SUMMARY.md
 docs/DECISIONS.md
 docs/BUGS_AND_FIXES.md
 ```
+
+Legacy auto-coordination docs and prompts are archived under
+`docs/archive/legacy_auto_coordination_20260701/` and
+`prompts/archive/legacy_auto_coordination_20260701/`. They are historical
+evidence, not active workflow instructions.
 
 ## Runtime
 
