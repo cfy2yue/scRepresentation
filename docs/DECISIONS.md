@@ -10,6 +10,24 @@ docs/local_archive/20260630_pre_slim/DECISIONS.md
 
 This file records only decisions that should guide new agents.
 
+## 2026-07-01: RESULT — Track-C Support-Only CLOSED; CPU-Only Manuscript Manifest Built
+
+Decision: CLOSE the Track-C pair-type support-only branch. Gate evaluation (Codex):
+seed43 pass (pp/MMD `+0.101347/-0.008834`), seed44 pass (`+0.073213/-0.004449`),
+seed45 HARD FAIL (`+0.032864/-0.000943`, reason `support_pp_delta_below_0p04`).
+2/3 seeds pass, but seed45 violates the predeclared no-hard-fail condition → not
+promotable.
+
+Reason: the predeclared gate requires 2/3 pass AND no hard fail; the hard fail
+stands. Preserve the negative evidence and pivot to the CPU-only deliverable.
+
+Consequence: manuscript-ready artifact assembled (CPU-only, no new GPU) at
+`reports/trackc_support_only_closed_scaling_manuscript_manifest_20260701/`
+(`REPORT_MANIFEST.md`, `REPRODUCTION_MANIFEST.md`, `NARRATIVE_SKELETON.md`,
+`manifest.json`; JSON-validated, referenced paths exist). Next scLatent step is
+manuscript polish, not further support-only GPU work. Multi-condition Track-C
+query route remains a separate, not-yet-launched hypothesis.
+
 ## 2026-07-01: CC Audit — Close Track-C Support-Only If No-Hard-Fail Violated; Pivot To Manuscript
 
 Decision: after a clean three-way sync (local = GitHub = server at `56a9bd2`),

@@ -72,6 +72,10 @@ root-level paths as provenance; new scripts and entry docs should not.
   close the support-only branch (preserve negative evidence) and package the
   CPU-only scaling-axis/failure-map manuscript artifact — no new GPU. Details +
   ownership in `docs/CC_AUDIT_AND_HANDOFF_20260701.md`.
+- RESULT (2026-07-01): Track-C support-only CLOSED (seed43/44 pass; seed45 hard
+  fail `support_pp_delta_below_0p04`). CPU-only manuscript manifest built at
+  `reports/trackc_support_only_closed_scaling_manuscript_manifest_20260701/`.
+  Next step = manuscript polish, no further support-only GPU. See `docs/DECISIONS.md`.
 - Ownership: CC owns goal/index/review/decision/handoff docs; Codex owns runs/
   reports/RUN_STATUS.
 

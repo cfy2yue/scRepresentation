@@ -95,3 +95,15 @@ primary value is strategic audit and course-correction — not re-running comput
 - **Corrective handoff (CC → Codex):** never silently mutate a running goal. CC
   writes a new dated subsection in the dated handoff doc (revised bounded goal,
   adjusted gate, pivot, or close) and re-hands it. Preserve negative evidence.
+
+## Multi-Project Audit Workflow (added 2026-07-01)
+
+When several projects need audit/optimization at the same time, CC should NOT
+audit them serially in one shared context. Instead:
+
+- Spawn ONE dedicated subagent session per project to run that project's audit /
+  optimization independently (isolated context).
+- The main CC session aggregates the subagent results, makes the cross-project
+  priority calls, and performs the git commits/pushes and Codex handoffs.
+- This avoids context confusion and cross-project bleed. Keep each subagent scoped
+  to a single project; keep commits and handoffs centralized in the main session.

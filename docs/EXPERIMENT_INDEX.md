@@ -19,6 +19,7 @@ or the local archive.
 | Chemical V2 / future GPU branch | not launched by cleanup | future `runs/<run>/RUN_STATUS.md` | status docs only | Requires fresh resource audit and written stop rule. |
 | Benchmark infrastructure | tracked as source where small | `scFMBench/`, `ops/`, docs | yes for code/docs | Large refs and generated outputs stay ignored. |
 | Negative evidence | preserved in local reports/archives | `reports/`, local archive | summarize | Do not delete just to simplify the tree. |
+| Track-C support-only (pairtype) | CLOSED 2026-07-01 — 2/3 seeds pass but seed45 hard fail (`support_pp_delta_below_0p04`), no-hard-fail gate violated | `runs/latentfm_trackc_support_only_robustness_20260624/*/RUN_STATUS.md`; manuscript `reports/trackc_support_only_closed_scaling_manuscript_manifest_20260701/` | summary only | Not promotable; pivot to CPU-only scaling-axis manuscript. |
 
 ## Rules For New Entries
 
