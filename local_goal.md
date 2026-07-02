@@ -116,10 +116,15 @@ These override any softer language below and correct last night's failure mode.
    night the remote hit the Pearson-control gate and STOPPED to request a local
    audit (`LOCAL_AUDIT_REQUEST_PEARSON_CONTROL_DIFFUSE_HARM`), wasting overnight
    GPU. That specific behavior is the thing to eliminate.
-2. HARD `BLOCKED` is reserved for genuine user-owned decisions only: changing the
-   final goal / threshold, new keys or permissions, or destructive operations.
-   A negative result, a failing gate, or "current data insufficient" never
-   qualifies.
+2. There is NO predefined hard-block condition, and this CANCELS every `BLOCKED` /
+   "hard block" / "hard-stop" statement elsewhere in this file. The goal pauses ONLY
+   when (a) the remote ITSELF concludes it is genuinely blocked after exhausting the
+   in-boundary routes it can think of, recording the full reasoning in
+   `remote_decision.md`, or (b) the user manually interrupts for local audit. "Needs
+   more data / a new source / more compute / a not-yet-generated artifact / a
+   user-owned decision" is NOT an auto-stop — pursue it yourself (download / sampling
+   / encoding / training are authorized) and, if you truly think the user is needed,
+   keep doing everything else meanwhile and just note it. Do not stop and wait.
 3. NO UNGROUNDED RESOURCE/DATA LIMITS. The scaling sample-size wall (only 17
    outcome-linked arms) is now to be solved by DOWNLOADING / AUGMENTING more
    perturb-seq datasets to raise the arm count — this is AUTHORIZED (network +
@@ -152,9 +157,9 @@ Remote Codex should keep progressing until one of these happens:
 
 - `ACHIEVED`: the long-horizon acceptance target is actually met with evidence,
   metrics, controls, output paths, and claim boundaries recorded;
-- `BLOCKED`: a hard blocker requires changing final target, resource boundary,
-  data source, held-out/query permission, destructive operation, or other
-  user-owned decision;
+- SELF-JUDGED PAUSE: the remote ITSELF concludes it is genuinely blocked after
+  exhausting every in-boundary route it can think of, and records the full reasoning
+  in `remote_decision.md` (its own judgment, not a predefined trigger);
 - user interrupts manually.
 
 `LOCAL_AUDIT_REQUEST` is a soft audit marker, not a stop condition. Remote
@@ -398,6 +403,17 @@ feasible and state which space the law fits better.
   perturb-seq datasets (AUTHORIZED; provenance-tracked under `/data/cyx/1030/dataset`)
   to widen level-2 coverage. Fresh run-scoped artifacts; never overwrite
   `*_pert_means.npz`.
+  LOCAL SSH SCOUT (2026-07-02): ~22 perturb-seq datasets are ALREADY encoded under
+  `/data/cyx/1030/dataset/latentfm_full/{xverse,scfoundation,scldm,stack}/` — Adamson,
+  DixitRegev2016_K562, GasperiniShendure2019_lowMOI, Frangieh, Papalexi,
+  NormanWeissman2019_filtered, Replogle_RPE1essential, ReplogleWeissman2022_K562_gwps,
+  Jiang_IFNB/IFNG/INS/TGFB/TNFA, Nadig_hepg2, Nadig_jurket, Schmidt, Wessels,
+  sciplex3_A549/K562/MCF7, TianActivation, TianInhibition (+ `pert_means.npz`,
+  `ctrl_means.npz`, `condition_metadata.json`, `manifest.json`). So the 17-arm power
+  wall can be beaten WITHOUT new downloads first: within-dataset down-sampling across
+  these 22 yields many level-1 `(info, scaling_y)` points and 22-dataset level-2
+  coverage. New downloads stay authorized to widen further, but are NOT the first
+  blocker.
 - S-Stage 2 — measure `control_info`, `perturb_info`, `OT_pair_info` per subset in
   LATENT space (+ HVG original-space cross-check); precise reproducible definitions and
   provenance.
@@ -420,7 +436,13 @@ Two scenarios (run both; recommendation on the primary comparability metric):
   reconstruction decoder (embedding -> expression) on a subset of Tabula Sapiens that
   already has inferred embeddings (the same subset used for de-batch testing), then
   measure HELD-OUT reconstruction fidelity. Fair, standard information-retention /
-  invertibility benchmark, directly comparable across scFMs.
+  invertibility benchmark, directly comparable across scFMs. LOCAL SSH SCOUT
+  (2026-07-02): no dir named `tabula`/`sapiens` exists; the atlas-scale healthy
+  reference is `/data/cyx/1030/dataset/cellgene_census/processed/` (by tissue:
+  blood/brain/heart/intestine/kidney/lung/pancreas/pan-cancer/others) plus
+  `/data/cyx/1030/dataset/scFM_data/staging/`. First CONFIRM which already-inferred-
+  embedding subset the scFMBench de-batch test actually uses and reuse that exact
+  subset for a fair cross-scFM decoder.
 - Scenario B-ood (SECONDARY, perturbation-relevant): train the decoder on control +
   a sampled set of conditions, then reconstruct expression on NEW (held-out, OOD-like)
   conditions. Tests perturbation-relevant generalization of the embedding — more
