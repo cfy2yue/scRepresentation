@@ -1,6 +1,6 @@
 # local_audit.md
 
-Updated: 2026-07-02.
+Updated: 2026-07-02 (third round — Pearson-control no-harm block).
 
 This file is part of the local-authored remote execution packet. Remote Codex
 must read it before executing `local_goal.md`; it provides the evidence,
@@ -341,6 +341,51 @@ Local checks run this round:
 - `merge-base --is-ancestor 90fd97a 54e9520` = YES (HEAD anomaly resolved);
 - read `goal.md`, three `local_*.md`, `docs/LATENTFM_ARCHITECTURE_AUDIT_20260701.md`
   for architecture file:line targets and the user research vision.
+
+## Third-Round Local Audit Update - 2026-07-02 (post overnight run)
+
+Overnight the remote ran a large autonomous session (HEAD `6b4c591`, uncommitted
+working tree). LANDED (uncommitted, preserved as evidence): R1/P4 eval-pairing repair
+in `evaluate()`; CUDA AMP fix (`_amp_autocast_ctx`, `train.py:61-71`); default-off
+differentiable aux-endpoint ODE path (`aux_endpoint_ode_steps=0`).
+
+Overnight results:
+
+- P1 endpoint aux-ODE4 (and `lowweight`) IMPROVED distribution metrics (anchor
+  test_mse 0.0002795 -> 0.0002739; test_mmd 0.02053 -> 0.01958) but FAILED the
+  Pearson-control no-harm gate (pearson_ctrl anchor 0.1134 -> lowweight 0.0880; delta
+  -0.025; original also negative). R1 Pearson-repair not promotable.
+- P1 tradeoff diagnostic: Spearman corr(delta MMD, delta pearson_ctrl) = -0.50 —
+  either a real tradeoff or an evaluation-framing conflict (Program M decides).
+- P2 harm-localization: harm diffuse (359/787 = 0.456); best train-computable predictor
+  `low_dataset_train_cond_count` AUC 0.605 < 0.70 bar — cannot gate. High-harm datasets:
+  Schmidt, Jiang_INS, Wessels/Cas13, Nadig_jurket, Jiang_IFNG, Nadig_hepg2, Jiang_TGFB.
+- The remote hit the Pearson-control gate and STOPPED to request local audit — exactly
+  the premature-stop behavior this workflow round is correcting.
+
+User reprioritization (2026-07-02) — governing change:
+
+- LatentFM end-to-end MODELING is DEPRIORITIZED (LOW / paused as a standalone endpoint
+  goal). LatentFM TRAININGS remain authorized where they serve the science (Program S
+  `scaling_y` needs multiple trainings; a validated Program Z law may be trained as a
+  regularizer). "Pause modeling" = no blind endpoint/MMD-weight tuning.
+- Program M (Pearson-control metric audit) demoted to QUICK, LOW-priority parallel check.
+- HIGH #1 = Program Z (zebrafish/ZSCAPE): find laws + insight — how cells change, how
+  pathways cascade/react, pathway-pathway associations, how the latent space changes —
+  Nature Methods / NBT depth.
+- HIGH = Program S (scaling), user's explicit TWO-LEVEL FORMULA: L1
+  `scaling_singleset ≈ f(control_info[cluster] + perturb_info[cluster] +
+  OT_pair_info[per-condition OT-pairing avg + pair diversity])`, fit by within-dataset
+  down-sampling with `scaling_y` = LatentFM performance per subset (trainings
+  authorized); L2 cross-dataset `g({scaling_singleset}, set-set association[overlap
+  condition count, perturbation-effect similarity via pseudobulk(+binning?)+before-after
+  delta])`. Info measured PRIMARILY in latent space (cheaper, coherent with scaling_y —
+  local recommendation), with a gene/HVG original-space cross-check.
+- IMPORTANT = Program B (scFM reconstruction benchmark, previously MISSED): embedding ->
+  expression; primary = Tabula Sapiens subset held-out reconstruction fidelity (fair
+  cross-scFM), secondary = control+sampled -> OOD-condition reconstruction.
+- Data expansion (download/augment more perturb-seq datasets) AUTHORIZED to beat the
+  17-arm power wall; GPU authorized for the science trainings.
 
 ## Open Questions For Next Audit
 

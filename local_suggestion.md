@@ -31,6 +31,58 @@ Each suggested remote task must be:
 Do not suggest tasks that reopen closed branches merely because archived notes
 contain older handoff language.
 
+## Third-Round Priorities & Strategy Portfolio - 2026-07-02 (GOVERNING)
+
+This supersedes the priority order below. See `local_goal.md` Exact Next Task for the
+full multi-stage spec. Governing priorities:
+
+1. Program Z (zebrafish/ZSCAPE dynamics) — HIGH #1.
+2. Program S (scaling two-level formula) — HIGH.
+3. Program B (scFM reconstruction benchmark) — IMPORTANT.
+4. Program M (Pearson-control metric audit) — LOW / quick parallel.
+LatentFM end-to-end endpoint modeling — LOW / paused (trainings for `scaling_y` and a
+validated Program Z regularizer are still allowed). Target quality: Nature Methods / NBT.
+
+Gates are CLAIM-BARS, not stop conditions — gate-fail => log + switch strategy, never
+`BLOCKED`:
+
+- Program S: claim a law only if `f`/`g` predict `scaling_y` OUT-OF-SAMPLE better than
+  raw cell count AND condition count under source-held-out/LODO + confound controls;
+  report `control_info`/`perturb_info`/`OT_pair_info` definitions + provenance.
+- Program Z: any dynamic law must survive wrong-time / wrong-lineage / permutation nulls
+  in expression space (+ encoder-agnostic latent view); no regularizer launch without
+  the no-harm gate.
+- Program B: fair cross-scFM decoder reconstruction with a random/mean baseline; per-gene
+  + global error (MSE/Pearson/EV), HVG-restricted.
+- Program M: `PEARSON_CTRL_VERDICT` in {METRIC_ARTIFACT (correct + unblock), REAL_TRADEOFF
+  (pick a direction-preserving objective), INCONCLUSIVE}.
+
+Strategy portfolio (parallel directions so goal mode never runs dry — pick / interleave /
+spawn subagents; a wall on one => move to another, never stop):
+
+- Program S: latent-space info (primary) vs gene/HVG original-space (cross-check);
+  cluster-based info via multiple clusterings (kmeans / leiden / GMM), effective-cluster
+  counts, entropy, Vendi `N_eff`; `OT_pair_info` via #pair-modes, cost dispersion,
+  direction diversity, Sinkhorn vs Hungarian; within-dataset down-sampling curves; set-set
+  similarity via pseudobulk-delta cosine / MMD / overlap-condition Jaccard.
+- Program Z: macro (e-distance / MMD / mean-shift trajectories) + individual (OT
+  pseudo-tracking, branching, velocity, delay) + expression (target/marker propagation,
+  GRN via CellOracle / GEARS, pathway cascade/enrichment, pathway-pathway association
+  graphs) + latent (geometry / direction / curvature; expression-vs-latent agreement).
+- Program B: Tabula Sapiens fidelity (primary) + perturb-OOD reconstruction; linear vs MLP
+  decoder; full-gene vs HVG.
+- Modeling (low-pri, only via science): direction-preserving / no-harm objectives if the
+  Pearson tradeoff is real; conditioning upgrades (FiLM / cross-attention / CFG);
+  curvature / straightness regularizer from Program Z; OT-cost robustification.
+
+Decision tree (all branches KEEP ADVANCING; only user-owned decisions => hard block):
+
+- positive => harden, add controls, write up toward publication; pick the next program.
+- negative / ambiguous => preserve evidence in `remote_decision.md`, switch to the next
+  portfolio item or the other program; spawn a subagent to re-audit the route.
+- "data insufficient" => download / augment more data (authorized), NOT a block.
+- gate-fail => log + new strategy, NOT `BLOCKED`.
+
 ## Current Priority Order
 
 Updated 2026-07-02 after the condition-mean geometry negative. The immediate next
